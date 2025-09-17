@@ -59,8 +59,9 @@ elmo-hikes/
 
 
 ## Contributors
-- **Your Name** - BCIT CST Student with a passion for outdoor adventures and user-friendly applications. Fun fact: Loves solving Rubik's Cubes in under a minute.
-- **Teammate Name** - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
+- **Eric** - I’m a BCIT CST student with a passion for ballgames and solving problems. Fun fact: I have acrophobia, and my legs were shaking when I was at WildPlay.
+- **Arjun and Maeve** -  BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
+
 
 ---
 

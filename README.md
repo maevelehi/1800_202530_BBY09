@@ -56,10 +56,9 @@ elmo-hikes/
 
 ## Contributors
 
-- **Maeve** - BCIT CST Student with a passion for outdoor adventures and user-friendly applications. Fun fact: Loves solving Rubik's Cubes in under a minute.
-- **Arjun, Eric** - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
+- **Arjun** - BCIT CST Student with a passion for outdoor adventures and user-friendly applications. Fun fact: Likes sports like soccer and volleyball.
+- **Eric and Maeve** - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
 
----
 
 ## Acknowledgments
 

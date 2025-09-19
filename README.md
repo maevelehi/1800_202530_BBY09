@@ -60,10 +60,9 @@ elmo-hikes/
 
 - **Arjun** - BCIT CST Student with a passion for outdoor adventures and user-friendly applications. Fun fact: Likes sports like soccer and volleyball.
 
-- **Maeve** -  BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
+- **Maeve** - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
 
-
-
+- **Arjun and Maeve and Eric** - BCIT CST Student
 
 ## Acknowledgments
 

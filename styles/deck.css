@@ -1,0 +1,228 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
+}
+
+body {
+  background-color: #fff;
+  color: #333;
+  line-height: 1.5;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 428px;
+  height: 926px;
+  padding: 0 16px;
+  margin: 0 auto;
+}
+
+/* 顶部导航栏 */
+.header {
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+}
+
+.nav-links li {
+  margin-left: 15px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #3498db;
+}
+
+/* 主要内容区域 */
+.main-content {
+  padding: 20px 0;
+}
+
+/* 顶部信息区域 - 使用Grid布局 */
+.top-info-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+  align-items: start;
+  margin-bottom: 24px;
+}
+
+.topic-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.page-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.group-info {
+  padding: 0;
+  border: none;
+  margin: 0;
+}
+
+.group-info h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.group-info p {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+.add-topic-btn {
+  background-color: #f5f5f5;
+  color: #333;
+  border: 1px solid #ddd;
+  padding: 12px 16px;
+  border-radius: 50%;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  height: fit-content;
+}
+
+/* 主题卡片 */
+.topic-card {
+  margin-bottom: 24px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.topic-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Deck网格布局 */
+.decks-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 16px;
+}
+
+.deck {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.deck-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.deck-subtitle {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.stars {
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.add-deck-btn {
+  background-color: #f5f5f5;
+  color: #333;
+  border: 1px solid #ddd;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  margin-top: 16px;
+}
+
+/* 底部导航栏 */
+.footer-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  border-top: 1px solid #e0e0e0;
+  z-index: 100;
+}
+
+.footer-nav ul {
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+  padding: 12px 0;
+}
+
+.footer-nav a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+  font-size: 12px;
+}
+
+.icon {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+/* 底部导航栏占位，防止内容被遮挡 */
+.content-wrapper {
+  padding-bottom: 70px;
+}
+/* 响应式调整 */
+@media (max-width: 360px) {
+  .decks-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .top-info-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .add-topic-btn {
+    width: 100%;
+  }
+}

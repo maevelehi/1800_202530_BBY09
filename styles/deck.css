@@ -230,9 +230,9 @@ body {
 }
 
 /* heart outline positioned to the right of each card (outside main card area) */
-.question-card + .question-card {
-  /* no-op kept for clarity */
-}
+/* .question-card + .question-card {
+  no-op kept for clarity
+} */
 
 /* place heart inside the card area (not outside) */
 .question-card .heart {

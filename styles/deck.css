@@ -1,27 +1,73 @@
-* {
+body {
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, sans-serif;
-}
-
-body {
   background-color: #fff;
-  color: #333;
-  line-height: 1.5;
-  max-width: 100%;
-  overflow-x: hidden;
 }
 
+/* Grayscale palette and layout adjustments to match the attached screenshot */
+:root {
+  --phone-w: 430px;
+  --phone-h: 932px;
+  --page-bg: #ededed; /* overall background grey */
+  --header-bg: #d9d9d9; /* top header bar */
+  --content-bg: #ffffff; /* white content area */
+  --card-bg: #e6e6e6; /* light grey card */
+  --card-accent: #cfcfcf; /* darker accent for flip/tab */
+  --fav-bg: #d9d9d9; /* favorite oval bg */
+  --footer-bg: #d9d9d9; /* footer bar bg */
+  --muted: #777777; /* icon/text muted color */
+  --text: #111111;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background: var(--page-bg);
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* viewport container to allow spacing */
+.phone-viewport {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+/* phone frame */
+.phone {
+  width: var(--phone-w);
+  height: var(--phone-h);
+  background: var(--content-bg);
+  border-radius: 28px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.14);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* content container inside phone */
 .container {
-  width: 428px;
-  height: 926px;
-  padding: 0 16px;
-  margin: 0 auto;
+  /* changed: add inner padding so content doesn't touch phone edges */
+  padding: 12px;
+  box-sizing: border-box;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-/* 顶部导航栏 */
+/* Header: full-width grey band similar to screenshot */
 .header {
   background-color: #fff;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -60,158 +106,190 @@ body {
   color: #3498db;
 }
 
-/* 主要内容区域 */
-.main-content {
-  padding: 20px 0;
+/* main content scrolls and has inner padding like screenshot */
+.content-wrapper {
+  flex: 1 1 auto;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  /* increased bottom padding to add extra space between title/content and footer */
+  padding: 18px 20px 140px 20px; /* room for footer + extra gap */
+  background: transparent;
+  box-sizing: border-box;
 }
 
-/* 顶部信息区域 - 使用Grid布局 */
+/* top area with back-arrow, title and add/favorite button */
 .top-info-grid {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 16px;
-  align-items: start;
-  margin-bottom: 24px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 14px;
 }
 
-.topic-info {
+/* back button: quick-fix styles for deck page */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--card-bg);
+  color: var(--text);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  margin: 12px 0 12px 0; /* gap between header and title */
+}
+
+/* deck-info contains the injected back-arrow */
+.deck-info {
+  position: relative;
+  padding-left: 12px;
+}
+
+/* title and description styling */
+.page-title {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--text);
+  line-height: 1;
+  margin-top: 6px; /* ensure title has a small top margin after the back button */
+}
+.deck-description {
+  margin: 8px 0 0 0;
+  font-size: 16px;
+  color: var(--muted);
+  font-family: Georgia, "Times New Roman", serif; /* serif-style like screenshot */
+}
+
+/* favorite oval button (right side near title) */
+.favorites-section {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.favorite-btn {
+  background: var(--fav-bg);
+  color: var(--text);
+  border: 0;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  box-shadow: none;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* question cards list */
+.questions-list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
+  margin-top: 6px;
 }
 
-.page-title {
-  font-size: 24px;
-  font-weight: 600;
-  margin: 0;
-}
-
-.group-info {
-  padding: 0;
-  border: none;
-  margin: 0;
-}
-
-.group-info h2 {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-
-.group-info p {
-  font-size: 14px;
-  color: #666;
-  margin: 0;
-}
-
-.add-topic-btn {
-  background-color: #f5f5f5;
-  color: #333;
-  border: 1px solid #ddd;
-  padding: 12px 16px;
-  border-radius: 50%;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-  white-space: nowrap;
-  height: fit-content;
-}
-
-/* 主题卡片 */
-.topic-card {
-  margin-bottom: 24px;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.topic-title {
-  font-size: 18px;
-  font-weight: 600;
-}
-
-/* Deck网格布局 */
-.decks-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  padding: 16px;
-}
-
-.deck {
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  padding: 12px;
-}
-
-.deck-title {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-
-.deck-subtitle {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 8px;
-}
-
-.stars {
-  font-size: 14px;
-  letter-spacing: 1px;
-}
-
-.add-deck-btn {
-  background-color: #f5f5f5;
-  color: #333;
-  border: 1px solid #ddd;
-  padding: 12px 16px;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
+/* each question row is a bar with left-aligned text and a flip tab on the right */
+.question-card {
+  background: var(--card-bg);
+  border-radius: 6px;
+  /* changed: reserve more space on right so controls sit inside the phone */
+  padding: 12px 72px 12px 12px;
+  box-shadow: none;
   display: block;
-  width: 100%;
-  margin-top: 16px;
+  position: relative;
+  min-height: 44px;
+  align-items: center;
+  box-sizing: border-box;
+  color: var(--text);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+.question-card p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text);
 }
 
-/* 底部导航栏 */
-.footer-nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: #fff;
-  border-top: 1px solid #e0e0e0;
-  z-index: 100;
+/* flip tab: small darker rectangle attached to right edge of card */
+.flip-btn {
+  position: absolute;
+  /* changed: put flip button left of the heart but inside the card */
+  right: 56px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--card-accent);
+  color: var(--text);
+  border: 0;
+  padding: 6px 8px;
+  font-size: 12px;
+  border-radius: 4px;
+  box-shadow: none;
+  cursor: pointer;
 }
 
-.footer-nav ul {
+/* heart outline positioned to the right of each card (outside main card area) */
+.question-card + .question-card {
+  /* no-op kept for clarity */
+}
+
+/* place heart inside the card area (not outside) */
+.question-card .heart {
+  position: absolute;
+  /* changed: keep heart inside the card so no horizontal overflow occurs */
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
   display: flex;
-  list-style: none;
-  justify-content: space-around;
-  padding: 12px 0;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  background: transparent;
+  font-size: 16px;
+  box-sizing: border-box;
+  cursor: pointer;
 }
 
+/* Footer nav bar: grey background with black icons and labels */
+.footer-nav {
+  position: absolute;
+  bottom: 20px; /* slightly higher than before to give a larger gap */
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 28px);
+  background: var(--footer-bg);
+  border-radius: 12px;
+  box-shadow: none;
+  padding: 8px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+.footer-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
 .footer-nav a {
+  text-decoration: none;
+  color: #000;
+  font-size: 13px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-decoration: none;
-  color: #333;
-  font-size: 12px;
+  gap: 4px;
+}
+.footer-nav .icon {
+  font-size: 22px;
 }
 
-.icon {
-  font-size: 20px;
-  margin-bottom: 4px;
-}
-
-/* 底部导航栏占位，防止内容被遮挡 */
-.content-wrapper {
-  padding-bottom: 70px;
-}
-/* 响应式调整 */
+/* small screens scaling */
 @media (max-width: 360px) {
   .decks-grid {
     grid-template-columns: 1fr;

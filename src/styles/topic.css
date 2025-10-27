@@ -1,208 +1,139 @@
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, sans-serif;
-}
-
+/* Fixed layout for iPhone 14 Pro Max */
 body {
-  background-color: #fff;
-  color: #333;
-  line-height: 1.5;
-  max-width: 100%;
-  overflow-x: hidden;
+  background-color: #f5f7fa;
+  width: 430px;
+  height: 932px;
+  margin: 0 auto;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  position: relative;
 }
 
 .container {
-  width: 428px;
-  height: 926px;
-  padding: 0 16px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: 100%;
+  padding: 0 15px;
 }
 
-.header {
+.custom-navbar {
   background-color: #fff;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 15px 20px;
+  padding: 15px 0;
+  height: 70px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 100;
 }
 
 .logo {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
   color: #2c3e50;
 }
 
-.nav-links {
-  display: flex;
-  list-style: none;
-}
-
-.nav-links li {
-  margin-left: 15px;
-}
-
 .nav-links a {
+  color: #7f8c8d;
   text-decoration: none;
-  color: #555;
   font-weight: 500;
-  transition: color 0.3s;
-}
-
-.nav-links a:hover {
-  color: #3498db;
-}
-
-.back-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  width: 40px;
-  height: 40px;
-  background: #f5f5f5;
-  color: #333;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  font-size: 18px;
-  cursor: pointer;
-  margin: 12px 0 14px 0;
-}
-
-.main-content {
-  padding: 20px 0;
-}
-
-.top-info-grid {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 16px;
-  align-items: start;
-  margin-bottom: 24px;
-}
-
-.topic-info {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  font-size: 16px;
 }
 
 .page-title {
-  font-size: 24px;
-  font-weight: 600;
-  margin: 0;
-  margin-top: 6px;
-}
-
-.group-info {
-  padding: 0;
-  border: none;
-  margin: 0;
+  color: #2c3e50;
+  font-weight: 700;
+  margin-bottom: 5px;
+  font-size: 28px;
 }
 
 .group-info h2 {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-
-.group-info p {
-  font-size: 14px;
-  color: #666;
-  margin: 0;
+  color: #7f8c8d;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .add-topic-btn {
-  background-color: #f5f5f5;
-  color: #333;
-  border: 1px solid #ddd;
-  padding: 12px 16px;
-  border-radius: 50%;
+  background-color: #555;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 10px;
+  font-weight: 600;
   font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-  white-space: nowrap;
-  height: fit-content;
+  transition: background-color 0.3s;
+}
+
+.add-topic-btn:active {
+  background-color: #252729;
+  transform: scale(0.98);
 }
 
 .topic-card {
-  margin-bottom: 24px;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  overflow: hidden;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  margin-top: 20px;
+  height: 650px;
+  overflow-y: auto;
 }
 
-.topic-title {
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.decks-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  padding: 16px;
+/* Hide the scroll bar but keep the scroll function */
+.topic-card::-webkit-scrollbar {
+  display: none;
 }
 
 .deck {
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  padding: 12px;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  padding: 15px;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.deck:active {
+  transform: scale(0.98);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .deck-title {
   font-size: 16px;
   font-weight: 600;
-  margin-bottom: 4px;
+  color: #2c3e50;
+  margin-bottom: 5px;
+  line-height: 1.2;
 }
 
 .deck-subtitle {
-  font-size: 14px;
-  color: #666;
+  font-size: 13px;
+  color: #7f8c8d;
   margin-bottom: 8px;
+  line-height: 1.2;
 }
 
 .stars {
+  color: #f1c40f;
   font-size: 14px;
-  letter-spacing: 1px;
-}
-
-.add-deck-btn {
-  background-color: #f5f5f5;
-  color: #333;
-  border: 1px solid #ddd;
-  padding: 12px 16px;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-  display: block;
-  width: 100%;
-  margin-top: 16px;
 }
 
 .footer-nav {
-  position: fixed;
+  background-color: white;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px 0;
+  position: absolute;
   bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: #fff;
-  border-top: 1px solid #e0e0e0;
-  z-index: 100;
+  width: 100%;
+  height: 80px;
 }
 
 .footer-nav ul {
-  display: flex;
   list-style: none;
+  display: flex;
   justify-content: space-around;
-  padding: 12px 0;
+  margin: 0;
+  padding: 0;
 }
 
 .footer-nav a {
@@ -210,30 +141,50 @@ body {
   flex-direction: column;
   align-items: center;
   text-decoration: none;
-  color: #333;
+  color: #7f8c8d;
   font-size: 12px;
+  transition: color 0.3s;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.footer-nav a:active {
+  background-color: #f0f0f0;
+}
+
+.footer-nav a.active {
+  color: #3498db;
 }
 
 .icon {
-  font-size: 20px;
+  font-size: 22px;
   margin-bottom: 4px;
 }
 
 .content-wrapper {
-  padding-bottom: 70px;
+  height: calc(100% - 150px);
+  padding-bottom: 90px;
+  overflow: hidden;
 }
 
-@media (max-width: 360px) {
-  .decks-grid {
-    grid-template-columns: 1fr;
-  }
+/* Double-column grid layout */
+.decks-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
 
-  .top-info-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
+/* The top safety area adapted to iPhone 14 Pro Max */
+@supports (padding-top: env(safe-area-inset-top)) {
+  body {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
   }
+}
 
-  .add-topic-btn {
-    width: 100%;
+/* Adapt to dynamic island areas*/
+@media (max-height: 932px) and (max-width: 430px) {
+  body {
+    height: 120vh;
   }
 }

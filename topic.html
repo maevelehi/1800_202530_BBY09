@@ -8,23 +8,31 @@
   </head>
   <body>
     <div class="container">
-      <!-- 顶部导航栏 -->
-      <header class="header">
-        <div class="logo">logo</div>
-        <ul class="nav-links">
-          <li><a href="#">search</a></li>
-        </ul>
-      </header>
+      <!-- Top navigation bar -->
+      <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand">Logo</a>
+          <form class="d-flex" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </form>
+        </div>
+      </nav>
 
-      <!-- 主要内容区域 -->
+      <!-- Main content area -->
       <div class="content-wrapper">
-        <main class="main-content">
-          <!-- back button placed below header, above topic title -->
-          <button class="back-btn" aria-label="Back">←</button>
-          <!-- 顶部信息区域 - 使用Grid布局 -->
-          <div class="top-info-grid">
+        <main>
+          <!-- Top information -->
+          <div class="d-flex justify-content-between align-items-end mt-4">
             <div class="topic-info">
-              <h1 class="page-title">Topic 1</h1>
+              <h1 class="page-title">Topic1</h1>
               <div class="group-info">
                 <h2>Describe</h2>
               </div>
@@ -32,49 +40,97 @@
             <button class="add-topic-btn">Add deck</button>
           </div>
 
-          <!-- 主题卡片 -->
+          <!-- cards -->
           <div class="topic-card">
             <div class="decks-grid">
               <!-- Deck 1 -->
               <div class="deck">
-                <div class="deck-title">Deck 1</div>
-                <div class="deck-subtitle">Chapter 1</div>
+                <div>
+                  <div class="deck-title">Desk1</div>
+                  <div class="deck-subtitle">Describe</div>
+                </div>
                 <div class="stars">★★★★★</div>
               </div>
 
               <!-- Deck 2 -->
               <div class="deck">
-                <div class="deck-title">Deck 2</div>
-                <div class="deck-subtitle">Chapter 2</div>
+                <div>
+                  <div class="deck-title">Desk2</div>
+                  <div class="deck-subtitle">Describe</div>
+                </div>
                 <div class="stars">★★★★★</div>
               </div>
 
               <!-- Deck 3 -->
               <div class="deck">
-                <div class="deck-title">Deck 3</div>
-                <div class="deck-subtitle">Chapter 3</div>
+                <div>
+                  <div class="deck-title">Desk3</div>
+                  <div class="deck-subtitle">Describe</div>
+                </div>
                 <div class="stars">★★★</div>
               </div>
 
               <!-- Deck 4 -->
               <div class="deck">
-                <div class="deck-title">Deck 4</div>
-                <div class="deck-subtitle">Chapter 4</div>
-                <div class="stars">★★★★★</div>
+                <div>
+                  <div class="deck-title">Desk4</div>
+                  <div class="deck-subtitle">Describe</div>
+                </div>
+                <div class="stars">★★★★</div>
               </div>
 
               <!-- Deck 5 -->
               <div class="deck">
-                <div class="deck-title">Deck 5</div>
-                <div class="deck-subtitle">Chapter 5</div>
-                <div class="stars">★★★★★</div>
+                <div>
+                  <div class="deck-title">Desk5</div>
+                  <div class="deck-subtitle">Describe</div>
+                </div>
+                <div class="stars">★★★★</div>
               </div>
 
               <!-- Deck 6 -->
               <div class="deck">
-                <div class="deck-title">Deck 6</div>
-                <div class="deck-subtitle">Chapter 6</div>
+                <div>
+                  <div class="deck-title">Desk6</div>
+                  <div class="deck-subtitle">Describe</div>
+                </div>
                 <div class="stars">★★</div>
+              </div>
+
+              <!-- Deck 7 -->
+              <div class="deck">
+                <div>
+                  <div class="deck-title">Desk7</div>
+                  <div class="deck-subtitle">Describe</div>
+                </div>
+                <div class="stars">★★★★</div>
+              </div>
+
+              <!-- Deck 8 -->
+              <div class="deck">
+                <div>
+                  <div class="deck-title">Desk8</div>
+                  <div class="deck-subtitle">Describe</div>
+                </div>
+                <div class="stars">★★★</div>
+              </div>
+
+              <!-- Deck 9 -->
+              <div class="deck">
+                <div>
+                  <div class="deck-title">Desk9</div>
+                  <div class="deck-subtitle">Describe</div>
+                </div>
+                <div class="stars">★★★★★</div>
+              </div>
+
+              <!-- Deck 10 -->
+              <div class="deck">
+                <div>
+                  <div class="deck-title">Desk10</div>
+                  <div class="deck-subtitle">Describe</div>
+                </div>
+                <div class="stars">★★★★</div>
               </div>
             </div>
           </div>
@@ -82,28 +138,25 @@
       </div>
     </div>
 
-    <!-- 底部导航栏 -->
-    <nav class="footer-nav">
-      <ul>
-        <li>
-          <a href="#">
-            <span class="icon">🏠</span>
-            <span>Home</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span class="icon">👥</span>
-            <span>Group</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span class="icon">⚙️</span>
-            <span>Settings</span>
-          </a>
-        </li>
-      </ul>
+    <!-- Bottom navigation bar -->
+    <nav class="navbar fixed-bottom navbar-light bg-white border-top">
+      <div class="container-fluid d-flex justify-content-around">
+        <a class="navbar-brand d-flex flex-column align-items-center" href="#">
+          <i class="fas fa-comment"></i>
+          <small>Home</small>
+        </a>
+        <a class="navbar-brand d-flex flex-column align-items-center" href="#">
+          <i class="fas fa-address-book"></i>
+          <small>Group</small>
+        </a>
+        <a class="navbar-brand d-flex flex-column align-items-center" href="#">
+          <i class="fas fa-compass"></i>
+          <small>Settings</small>
+        </a>
+      </div>
     </nav>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

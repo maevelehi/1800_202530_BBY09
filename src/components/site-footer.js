@@ -2,8 +2,13 @@ class SiteFooter extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
             <!-- Footer: single source of truth -->
-            <footer class="fixed-bottom py-2 border-top text-center bg-info">
-                <p class="mb-3 text-muted">&copy; 2025 FlipIt</p>
+            <footer class="fixed-bottom bg-info">
+              <div class="container d-flex justify-content-around py-3 border-top">
+                <span class="material-icons" id="home">home</span>
+                <span class="material-icons" id="settings">settings</span>
+                <span class="material-icons" id="group">group</span>
+		          </div>
+                
             </footer>
         `;
   }

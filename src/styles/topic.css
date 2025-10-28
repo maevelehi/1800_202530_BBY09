@@ -1,8 +1,6 @@
 /* Fixed layout for iPhone 14 Pro Max */
 body {
-  background-color: #f5f7fa;
-  width: 430px;
-  height: 932px;
+  background-color: white;
   margin: 0 auto;
   overflow: hidden;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -15,43 +13,21 @@ body {
   padding: 0 15px;
 }
 
-.custom-navbar {
-  background-color: #fff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 15px 0;
-  height: 70px;
-  display: flex;
-  align-items: center;
-}
-
-.logo {
-  font-size: 22px;
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-.nav-links a {
-  color: #7f8c8d;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 16px;
-}
-
 .page-title {
-  color: #2c3e50;
+  color: #03045e;
   font-weight: 700;
   margin-bottom: 5px;
   font-size: 28px;
 }
 
 .group-info h2 {
-  color: #7f8c8d;
+  color: #007786;
   font-size: 16px;
   font-weight: 500;
 }
 
 .add-topic-btn {
-  background-color: #555;
+  background-color: #00b4d8;
   color: white;
   border: none;
   padding: 12px 25px;
@@ -62,7 +38,7 @@ body {
 }
 
 .add-topic-btn:active {
-  background-color: #252729;
+  background-color: #0077b6;
   transform: scale(0.98);
 }
 
@@ -82,11 +58,10 @@ body {
 }
 
 .deck {
-  background-color: #f8f9fa;
+  background-color: #caf0f8;
   border-radius: 12px;
   padding: 15px;
   transition: transform 0.2s, box-shadow 0.2s;
-
   height: 120px;
   display: flex;
   flex-direction: column;
@@ -96,73 +71,31 @@ body {
 .deck:active {
   transform: scale(0.98);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #00b4d8;
 }
 
 .deck-title {
   font-size: 16px;
   font-weight: 600;
-  color: #2c3e50;
+  color: #03045e;
   margin-bottom: 5px;
   line-height: 1.2;
 }
 
 .deck-subtitle {
   font-size: 13px;
-  color: #7f8c8d;
+  color: #007786;
   margin-bottom: 8px;
   line-height: 1.2;
 }
 
 .stars {
-  color: #f1c40f;
+  color: #03045e;
   font-size: 14px;
 }
 
-.footer-nav {
-  background-color: white;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-  padding: 15px 0;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 80px;
-}
-
-.footer-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: space-around;
-  margin: 0;
-  padding: 0;
-}
-
-.footer-nav a {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-  color: #7f8c8d;
-  font-size: 12px;
-  transition: color 0.3s;
-  padding: 5px 10px;
-  border-radius: 10px;
-}
-
-.footer-nav a:active {
-  background-color: #f0f0f0;
-}
-
-.footer-nav a.active {
-  color: #3498db;
-}
-
-.icon {
-  font-size: 22px;
-  margin-bottom: 4px;
-}
-
 .content-wrapper {
-  height: calc(100% - 150px);
+  height: calc(100% - 50px);
   padding-bottom: 90px;
   overflow: hidden;
 }
@@ -185,6 +118,6 @@ body {
 /* Adapt to dynamic island areas*/
 @media (max-height: 932px) and (max-width: 430px) {
   body {
-    height: 120vh;
+    height: 180vh;
   }
 }

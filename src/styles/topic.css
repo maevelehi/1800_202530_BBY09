@@ -1,6 +1,6 @@
 /* Fixed layout for iPhone 14 Pro Max */
 body {
-  background-color: #caf0f8; /* 使用最浅的蓝色作为背景 */
+  background-color: white;
   margin: 0 auto;
   overflow: hidden;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -13,43 +13,21 @@ body {
   padding: 0 15px;
 }
 
-.custom-navbar {
-  background-color: #03045e; /* 使用最深的蓝色作为导航栏背景 */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 15px 0;
-  height: 70px;
-  display: flex;
-  align-items: center;
-}
-
-.logo {
-  font-size: 22px;
-  font-weight: bold;
-  color: #caf0f8; /* 使用最浅的蓝色作为Logo文字 */
-}
-
-.nav-links a {
-  color: #90e0ef; /* 使用浅蓝色作为导航链接 */
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 16px;
-}
-
 .page-title {
-  color: #03045e; /* 使用最深的蓝色作为标题 */
+  color: #03045e;
   font-weight: 700;
   margin-bottom: 5px;
   font-size: 28px;
 }
 
 .group-info h2 {
-  color: #007786; /* 使用深青色作为副标题 */
+  color: #007786;
   font-size: 16px;
   font-weight: 500;
 }
 
 .add-topic-btn {
-  background-color: #00b4d8; /* 使用主蓝色作为按钮 */
+  background-color: #00b4d8;
   color: white;
   border: none;
   padding: 12px 25px;
@@ -60,7 +38,7 @@ body {
 }
 
 .add-topic-btn:active {
-  background-color: #007786; /* 使用深青色作为按下状态 */
+  background-color: #0077b6;
   transform: scale(0.98);
 }
 
@@ -80,7 +58,7 @@ body {
 }
 
 .deck {
-  background-color: #90e0ef; /* 使用浅蓝色作为deck背景 */
+  background-color: #caf0f8;
   border-radius: 12px;
   padding: 15px;
   transition: transform 0.2s, box-shadow 0.2s;
@@ -93,74 +71,31 @@ body {
 .deck:active {
   transform: scale(0.98);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #00b4d8; /* 按下时变为主蓝色 */
+  background-color: #00b4d8;
 }
 
 .deck-title {
   font-size: 16px;
   font-weight: 600;
-  color: #03045e; /* 使用最深的蓝色作为标题 */
+  color: #03045e;
   margin-bottom: 5px;
   line-height: 1.2;
 }
 
 .deck-subtitle {
   font-size: 13px;
-  color: #007786; /* 使用深青色作为副标题 */
+  color: #007786;
   margin-bottom: 8px;
   line-height: 1.2;
 }
 
 .stars {
-  color: #03045e; /* 使用最深的蓝色作为星星 */
+  color: #03045e;
   font-size: 14px;
 }
 
-.footer-nav {
-  background-color: #03045e; /* 使用最深的蓝色作为底部导航 */
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-  padding: 15px 0;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 80px;
-}
-
-.footer-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: space-around;
-  margin: 0;
-  padding: 0;
-}
-
-.footer-nav a {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-  color: #90e0ef; /* 使用浅蓝色作为底部链接 */
-  font-size: 12px;
-  transition: color 0.3s;
-  padding: 5px 10px;
-  border-radius: 10px;
-}
-
-.footer-nav a:active {
-  background-color: #007786; /* 使用深青色作为按下状态 */
-}
-
-.footer-nav a.active {
-  color: #00b4d8; /* 使用主蓝色作为激活状态 */
-}
-
-.icon {
-  font-size: 22px;
-  margin-bottom: 4px;
-}
-
 .content-wrapper {
-  height: calc(100% - 150px);
+  height: calc(100% - 50px);
   padding-bottom: 90px;
   overflow: hidden;
 }
@@ -183,6 +118,6 @@ body {
 /* Adapt to dynamic island areas*/
 @media (max-height: 932px) and (max-width: 430px) {
   body {
-    height: 120vh;
+    height: 180vh;
   }
 }

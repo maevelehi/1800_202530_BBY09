@@ -194,6 +194,7 @@ body {
 /* each question row is a bar with left-aligned text and a flip tab on the right */
 .question-card {
   background: var(--card-bg);
+  background-color: #3498db;
   border-radius: 6px;
   /* changed: reserve more space on right so controls sit inside the phone */
   padding: 12px 72px 12px 12px;
@@ -210,6 +211,7 @@ body {
   margin: 0;
   font-size: 14px;
   color: var(--text);
+  background-color: #3498db;
 }
 
 /* flip tab: small darker rectangle attached to right edge of card */
@@ -227,6 +229,21 @@ body {
   border-radius: 4px;
   box-shadow: none;
   cursor: pointer;
+}
+.btn-primary {
+  color: #5c5f5f; /* Lightest shade for text */
+  font-size: 80%;
+  background-color: #ade8f4;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+}
+.btn-primary:hover {
+  background-color: #00b4d8;
+  color: #ffffff;
 }
 
 /* heart outline positioned to the right of each card (outside main card area) */
@@ -253,41 +270,9 @@ body {
   font-size: 16px;
   box-sizing: border-box;
   cursor: pointer;
+  background-color: #ffffff;
 }
 
-/* Footer nav bar: grey background with black icons and labels */
-.footer-nav {
-  position: absolute;
-  bottom: 20px; /* slightly higher than before to give a larger gap */
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 28px);
-  background: var(--footer-bg);
-  border-radius: 12px;
-  box-shadow: none;
-  padding: 8px 10px;
-  border: 1px solid rgba(0, 0, 0, 0.04);
-}
-.footer-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-.footer-nav a {
-  text-decoration: none;
-  color: #000;
-  font-size: 13px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-}
-.footer-nav .icon {
-  font-size: 22px;
-}
 
 /* small screens scaling */
 @media (max-width: 360px) {

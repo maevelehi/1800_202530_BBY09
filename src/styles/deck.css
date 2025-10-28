@@ -1,291 +1,127 @@
+/* ---------- Base and Theme ---------- */
+:root {
+  --page-bg: #ededed;
+  --header-bg: #d9d9d9;
+  --content-bg: #fff;
+  --card-bg: #e6e6e6;
+  --card-accent: #cfcfcf;
+  --fav-bg: #d9d9d9;
+  --muted: #777;
+  --text: #111;
+}
+
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--page-bg);
+  color: var(--text);
   margin: 0;
   padding: 0;
-  background-color: #fff;
-}
-
-/* Grayscale palette and layout adjustments to match the attached screenshot */
-:root {
-  --phone-w: 430px;
-  --phone-h: 932px;
-  --page-bg: #ededed; /* overall background grey */
-  --header-bg: #d9d9d9; /* top header bar */
-  --content-bg: #ffffff; /* white content area */
-  --card-bg: #e6e6e6; /* light grey card */
-  --card-accent: #cfcfcf; /* darker accent for flip/tab */
-  --fav-bg: #d9d9d9; /* favorite oval bg */
-  --footer-bg: #d9d9d9; /* footer bar bg */
-  --muted: #777777; /* icon/text muted color */
-  --text: #111111;
-}
-
-html,
-body {
-  height: 100%;
-  margin: 0;
-  background: var(--page-bg);
-  font-family: "Helvetica Neue", Arial, sans-serif;
+  max-width: 430px;
+  margin: auto;
   -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Deck Header ---------- */
+.deck-header {
   display: flex;
   align-items: center;
-  justify-content: center;
+  margin-top: 1rem;
+  padding: 0 1rem;
+  gap: 0.75rem;
 }
 
-/* viewport container to allow spacing */
-.phone-viewport {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  box-sizing: border-box;
-}
-
-/* phone frame */
-.phone {
-  width: var(--phone-w);
-  height: var(--phone-h);
-  background: var(--content-bg);
-  border-radius: 28px;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.14);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
-
-/* content container inside phone */
-.container {
-  /* changed: add inner padding so content doesn't touch phone edges */
-  padding: 12px;
-  box-sizing: border-box;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Header: full-width grey band similar to screenshot */
-.header {
-  background-color: #fff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 15px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.logo {
-  font-size: 20px;
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-.nav-links {
-  display: flex;
-  list-style: none;
-}
-
-.nav-links li {
-  margin-left: 15px;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: #555;
-  font-weight: 500;
-  transition: color 0.3s;
-}
-
-.nav-links a:hover {
-  color: #3498db;
-}
-
-/* main content scrolls and has inner padding like screenshot */
-.content-wrapper {
-  flex: 1 1 auto;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-  /* increased bottom padding to add extra space between title/content and footer */
-  padding: 18px 20px 140px 20px; /* room for footer + extra gap */
-  background: transparent;
-  box-sizing: border-box;
-}
-
-/* top area with back-arrow, title and add/favorite button */
-.top-info-grid {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 8px;
-  margin-bottom: 14px;
-}
-
-/* back button: quick-fix styles for deck page */
-.back-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  background: var(--card-bg);
+.deck-header i {
+  font-size: 1.6rem;
   color: var(--text);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 10px;
-  font-size: 18px;
-  cursor: pointer;
-  margin: 12px 0 12px 0; /* gap between header and title */
 }
 
-/* deck-info contains the injected back-arrow */
-.deck-info {
-  position: relative;
-  padding-left: 12px;
-}
-
-/* title and description styling */
-.page-title {
+.deck-header h4 {
   margin: 0;
-  font-size: 34px;
+  font-size: 1.6rem;
   font-weight: 700;
-  letter-spacing: 1px;
   color: var(--text);
-  line-height: 1;
-  margin-top: 6px; /* ensure title has a small top margin after the back button */
-}
-.deck-description {
-  margin: 8px 0 0 0;
-  font-size: 16px;
-  color: var(--muted);
-  font-family: Georgia, "Times New Roman", serif; /* serif-style like screenshot */
 }
 
-/* favorite oval button (right side near title) */
-.favorites-section {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-.favorite-btn {
-  background: var(--fav-bg);
-  color: var(--text);
-  border: 0;
-  padding: 10px 18px;
-  border-radius: 999px;
-  font-size: 14px;
-  box-shadow: none;
-  cursor: pointer;
-  border: 1px solid rgba(0, 0, 0, 0.04);
-}
-
-/* question cards list */
-.questions-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 6px;
-}
-
-/* each question row is a bar with left-aligned text and a flip tab on the right */
-.question-card {
-  background: var(--card-bg);
-  background-color: #3498db;
-  border-radius: 6px;
-  /* changed: reserve more space on right so controls sit inside the phone */
-  padding: 12px 72px 12px 12px;
-  box-shadow: none;
-  display: block;
-  position: relative;
-  min-height: 44px;
-  align-items: center;
-  box-sizing: border-box;
-  color: var(--text);
-  border: 1px solid rgba(0, 0, 0, 0.03);
-}
-.question-card p {
+.deck-header p {
   margin: 0;
-  font-size: 14px;
-  color: var(--text);
-  background-color: #3498db;
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-family: Georgia, "Times New Roman", serif;
 }
 
-/* flip tab: small darker rectangle attached to right edge of card */
+/* ---------- View Favorite ---------- */
+.view-favorite {
+  background-color: var(--fav-bg);
+  border-radius: 999px;
+  padding: 0.45rem 1.2rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-left: auto;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  color: var(--text);
+}
+
+/* ---------- Question Cards ---------- */
+.question-card {
+  background-color: var(--card-bg);
+  border-radius: 6px;
+  padding: 12px;
+  margin: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.question-card span {
+  font-size: 0.95rem;
+  color: var(--text);
+  flex: 1;
+}
+
+/* Flip button inside card */
 .flip-btn {
   position: absolute;
-  /* changed: put flip button left of the heart but inside the card */
   right: 56px;
   top: 50%;
   transform: translateY(-50%);
-  background: var(--card-accent);
+  background-color: var(--card-accent);
   color: var(--text);
-  border: 0;
-  padding: 6px 8px;
-  font-size: 12px;
-  border-radius: 4px;
-  box-shadow: none;
-  cursor: pointer;
-}
-.btn-primary {
-  color: #5c5f5f; /* Lightest shade for text */
-  font-size: 80%;
-  background-color: #ade8f4;
-  padding: 4px 8px;
-  border-radius: 4px;
-  cursor: pointer;
   border: none;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s;
-}
-.btn-primary:hover {
-  background-color: #00b4d8;
-  color: #ffffff;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  cursor: pointer;
 }
 
-/* heart outline positioned to the right of each card (outside main card area) */
-/* .question-card + .question-card {
-  no-op kept for clarity
-} */
+.flip-btn:hover {
+  background-color: #bfbfbf;
+}
 
-/* place heart inside the card area (not outside) */
-.question-card .heart {
+/* Heart icon beside each card */
+.heart-icon {
   position: absolute;
-  /* changed: keep heart inside the card so no horizontal overflow occurs */
-  right: 12px;
+  right: 16px;
   top: 50%;
   transform: translateY(-50%);
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  font-size: 1.2rem;
   color: var(--muted);
-  border: 2px solid rgba(0, 0, 0, 0.08);
-  background: transparent;
-  font-size: 16px;
-  box-sizing: border-box;
   cursor: pointer;
-  background-color: #ffffff;
 }
 
-
-/* small screens scaling */
-@media (max-width: 360px) {
-  .decks-grid {
-    grid-template-columns: 1fr;
+/* ---------- Responsive ---------- */
+@media (max-width: 1176px) {
+  .deck-header h4 {
+    font-size: 1.4rem;
   }
 
-  .top-info-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
+  .view-favorite {
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem;
   }
 
-  .add-topic-btn {
-    width: 100%;
+  .flip-btn {
+    right: 50px;
   }
 }

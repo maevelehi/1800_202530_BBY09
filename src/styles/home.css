@@ -1,12 +1,12 @@
 body {
-  background-color: #f8f9fa;
+  background-color: #caf0f8; /* 使用最浅的蓝色作为背景 */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
 .header {
-  background-color: white;
+  background-color: #03045e; /* 使用最深的蓝色作为头部背景 */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 1rem 0;
 }
@@ -14,17 +14,17 @@ body {
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #2c3e50;
+  color: #caf0f8; /* 使用最浅的蓝色作为Logo文字 */
 }
 
 .nav-links a {
-  color: #6c757d;
+  color: #90e0ef; /* 使用浅蓝色作为导航链接 */
   text-decoration: none;
   font-weight: 500;
 }
 
 .nav-links a:hover {
-  color: #3498db;
+  color: #00b4d8; /* 使用主蓝色作为悬停状态 */
 }
 
 .main-content {
@@ -33,13 +33,13 @@ body {
 }
 
 .page-title {
-  color: #2c3e50;
+  color: #03045e; /* 使用最深的蓝色作为标题 */
   font-weight: 700;
   margin-bottom: 1.5rem;
 }
 
 .add-topic-btn {
-  background-color: #555;
+  background-color: #00b4d8; /* 使用主蓝色作为按钮 */
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -50,7 +50,7 @@ body {
 }
 
 .add-topic-btn:hover {
-  background-color: black;
+  background-color: #007786; /* 使用深青色作为悬停状态 */
 }
 
 .topic-card {
@@ -63,15 +63,17 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
 }
 
 .topic-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  background-color: #90e0ef; /* 使用浅蓝色作为悬停背景 */
 }
 
 .topic-title {
-  color: #2c3e50;
+  color: #03045e; /* 使用最深的蓝色作为标题 */
   margin: 0;
   font-size: 1.25rem;
 }
@@ -81,15 +83,15 @@ body {
 }
 
 .topic-img {
-  background-color: #e9ecef;
+  background-color: #90e0ef; /* 使用浅蓝色作为图片区域背景 */
   border-radius: 0.5rem;
   padding: 1rem 1.5rem;
-  color: #6c757d;
+  color: #03045e; /* 使用最深的蓝色作为文字 */
   font-weight: 500;
 }
 
 .footer-nav {
-  background-color: white;
+  background-color: #03045e; /* 使用最深的蓝色作为底部导航 */
   box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
   padding: 1rem 0;
 }
@@ -107,13 +109,13 @@ body {
   flex-direction: column;
   align-items: center;
   text-decoration: none;
-  color: #6c757d;
+  color: #90e0ef; /* 使用浅蓝色作为底部链接 */
   font-size: 0.875rem;
   transition: color 0.3s;
 }
 
 .footer-nav a:hover {
-  color: #3498db;
+  color: #00b4d8; /* 使用主蓝色作为悬停状态 */
 }
 
 .icon {

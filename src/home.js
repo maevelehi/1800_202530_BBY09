@@ -1,27 +1,16 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Function 1: Press the Home button to return to the home page
-  const homeButtons = document.querySelectorAll(".navbar-brand");
+  console.log("✅ home.js loaded successfully");
 
-  homeButtons.forEach((button) => {
-    if (
-      button.querySelector("small") &&
-      button.querySelector("small").textContent === "Home"
-    ) {
-      button.addEventListener("click", function (e) {
-        e.preventDefault();
-        // Jump to the homepage - Use the correct file name
-        window.location.href = "bootstrapHome.html";
-      });
-    }
-  });
-
-  // Function 2: Search Function
+  // Search function for filtering topics
   const searchForm = document.querySelector("form.d-flex");
   if (searchForm) {
     searchForm.addEventListener("submit", function (e) {
       e.preventDefault();
+      e.stopPropagation();
+
       const searchInput = this.querySelector('input[type="search"]');
       const searchTerm = searchInput.value.trim().toLowerCase();
+      console.log("Searching for:", searchTerm);
 
       if (searchTerm) {
         const topicCards = document.querySelectorAll(".topic-card");
@@ -42,9 +31,10 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         if (!found) {
-          alert("没有找到匹配的topic: " + searchTerm);
+          alert("No matching topics found for: " + searchTerm);
         }
       } else {
+        // If search box is empty, show all cards
         const topicCards = document.querySelectorAll(".topic-card");
         topicCards.forEach((card) => {
           card.style.display = "flex";
@@ -53,14 +43,21 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Function 3: Click on topic to enter the topic page - Use the correct file name
+  // Click on topic cards to navigate to topic page
   const topicCards = document.querySelectorAll(".topic-card");
   topicCards.forEach((card, index) => {
     card.style.cursor = "pointer";
 
-    card.addEventListener("click", function () {
-      // Jump to the topic page - Use the correct file name
-      window.location.href = "bootstrapTopic.html";
+    card.addEventListener("click", function (e) {
+      e.stopPropagation();
+      console.log(`Topic ${index + 1} clicked`);
+
+      // Navigate to topic page
+      window.location.href = "topic.html";
     });
   });
+
+  // Debug information
+  console.log("Search form found:", !!searchForm);
+  console.log("Topic cards found:", topicCards.length);
 });

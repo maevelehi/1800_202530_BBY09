@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>操作成功</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+        color: #333;
+        line-height: 1.6;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .confirmation-container {
+        background-color: white;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        padding: 50px 40px;
+        max-width: 500px;
+        width: 100%;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .confirmation-container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, #28a745, #20c997);
+      }
+
+      .success-icon {
+        width: 100px;
+        height: 100px;
+        background: linear-gradient(135deg, #28a745, #20c997);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 30px;
+        box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+        animation: pulse 2s infinite;
+      }
+
+      .success-icon i {
+        font-size: 48px;
+        color: white;
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.4);
+        }
+        70% {
+          box-shadow: 0 0 0 15px rgba(40, 167, 69, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
+        }
+      }
+
+      h1 {
+        color: #28a745;
+        margin-bottom: 20px;
+        font-weight: 700;
+        font-size: 32px;
+      }
+
+      .confirmation-message {
+        margin-bottom: 30px;
+        color: #555;
+        font-size: 18px;
+        line-height: 1.8;
+      }
+
+      .action-buttons {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        margin-top: 30px;
+      }
+
+      .btn {
+        padding: 14px 28px;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: none;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #28a745, #20c997);
+        color: white;
+        box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(40, 167, 69, 0.4);
+      }
+
+      .btn-secondary {
+        background-color: #f8f9fa;
+        color: #495057;
+        border: 1px solid #dee2e6;
+      }
+
+      .btn-secondary:hover {
+        background-color: #e9ecef;
+        transform: translateY(-3px);
+      }
+
+      .additional-info {
+        margin-top: 35px;
+        padding-top: 25px;
+        border-top: 1px solid #eee;
+        color: #777;
+        font-size: 15px;
+      }
+
+      .confetti {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: #28a745;
+        opacity: 0.7;
+        border-radius: 50%;
+        animation: confetti-fall 2s linear forwards;
+      }
+
+      @keyframes confetti-fall {
+        0% {
+          transform: translateY(-100px) rotate(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(500px) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .confirmation-container {
+          padding: 40px 25px;
+        }
+
+        .action-buttons {
+          flex-direction: column;
+        }
+
+        .btn {
+          width: 100%;
+          justify-content: center;
+        }
+
+        h1 {
+          font-size: 28px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="confirmation-container">
+      <div class="success-icon">
+        <i class="fas fa-check"></i>
+      </div>
+
+      <h1>create success!</h1>
+
+      <p class="confirmation-message">you will see it in your home page</p>
+
+      <div class="action-buttons">
+        <button class="btn btn-primary">
+          <i class="fas fa-home"></i> back
+        </button>
+      </div>
+    </div>
+
+    <script>
+      // Add the effect of colored paper scraps
+      function createConfetti() {
+        const colors = ["#28a745", "#20c997", "#34ce57", "#51cf66"];
+        const container = document.querySelector(".confirmation-container");
+
+        for (let i = 0; i < 50; i++) {
+          const confetti = document.createElement("div");
+          confetti.className = "confetti";
+          confetti.style.left = Math.random() * 100 + "%";
+          confetti.style.backgroundColor =
+            colors[Math.floor(Math.random() * colors.length)];
+          confetti.style.animationDuration = Math.random() * 3 + 2 + "s";
+          confetti.style.animationDelay = Math.random() * 2 + "s";
+          container.appendChild(confetti);
+
+          // Remove the elements after the animation ends
+          setTimeout(() => {
+            confetti.remove();
+          }, 7000);
+        }
+      }
+
+      // Create a paper crumb effect after the page is loaded
+      window.addEventListener("load", createConfetti);
+    </script>
+  </body>
+</html>

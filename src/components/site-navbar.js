@@ -33,7 +33,7 @@ class SiteNavbar extends HTMLElement {
               <div class="d-flex align-items-center gap-2 ms-lg-2" id="rightControls">
                 <form class="d-flex align-items-center gap-2 my-2 my-lg-0" id="navSearch" role="search">
                   <input class="form-control d-none d-sm-block w-auto" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-light d-none d-sm-inline-block" type="submit">Search</button>
+                  <button class="btn btn-outline-dark d-none d-sm-inline-block" type="submit">Search</button>
                 </form>
                 <div id="authControls" class="auth-controls d-flex align-items-center gap-2 my-2 my-lg-0">
                   <!-- populated by JS -->
@@ -54,12 +54,12 @@ class SiteNavbar extends HTMLElement {
     onAuthStateChanged(auth, (user) => {
       let updatedAuthControl;
       if (user) {
-        updatedAuthControl = `<button class="btn btn-outline-light" id="signOutBtn" type="button" style="min-width: 80px;">Log out</button>`;
+        updatedAuthControl = `<button class="btn btn-outline-dark" id="signOutBtn" type="button" style="min-width: 80px;">Log out</button>`;
         authControls.innerHTML = updatedAuthControl;
         const signOutBtn = authControls.querySelector("#signOutBtn");
         signOutBtn?.addEventListener("click", logoutUser);
       } else {
-        updatedAuthControl = `<a class="btn btn-outline-light" id="loginBtn" href="/login.html" style="min-width: 80px;">Log in</a>`;
+        updatedAuthControl = `<a class="btn btn-outline-dark" id="loginBtn" href="/login.html" style="min-width: 80px;">Log in</a>`;
         authControls.innerHTML = updatedAuthControl;
       }
     });

@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>闪卡学习应用</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      .header {
+        background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+        color: white;
+        padding: 1.5rem 2rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .header-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+      }
+
+      .logo i {
+        margin-right: 10px;
+        font-size: 2rem;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        transition: background 0.3s;
+      }
+
+      .nav-links a:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .main-container {
+        flex: 1;
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 0 2rem;
+      }
+
+      .content-wrapper {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        padding: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .top-info-grid {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .deck-info {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      .page-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #2c3e50;
+        margin-bottom: 0.5rem;
+      }
+
+      .deck-description {
+        font-size: 1.1rem;
+        color: #7f8c8d;
+        line-height: 1.5;
+        max-width: 600px;
+      }
+
+      .deck-stats {
+        display: flex;
+        gap: 1.5rem;
+        margin-top: 1rem;
+      }
+
+      .stat {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .stat-value {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #3498db;
+      }
+
+      .stat-label {
+        font-size: 0.9rem;
+        color: #7f8c8d;
+      }
+
+      .action-buttons {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .btn {
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .btn-primary {
+        background: #3498db;
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background: #2980b9;
+        transform: translateY(-2px);
+      }
+
+      .btn-secondary {
+        background: #ecf0f1;
+        color: #2c3e50;
+      }
+
+      .btn-secondary:hover {
+        background: #d5dbdb;
+        transform: translateY(-2px);
+      }
+
+      .back-btn {
+        background: #ecf0f1;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        cursor: pointer;
+        margin-bottom: 20px;
+        transition: all 0.3s;
+      }
+
+      .back-btn:hover {
+        background: #d5dbdb;
+      }
+
+      .questions-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .question-card {
+        background: white;
+        border-radius: 12px;
+        padding: 1.5rem;
+        position: relative;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s, box-shadow 0.3s;
+        overflow: hidden;
+      }
+
+      .question-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .chapter-tag {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 0.5rem 1rem;
+        color: white;
+        font-weight: 600;
+        font-size: 0.85rem;
+        border-bottom-right-radius: 8px;
+      }
+
+      .chapter-1 {
+        background: linear-gradient(90deg, #3498db, #2980b9);
+      }
+
+      .chapter-2 {
+        background: linear-gradient(90deg, #2ecc71, #27ae60);
+      }
+
+      .chapter-3 {
+        background: linear-gradient(90deg, #e74c3c, #c0392b);
+      }
+
+      .chapter-4 {
+        background: linear-gradient(90deg, #9b59b6, #8e44ad);
+      }
+
+      .chapter-5 {
+        background: linear-gradient(90deg, #f39c12, #e67e22);
+      }
+
+      .question-card p {
+        margin: 0;
+        font-size: 1.1rem;
+        color: #2c3e50;
+        padding-right: 100px;
+      }
+
+      .card-actions {
+        position: absolute;
+        right: 1.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        gap: 0.75rem;
+      }
+
+      .flip-btn {
+        background: #3498db;
+        color: white;
+        border: none;
+        padding: 0.6rem 1.2rem;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition: background-color 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+
+      .flip-btn:hover {
+        background: #2980b9;
+      }
+
+      .heart {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 2px solid #e0e0e0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 1.1rem;
+        color: #bdc3c7;
+        transition: all 0.3s;
+      }
+
+      .heart:hover {
+        border-color: #e74c3c;
+        color: #e74c3c;
+      }
+
+      .heart.favorited {
+        background: #e74c3c;
+        border-color: #e74c3c;
+        color: white;
+      }
+
+      .footer {
+        background: #2c3e50;
+        color: #ecf0f1;
+        padding: 2rem;
+        text-align: center;
+        margin-top: 2rem;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .footer-links a {
+        color: #ecf0f1;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-links a:hover {
+        color: #3498db;
+      }
+
+      .copyright {
+        font-size: 0.9rem;
+        color: #bdc3c7;
+      }
+
+      /* 响应式设计 */
+      @media (max-width: 768px) {
+        .header-content {
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .nav-links {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .main-container {
+          padding: 0 1rem;
+          margin: 1rem auto;
+        }
+
+        .content-wrapper {
+          padding: 1.5rem;
+        }
+
+        .page-title {
+          font-size: 2rem;
+        }
+
+        .question-card p {
+          padding-right: 0;
+          margin-bottom: 1rem;
+        }
+
+        .card-actions {
+          position: static;
+          transform: none;
+          justify-content: flex-end;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-content">
+        <div class="logo"><i>📚</i> 闪卡学习</div>
+        <nav class="nav-links">
+          <a href="#">首页</a>
+          <a href="#">学习集</a>
+          <a href="#">我的收藏</a>
+          <a href="#">学习统计</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="main-container">
+      <div class="content-wrapper">
+        <button class="back-btn" aria-label="返回">←</button>
+
+        <div class="top-info-grid">
+          <div class="deck-info">
+            <h1 class="page-title">Java 编程基础</h1>
+            <p class="deck-description">
+              本学习集包含Java编程语言的基础概念和常见问题，适合初学者和需要复习的程序员。
+            </p>
+            <div class="deck-stats">
+              <div class="stat">
+                <div class="stat-value">25</div>
+                <div class="stat-label">卡片数量</div>
+              </div>
+              <div class="stat">
+                <div class="stat-value">5</div>
+                <div class="stat-label">章节</div>
+              </div>
+              <div class="stat">
+                <div class="stat-value">12</div>
+                <div class="stat-label">已掌握</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="action-buttons">
+            <button class="btn btn-primary"><i>⭐</i> 查看收藏</button>
+            <button class="btn btn-secondary"><i>🔄</i> 练习模式</button>
+          </div>
+        </div>
+
+        <div class="questions-list">
+          <div class="question-card">
+            <div class="chapter-tag chapter-1">Chapter 1</div>
+            <p>Q1: 什么是Java中的封装？</p>
+            <div class="card-actions">
+              <button class="flip-btn"><i>🔄</i> 翻转</button>
+              <span class="heart">♡</span>
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="chapter-tag chapter-1">Chapter 1</div>
+            <p>Q2: 抽象类和接口有什么区别？</p>
+            <div class="card-actions">
+              <button class="flip-btn"><i>🔄</i> 翻转</button>
+              <span class="heart">♡</span>
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="chapter-tag chapter-2">Chapter 2</div>
+            <p>Q3: Java中的多态是如何实现的？</p>
+            <div class="card-actions">
+              <button class="flip-btn"><i>🔄</i> 翻转</button>
+              <span class="heart">♡</span>
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="chapter-tag chapter-3">Chapter 3</div>
+            <p>Q4: 解释Java中的异常处理机制</p>
+            <div class="card-actions">
+              <button class="flip-btn"><i>🔄</i> 翻转</button>
+              <span class="heart">♡</span>
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="chapter-tag chapter-4">Chapter 4</div>
+            <p>Q5: 什么是Java中的泛型？</p>
+            <div class="card-actions">
+              <button class="flip-btn"><i>🔄</i> 翻转</button>
+              <span class="heart favorited">♥</span>
+            </div>
+          </div>
+
+          <div class="question-card">
+            <div class="chapter-tag chapter-5">Chapter 5</div>
+            <p>Q6: Java集合框架包含哪些主要接口？</p>
+            <div class="card-actions">
+              <button class="flip-btn"><i>🔄</i> 翻转</button>
+              <span class="heart">♡</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-links">
+          <a href="#">关于我们</a>
+          <a href="#">使用条款</a>
+          <a href="#">隐私政策</a>
+          <a href="#">帮助中心</a>
+          <a href="#">联系我们</a>
+        </div>
+        <div class="copyright">&copy; 2023 闪卡学习应用. 保留所有权利.</div>
+      </div>
+    </footer>
+
+    <script>
+      // 添加收藏功能
+      document.addEventListener("DOMContentLoaded", function () {
+        const heartIcons = document.querySelectorAll(".heart");
+
+        heartIcons.forEach((heart) => {
+          heart.addEventListener("click", function () {
+            this.classList.toggle("favorited");
+            this.textContent = this.classList.contains("favorited") ? "♥" : "♡";
+          });
+        });
+
+        // 添加翻转按钮功能
+        const flipButtons = document.querySelectorAll(".flip-btn");
+
+        flipButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            const card = this.closest(".question-card");
+            alert("翻转功能已触发！在实际应用中，这里会显示答案。");
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -55,10 +55,10 @@
         ></textarea>
       </div>
 
-      <!-- dropdown for type  -->
+      <!-- dropdown for label -->
       <div class="card-body form-group dropdown mb-3 mt-5">
         <div class="d-flex align-items-center gap-2">
-          <span>Type:</span>
+          <span>Label:</span>
           <div class="drop-down">
             <button
               class="btn btn-secondary dropdown-toggle"
@@ -67,21 +67,44 @@
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              basic
+              Chapter
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
               <li>
-                <button class="dropdown-item" type="button" id="basicReversed">
-                  basic reversed
+                <button class="dropdown-item" type="button" id="chap1">
+                  Chapter 1
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item" type="button" id="chap2">
+                  Chapter 2
                 </button>
               </li>
               <li>
                 <button
                   class="dropdown-item"
                   type="button"
-                  id="fill-in-the-blank"
+                  id="chap3"
                 >
-                  fill-in-the-blank
+                  Chapter 3
+                </button>
+              </li>
+              <li>
+                <button
+                  class="dropdown-item"
+                  type="button"
+                  id="chap4"
+                >
+                  Chapter 4
+                </button>
+              </li>
+              <li>
+                <button
+                  class="dropdown-item"
+                  type="button"
+                  id="chap5"
+                >
+                  Chapter 5
                 </button>
               </li>
             </ul>
@@ -92,7 +115,7 @@
       <br />
       <!-- save button -->
       <div class="card-body d-flex justify-content-center">
-        <button id="submit" class="btn btn-primary" type="submit">Save</button>
+        <button id="submit" class="btn btn-primary" type="button">Save</button>
       </div>
     </form>
 
@@ -105,5 +128,7 @@
 
     <script type="module" src="/src/app.js"></script>
     <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/create-card.js"></script>
+
   </body>
 </html>

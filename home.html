@@ -16,10 +16,10 @@
     />
   </head>
 
-  <body>
+  <body class="d-flex flex-column min-vh-100">
     <site-navbar></site-navbar>
 
-    <div class="main-container">
+    <div class="main-container flex-fill pb-5">
       <div class="content-wrapper">
         <div class="top-info-grid">
           <div class="deck-info">
@@ -36,24 +36,24 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                basic
+                Add cards
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                 <li>
                   <button
                     class="dropdown-item"
                     type="button"
-                    id="basicReversed"
+                    id="addCardsManually"
                     data-action="add-cards"
                   >
-                    Add cards
+                    Add cards manually
                   </button>
                 </li>
                 <li>
                   <button
                     class="dropdown-item"
                     type="button"
-                    id="fill-in-the-blank"
+                    id="uploadCsv"
                     data-action="upload-csv"
                   >
                     Upload CSV file

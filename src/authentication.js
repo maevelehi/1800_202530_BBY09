@@ -18,6 +18,9 @@ import {
   signOut,
 } from "firebase/auth";
 
+import { db } from "/src/firebaseConfig.js";
+import { doc, setDoc } from "firebase/firestore";
+
 // -------------------------------------------------------------
 // loginUser(email, password)
 // -------------------------------------------------------------
@@ -50,14 +53,23 @@ export async function loginUser(email, password) {
 // Usage:
 //   const user = await signupUser("Alice", "alice@email.com", "secret");
 // -------------------------------------------------------------
-export async function signupUser(name, email, password) {
+export async function signupUser(name, email, password, group = "default") {
   const userCredential = await createUserWithEmailAndPassword(
     auth,
     email,
     password
   );
   await updateProfile(userCredential.user, { displayName: name });
-  return userCredential.user;
+  try {
+    await setDoc(doc(db, "users", user.uid), {
+      name: name,
+      group: group,
+    });
+    console.log("User document created");
+  } catch (error) {
+    console.error("Error creating user doc:", error);
+  }
+  return user;
 }
 
 // -------------------------------------------------------------

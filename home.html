@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script type="module" src="/src/components/site-navbar.js"></script>
     <script type="module" src="/src/components/site-footer.js"></script>
+    <script type="module" src="./src/addcard.js"></script>
     <link rel="stylesheet" href="./src/styles/home.css" />
 
     <!-- footer icon link  -->
@@ -43,6 +44,7 @@
                     class="dropdown-item"
                     type="button"
                     id="basicReversed"
+                    data-action="add-cards"
                   >
                     Add cards
                   </button>
@@ -52,6 +54,7 @@
                     class="dropdown-item"
                     type="button"
                     id="fill-in-the-blank"
+                    data-action="upload-csv"
                   >
                     Upload CSV file
                   </button>
@@ -95,6 +98,8 @@
       </div>
     </div>
 
+    <input type="file" id="csvFileInput" accept=".csv" style="display: none" />
+
     <site-footer></site-footer>
 
     <script type="module" src="/src/app.js"></script>
@@ -102,5 +107,12 @@
     <script type="module" src="/src/firebaseConfig.js"></script>
     <script type="module" src="/src/authentication.js"></script>
     <script type="module" src="/src/loginSignup.js"></script>
+    <script>
+      document
+        .getElementById("fill-in-the-blank")
+        .addEventListener("click", () => {
+          document.getElementById("csvFileInput").click();
+        });
+    </script>
   </body>
 </html>

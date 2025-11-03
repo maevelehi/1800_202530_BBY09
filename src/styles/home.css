@@ -107,7 +107,9 @@ site-navbar {
 
 .chapter-label1,
 .chapter-label2,
-.chapter-label3 {
+.chapter-label3,
+.chapter-label4,
+.chapter-label5 {
   position: absolute;
   left: 10px; /* Changed from right to left */
   top: 5px; /* Changed to fixed top position */
@@ -127,10 +129,17 @@ site-navbar {
 .chapter-label3 {
   background-color: #029202;
 }
+.chapter-label4 {
+  background-color: #2922f6;
+}
+.chapter-label5 {
+  background-color: #8c1cf6;
+}
+
 
 .flip-btn {
   position: absolute;
-  right: 60px;
+  right: 10%;
   top: 50%;
   transform: translateY(-50%);
   background: #00b4d8;

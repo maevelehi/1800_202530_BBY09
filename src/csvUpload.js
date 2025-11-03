@@ -14,7 +14,7 @@ let currentUser = null;
 
 // Initialize the upload button
 export function initCSVUpload() {
-  const uploadBtn = document.getElementById("fill-in-the-blank");
+  const uploadBtn = document.getElementById("uploadCsv");
   const fileInput = document.getElementById("csvFileInput");
 
   if (!uploadBtn || !fileInput) return;
@@ -99,12 +99,17 @@ export function displayCardsFromFirestore() {
   const cardsRef = collection(db, "cards");
 
   onSnapshot(cardsRef, (snapshot) => {
-    // container.innerHTML = "";
+    container.innerHTML = "";
     snapshot.forEach((doc) => {
       const card = doc.data();
       const newCard = template.content.cloneNode(true);
 
-      newCard.querySelector(".chapter-num").textContent = card.chapter || "?";
+      const chapterNum = parseInt(card.chapter) || 1; // 🔴 修改：获取数字章节
+      const label = newCard.querySelector(".chapter-label");
+
+      label.classList.add(`chapter-label${chapterNum}`);
+      label.textContent = `Chapter ${chapterNum}`;
+
       newCard.querySelector(".question-text").textContent = card.question;
 
       const answerEl = newCard.querySelector(".answer-text");

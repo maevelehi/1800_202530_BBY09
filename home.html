@@ -24,6 +24,7 @@
         <div class="top-info-grid">
           <div class="deck-info">
             <h1 class="page-title">Home</h1>
+            <h2 id="name-goes-here" style="margin-top: 10px; color: #333"></h2>
           </div>
 
           <!-- Move dropdown here and add positioning class -->
@@ -64,7 +65,7 @@
           </div>
         </div>
 
-        <div class="questions-list">
+        <div class="questions-list" id="cards-go-here">
           <div class="question-card">
             <div class="chapter-label1">Chapter 1</div>
             <p>Q1: What does CPU stand for?</p>
@@ -95,6 +96,17 @@
             <button class="flip-btn">Flip</button>
           </div>
         </div>
+
+        <template id="cardTemplate">
+          <div class="question-card">
+            <div class="chapter-label">
+              Chapter <span class="chapter-num"></span>
+            </div>
+            <p class="question-text"></p>
+            <button class="flip-btn">Flip</button>
+            <div class="answer-text" style="display: none"></div>
+          </div>
+        </template>
       </div>
     </div>
 
@@ -107,12 +119,13 @@
     <script type="module" src="/src/firebaseConfig.js"></script>
     <script type="module" src="/src/authentication.js"></script>
     <script type="module" src="/src/loginSignup.js"></script>
-    <script>
+    <script type="module" src="./src/csvUpload.js"></script>
+    <!-- <script>
       document
         .getElementById("fill-in-the-blank")
         .addEventListener("click", () => {
           document.getElementById("csvFileInput").click();
         });
-    </script>
+    </script> -->
   </body>
 </html>

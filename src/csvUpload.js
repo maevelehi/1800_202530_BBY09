@@ -80,7 +80,7 @@ async function parseAndUploadCSV(text, user) {
       if (h.includes("topic")) card.topic = val;
       if (h.includes("chapter")) {
         const chapterNum = parseInt(val) || 1;
-        card.label = `chapter${chapterNum}`;
+        card.label = `Chapter ${chapterNum}`;
         console.log(`chapter ${i}:`, val, "->", card.label);
       }
     });
@@ -108,16 +108,17 @@ export function displayCardsFromFirestore() {
       const card = doc.data();
       const newCard = template.content.cloneNode(true);
 
-      let chapterNum = 1;
+      let chapterText = "Chapter 1";
       if (card.label) {
-        const match = card.label.toString().match(/chapter(\d+)/i);
-        chapterNum = match ? parseInt(match[1]) : 1;
-        console.log("Label:", card.label, "-> Chapter:", chapterNum);
-      }
+        chapterText = card.label.toString();
 
-      const label = newCard.querySelector(".chapter-label");
-      label.className = `chapter-label chapter-label${chapterNum}`;
-      label.textContent = `Chapter ${chapterNum}`;
+        const match = chapterText.match(/\d+/);
+        const chapterNum = match ? parseInt(match[0]) : 1;
+
+        const label = newCard.querySelector(".chapter-label");
+        label.className = `chapter-label chapter-label${chapterNum}`;
+        label.textContent = chapterText;
+      }
 
       newCard.querySelector(".question-text").textContent = card.question;
 

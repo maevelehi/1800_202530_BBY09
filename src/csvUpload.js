@@ -104,16 +104,33 @@ export function displayCardsFromFirestore() {
       const card = doc.data();
       const newCard = template.content.cloneNode(true);
 
-      const chapterNum = parseInt(card.chapter) || 1; // 🔴 修改：获取数字章节
-      const label = newCard.querySelector(".chapter-label");
+      // const chapterNum = parseInt(card.chapter) || 1; 
+      // const label = newCard.querySelector(".chapter-label");
 
-      label.classList.add(`chapter-label${chapterNum}`);
-      label.textContent = `Chapter ${chapterNum}`;
+      // label.classList.add(`chapter-label${chapterNum}`);
+      // label.textContent = `Chapter ${chapterNum}`;
 
-      newCard.querySelector(".question-text").textContent = card.question;
+      // newCard.querySelector(".question-text").textContent = card.question;
 
+      // const answerEl = newCard.querySelector(".answer-text");
+      // answerEl.textContent = card.answer;
+
+      //maeve's edit
+      let chapterClass = "";
+      const labelText = card.label || "Chapter 1"; // default
+      if (labelText === "Chapter 1") chapterClass = "chapter-label1";
+      else if (labelText === "Chapter 2") chapterClass = "chapter-label2";
+      else if (labelText === "Chapter 3") chapterClass = "chapter-label3";
+      else if (labelText === "Chapter 4") chapterClass = "chapter-label4";
+      else chapterClass = "chapter-label5";
+
+      const labelEl = newCard.querySelector(".chapter-label");
+      labelEl.textContent = labelText;
+      labelEl.classList.add(chapterClass);
+
+      newCard.querySelector(".question-text").textContent = card.question || "";
       const answerEl = newCard.querySelector(".answer-text");
-      answerEl.textContent = card.answer;
+      answerEl.textContent = card.answer || "";
 
       const flipBtn = newCard.querySelector(".flip-btn");
       flipBtn.onclick = () => {

@@ -78,7 +78,11 @@ async function parseAndUploadCSV(text, user) {
       if (h.includes("question")) card.question = val;
       if (h.includes("answer")) card.answer = val;
       if (h.includes("topic")) card.topic = val;
-      if (h.includes("chapter")) card.chapter = val;
+      if (h.includes("chapter")) {
+        const chapterNum = parseInt(val) || 1;
+        card.label = `chapter${chapterNum}`;
+        console.log(`chapter ${i}:`, val, "->", card.label);
+      }
     });
 
     if (!card.question || !card.answer) continue;
@@ -104,10 +108,15 @@ export function displayCardsFromFirestore() {
       const card = doc.data();
       const newCard = template.content.cloneNode(true);
 
-      const chapterNum = parseInt(card.chapter) || 1; // 🔴 修改：获取数字章节
-      const label = newCard.querySelector(".chapter-label");
+      let chapterNum = 1;
+      if (card.label) {
+        const match = card.label.toString().match(/chapter(\d+)/i);
+        chapterNum = match ? parseInt(match[1]) : 1;
+        console.log("Label:", card.label, "-> Chapter:", chapterNum);
+      }
 
-      label.classList.add(`chapter-label${chapterNum}`);
+      const label = newCard.querySelector(".chapter-label");
+      label.className = `chapter-label chapter-label${chapterNum}`;
       label.textContent = `Chapter ${chapterNum}`;
 
       newCard.querySelector(".question-text").textContent = card.question;

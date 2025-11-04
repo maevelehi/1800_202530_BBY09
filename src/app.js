@@ -21,7 +21,7 @@ function loadSavedCards() {
 
     //determined chapter base on label dynamically
     let chapterClass = "";
-    if(cardData.label === "Chapter 1") {
+    if (cardData.label === "Chapter 1") {
       chapterClass = "chapter-label1";
     } else if (cardData.label === "Chapter 2") {
       chapterClass = "chapter-label2";
@@ -31,7 +31,7 @@ function loadSavedCards() {
       chapterClass = "chapter-label4";
     } else {
       chapterClass = "chapter-label5";
-    } 
+    }
 
     const chapterLabel = document.createElement("div");
     chapterLabel.classList.add(chapterClass);
@@ -54,8 +54,9 @@ function loadSavedCards() {
     flipBtn.classList.add("flip-btn");
     flipBtn.textContent = "Flip";
     flipBtn.addEventListener("click", () => {
-      answerText.style.display = answerText.style.display === "none" ? "block" : "none";
-    })
+      answerText.style.display =
+        answerText.style.display === "none" ? "block" : "none";
+    });
     questionCard.appendChild(flipBtn);
 
     // questionCard.appendChild(chapterLabel, questionText, answerText, flipBtn)

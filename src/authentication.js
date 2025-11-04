@@ -9,6 +9,9 @@
 // Import the initialized Firebase Authentication object
 import { auth } from "/src/firebaseConfig.js";
 
+import { db } from "/src/firebaseConfig.js";
+import { doc, setDoc } from "firebase/firestore";
+
 // Import specific functions from the Firebase Auth SDK
 import {
   signInWithEmailAndPassword,
@@ -17,9 +20,6 @@ import {
   onAuthStateChanged,
   signOut,
 } from "firebase/auth";
-
-import { db } from "/src/firebaseConfig.js";
-import { doc, setDoc } from "firebase/firestore";
 
 // -------------------------------------------------------------
 // loginUser(email, password)
@@ -60,16 +60,13 @@ export async function signupUser(name, email, password, group = "default") {
     password
   );
   await updateProfile(userCredential.user, { displayName: name });
-  try {
-    await setDoc(doc(db, "users", user.uid), {
-      name: name,
-      group: group,
-    });
-    console.log("User document created");
-  } catch (error) {
-    console.error("Error creating user doc:", error);
-  }
-  return user;
+  await setDoc(doc(db, "users", userCredential.user.uid), {
+    name: name,
+    email: email,
+    group: group,
+    createdAt: new Date(),
+  });
+  return userCredential.user;
 }
 
 // -------------------------------------------------------------

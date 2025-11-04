@@ -120,10 +120,27 @@ export function displayCardsFromFirestore() {
         label.textContent = chapterText;
       }
 
-      newCard.querySelector(".question-text").textContent = card.question;
+      // newCard.querySelector(".question-text").textContent = card.question;
 
+      // const answerEl = newCard.querySelector(".answer-text");
+      // answerEl.textContent = card.answer;
+
+      //maeve's edit
+      let chapterClass = "";
+      const labelText = card.label || "Chapter 1"; // default
+      if (labelText === "Chapter 1") chapterClass = "chapter-label1";
+      else if (labelText === "Chapter 2") chapterClass = "chapter-label2";
+      else if (labelText === "Chapter 3") chapterClass = "chapter-label3";
+      else if (labelText === "Chapter 4") chapterClass = "chapter-label4";
+      else chapterClass = "chapter-label5";
+
+      const labelEl = newCard.querySelector(".chapter-label");
+      labelEl.textContent = labelText;
+      labelEl.classList.add(chapterClass);
+
+      newCard.querySelector(".question-text").textContent = card.question || "";
       const answerEl = newCard.querySelector(".answer-text");
-      answerEl.textContent = card.answer;
+      answerEl.textContent = card.answer || "";
 
       const flipBtn = newCard.querySelector(".flip-btn");
       flipBtn.onclick = () => {

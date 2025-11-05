@@ -78,12 +78,24 @@ async function parseAndUploadCSV(text, user) {
       if (h.includes("question")) card.question = val;
       if (h.includes("answer")) card.answer = val;
       if (h.includes("topic")) card.topic = val;
-      if (h.includes("chapter")) {
-        const chapterNum = parseInt(val) || 1;
-        card.label = `Chapter ${chapterNum}`;
-        console.log(`chapter ${i}:`, val, "->", card.label);
+      // if (h.includes("chapter")) {
+      //   const chapterNum = parseInt(val) || 1;
+      //   card.label = `Chapter ${chapterNum}`;
+      //   console.log(`chapter ${i}:`, val, "->", card.label);
+      // }
+      if (h.includes("label")) {
+        const num = parseInt(val);
+        if (!isNaN(num)) {
+          card.label = `Chapter ${num}`;
+        } else {
+          card.label = val;
+        }
       }
     });
+
+    if (!card.label) {
+      card.label = "Chapter 1";
+    }
 
     if (!card.question || !card.answer) continue;
 

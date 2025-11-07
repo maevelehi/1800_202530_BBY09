@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 question,answer,lable
 What does CPU stand for?,Central Processing Unit,1
 What is the main function of RAM?,Temporary data storage,3
 What is an algorithm?,A step-by-step procedure for solving problems,5
+=======
+question,answer,label,topic
+What is 2+2?,4,1,comp1113
+What is HTML?,A markup language,Chapter 3,comp1537
+>>>>>>> origin/main

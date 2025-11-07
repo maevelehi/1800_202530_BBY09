@@ -75,15 +75,14 @@ async function parseAndUploadCSV(text, user) {
 
     headers.forEach((h, idx) => {
       const val = values[idx] || "";
-      if (h.includes("question")) card.question = val;
-      if (h.includes("answer")) card.answer = val;
-      if (h.includes("topic")) card.topic = val;
-      // if (h.includes("chapter")) {
-      //   const chapterNum = parseInt(val) || 1;
-      //   card.label = `Chapter ${chapterNum}`;
-      //   console.log(`chapter ${i}:`, val, "->", card.label);
-      // }
-      if (h.includes("label")) {
+      if (h === "question") card.question = val;
+      else if (h === "answer") card.answer = val;
+      else if (h === "topic") {
+        let processedTopic = val
+          .replace(/^[a-z]/, (match) => match.toUpperCase())
+          .replace(/([^0-9]*)([0-9])/, "$1 $2");
+        card.topic = processedTopic;
+      } else if (h === "label") {
         const num = parseInt(val);
         if (!isNaN(num)) {
           card.label = `Chapter ${num}`;
@@ -93,11 +92,10 @@ async function parseAndUploadCSV(text, user) {
       }
     });
 
-    if (!card.label) {
-      card.label = "Chapter 1";
+    if (!card.question || !card.answer || !card.topic || !card.label) {
+      console.warn(`Skipping row ${i + 1}: missing required field.`);
+      continue;
     }
-
-    if (!card.question || !card.answer) continue;
 
     await addDoc(cardsRef, {
       ...card,
@@ -106,64 +104,6 @@ async function parseAndUploadCSV(text, user) {
     });
   }
 }
-
-// export function displayCardsFromFirestore() {
-//   const container = document.getElementById("cards-go-here");
-//   const template = document.getElementById("cardTemplate");
-//   if (!container || !template) return;
-
-//   const cardsRef = collection(db, "cards");
-
-//   onSnapshot(cardsRef, (snapshot) => {
-//     container.innerHTML = "";
-//     snapshot.forEach((doc) => {
-//       const card = doc.data();
-//       const newCard = template.content.cloneNode(true);
-
-//       let chapterText = "Chapter 1";
-//       if (card.label) {
-//         chapterText = card.label.toString();
-
-//         const match = chapterText.match(/\d+/);
-//         const chapterNum = match ? parseInt(match[0]) : 1;
-
-//         const label = newCard.querySelector(".chapter-label");
-//         label.className = `chapter-label chapter-label${chapterNum}`;
-//         label.textContent = chapterText;
-//       }
-
-//       // newCard.querySelector(".question-text").textContent = card.question;
-
-//       // const answerEl = newCard.querySelector(".answer-text");
-//       // answerEl.textContent = card.answer;
-
-//       //maeve's edit
-//       // let chapterClass = "";
-//       // const labelText = card.label || "Chapter 1"; // default
-//       // if (labelText === "Chapter 1") chapterClass = "chapter-label1";
-//       // else if (labelText === "Chapter 2") chapterClass = "chapter-label2";
-//       // else if (labelText === "Chapter 3") chapterClass = "chapter-label3";
-//       // else if (labelText === "Chapter 4") chapterClass = "chapter-label4";
-//       // else chapterClass = "chapter-label5";
-
-//       // const labelEl = newCard.querySelector(".chapter-label");
-//       // labelEl.textContent = labelText;
-//       // labelEl.classList.add(chapterClass);
-
-//       newCard.querySelector(".question-text").textContent = card.question || "";
-//       const answerEl = newCard.querySelector(".answer-text");
-//       answerEl.textContent = card.answer || "";
-
-//       const flipBtn = newCard.querySelector(".flip-btn");
-//       flipBtn.onclick = () => {
-//         answerEl.style.display =
-//           answerEl.style.display === "none" ? "block" : "none";
-//       };
-
-//       container.appendChild(newCard);
-//     });
-//   });
-// }
 
 export function displayCardsFromFirestore() {
   const container = document.getElementById("cards-go-here");

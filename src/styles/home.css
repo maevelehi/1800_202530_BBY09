@@ -92,6 +92,7 @@ site-navbar {
   position: relative;
   border: 1px solid rgba(0, 0, 0, 0.05);
   transition: transform 0.2s;
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 .question-card:hover {
@@ -103,6 +104,10 @@ site-navbar {
   font-size: 16px;
   color: #03045e;
   width: calc(100% - 70px);
+}
+.question-card.fade-out {
+  opacity: 0;
+  transform: translateY(-20px);
 }
 
 .chapter-label1,
@@ -158,27 +163,15 @@ site-navbar {
 .remove-btn {
   position: absolute;
   top: 50%;
-  right: 3%;
+  right: 1.5%;
   transform: translateY(-50%);
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   margin-left: 8px;
-  border-radius: 50%;
-  border: 2px solid #aaa;
-  background-color: white;
-  color: #555;
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
   display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.2s ease;
-}
-
-.remove-btn:hover {
-  background-color: #ceb0b0;
-  color: rgb(0, 0, 0);
 }
 
 /* responsive */

@@ -6,6 +6,7 @@ import {
   onSnapshot,
   doc,
   getDoc,
+  deleteDoc,
 } from "firebase/firestore";
 import { onAuthReady } from "./authentication.js";
 // Modification: Import getDoc for reading user groups
@@ -114,8 +115,9 @@ export function displayCardsFromFirestore() {
 
   onSnapshot(cardsRef, (snapshot) => {
     container.innerHTML = "";
-    snapshot.forEach((doc) => {
-      const card = doc.data();
+    snapshot.forEach((docSnapshot) => {
+      const card = docSnapshot.data();
+      const docId = docSnapshot.id;
       const newCard = template.content.cloneNode(true);
 
       let chapterClass = "";
@@ -139,6 +141,25 @@ export function displayCardsFromFirestore() {
       flipBtn.onclick = () => {
         answerEl.style.display =
           answerEl.style.display === "none" ? "block" : "none";
+      };
+      // --- Remove btn ---
+      const removeBtn = newCard.querySelector(".remove-btn");
+      removeBtn.onclick = async () => {
+        if (confirm("Are you sure you want to delete this card?")) {
+          const cardRef = doc(db, "cards", docId);
+          const cardElement = removeBtn.closest(".question-card");
+
+          cardElement.classList.add("fade-out");
+
+          try {
+            await deleteDoc(cardRef);
+            console.log("Card deleted successfully");
+          } catch (error) {
+            console.error("Error deleting card:", error);
+            alert("Failed to delete card. Please try again.");
+            cardElement.classList.remove("fade-out");
+          }
+        }
       };
 
       container.appendChild(newCard);

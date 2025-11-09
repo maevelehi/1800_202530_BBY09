@@ -1,4 +1,3 @@
-// src/csvUpload.js
 import { db } from "./firebaseConfig.js";
 import {
   collection,
@@ -120,18 +119,17 @@ export function displayCardsFromFirestore() {
       const docId = docSnapshot.id;
       const newCard = template.content.cloneNode(true);
 
-      let chapterClass = "";
-      const labelText = card.label || "Chapter 1";
+      let chapterText = "Chapter 1";
+      if (card.label) {
+        chapterText = card.label.toString();
 
-      if (labelText === "Chapter 1") chapterClass = "chapter-label1";
-      else if (labelText === "Chapter 2") chapterClass = "chapter-label2";
-      else if (labelText === "Chapter 3") chapterClass = "chapter-label3";
-      else if (labelText === "Chapter 4") chapterClass = "chapter-label4";
-      else chapterClass = "chapter-label5";
+        const match = chapterText.match(/\d+/);
+        const chapterNum = match ? parseInt(match[0]) : 1;
 
-      const labelEl = newCard.querySelector(".chapter-label");
-      labelEl.textContent = labelText;
-      labelEl.className = `chapter-label ${chapterClass}`;
+        const label = newCard.querySelector(".chapter-label");
+        label.className = `chapter-label chapter-label${chapterNum}`;
+        label.textContent = chapterText;
+      }
 
       newCard.querySelector(".question-text").textContent = card.question || "";
       const answerEl = newCard.querySelector(".answer-text");

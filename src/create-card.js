@@ -26,6 +26,7 @@ savebtn.addEventListener("click", async () => {
     label: chapter,
     topic: course,
     group: "set C",
+    createdAt: new Date(),
   };
 
   try {

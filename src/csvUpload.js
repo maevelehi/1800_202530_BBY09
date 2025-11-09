@@ -6,6 +6,8 @@ import {
   doc,
   getDoc,
   deleteDoc,
+  query,
+  orderBy,
 } from "firebase/firestore";
 import { onAuthReady } from "./authentication.js";
 // Modification: Import getDoc for reading user groups
@@ -101,6 +103,7 @@ async function parseAndUploadCSV(text, user) {
       ...card,
       group: group,
       createdBy: user.uid,
+      createdAt: new Date(),
     });
   }
 }
@@ -111,8 +114,9 @@ export function displayCardsFromFirestore() {
   if (!container || !template) return;
 
   const cardsRef = collection(db, "cards");
+  const q = query(cardsRef, orderBy("createdAt", "desc"));
 
-  onSnapshot(cardsRef, (snapshot) => {
+  onSnapshot(q, (snapshot) => {
     container.innerHTML = "";
     snapshot.forEach((docSnapshot) => {
       const card = docSnapshot.data();
@@ -140,6 +144,7 @@ export function displayCardsFromFirestore() {
         answerEl.style.display =
           answerEl.style.display === "none" ? "block" : "none";
       };
+
       // --- Remove btn ---
       const removeBtn = newCard.querySelector(".remove-btn");
       removeBtn.onclick = async () => {

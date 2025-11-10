@@ -1,4 +1,3 @@
-// src/csvUpload.js
 import { db } from "./firebaseConfig.js";
 import {
   collection,
@@ -7,6 +6,8 @@ import {
   doc,
   getDoc,
   deleteDoc,
+  query,
+  orderBy,
 } from "firebase/firestore";
 import { onAuthReady } from "./authentication.js";
 // Modification: Import getDoc for reading user groups
@@ -102,36 +103,41 @@ async function parseAndUploadCSV(text, user) {
       ...card,
       group: group,
       createdBy: user.uid,
+      createdAt: new Date(),
     });
   }
 }
 
-export function displayCardsFromFirestore() {
+export function displayCardsFromFirestore(userGroup) {
   const container = document.getElementById("cards-go-here");
   const template = document.getElementById("cardTemplate");
   if (!container || !template) return;
 
   const cardsRef = collection(db, "cards");
+  const q = query(cardsRef, orderBy("createdAt", "desc"));
 
-  onSnapshot(cardsRef, (snapshot) => {
+  onSnapshot(q, (snapshot) => {
     container.innerHTML = "";
     snapshot.forEach((docSnapshot) => {
       const card = docSnapshot.data();
       const docId = docSnapshot.id;
+
+       // --- Filter by user's group ---
+      if (card.group !== userGroup) return;
+      
       const newCard = template.content.cloneNode(true);
 
-      let chapterClass = "";
-      const labelText = card.label || "Chapter 1";
+      let chapterText = "Chapter 1";
+      if (card.label) {
+        chapterText = card.label.toString();
 
-      if (labelText === "Chapter 1") chapterClass = "chapter-label1";
-      else if (labelText === "Chapter 2") chapterClass = "chapter-label2";
-      else if (labelText === "Chapter 3") chapterClass = "chapter-label3";
-      else if (labelText === "Chapter 4") chapterClass = "chapter-label4";
-      else chapterClass = "chapter-label5";
+        const match = chapterText.match(/\d+/);
+        const chapterNum = match ? parseInt(match[0]) : 1;
 
-      const labelEl = newCard.querySelector(".chapter-label");
-      labelEl.textContent = labelText;
-      labelEl.className = `chapter-label ${chapterClass}`;
+        const label = newCard.querySelector(".chapter-label");
+        label.className = `chapter-label chapter-label${chapterNum}`;
+        label.textContent = chapterText;
+      }
 
       newCard.querySelector(".question-text").textContent = card.question || "";
       const answerEl = newCard.querySelector(".answer-text");
@@ -142,6 +148,7 @@ export function displayCardsFromFirestore() {
         answerEl.style.display =
           answerEl.style.display === "none" ? "block" : "none";
       };
+
       // --- Remove btn ---
       const removeBtn = newCard.querySelector(".remove-btn");
       removeBtn.onclick = async () => {

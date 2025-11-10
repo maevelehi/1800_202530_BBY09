@@ -65,6 +65,17 @@ savebtn.addEventListener("click", async () => {
       return;
     }
 
+    // Fetch current user's document to get their group
+    const userDocRef = doc(db, "users", user.uid);
+    const userSnapshot = await getDoc(userDocRef);
+    if (!userSnapshot.exists()) {
+      alert("User data not found!");
+      return;
+    }
+
+    const userData = userSnapshot.data();
+    const userGroup = userData.group; // assuming 'group' field exists in user doc
+
     const chapter = document.getElementById("dropdownMenu").textContent.trim();
     const course = document.getElementById("dropdownTopic").textContent.trim();
 
@@ -73,10 +84,9 @@ savebtn.addEventListener("click", async () => {
       answer: document.getElementById("back").value.trim(),
       label: chapter,
       topic: course,
-      group: "set C", // can make dynamic later
-      createdBy: user.uid,
+      group: userGroup, // can make dynamic later
+      createdBy: user.uid, 
       createdAt: new Date(),
-
     };
 
     try {

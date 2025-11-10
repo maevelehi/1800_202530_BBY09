@@ -75,6 +75,8 @@ savebtn.addEventListener("click", async () => {
       topic: course,
       group: "set C", // can make dynamic later
       createdBy: user.uid,
+      createdAt: new Date(),
+
     };
 
     try {

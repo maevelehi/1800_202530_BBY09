@@ -24,7 +24,10 @@ function initAuthUI() {
   const toLoginBtn = document.getElementById("toLogin");
   const loginForm = document.getElementById("loginForm");
   const signupForm = document.getElementById("signupForm");
-  const redirectUrl = "home.html";
+
+  // Define redirect URLs
+  const loginRedirectUrl = "/home.html"; // Redirect after login
+  const signupRedirectUrl = "/profile.html"; // Redirect after signup
 
   // --- Helper Functions ---
   // Toggle element visibility
@@ -85,7 +88,7 @@ function initAuthUI() {
     setSubmitDisabled(loginForm, true);
     try {
       await loginUser(email, password);
-      location.href = redirectUrl;
+      location.href = loginRedirectUrl; // Redirect after login
     } catch (err) {
       showError(authErrorMessage(err));
       console.error(err);
@@ -108,7 +111,7 @@ function initAuthUI() {
     setSubmitDisabled(signupForm, true);
     try {
       await signupUser(name, email, password);
-      location.href = redirectUrl;
+      location.href = signupRedirectUrl; // Redirect to profile.html after signup
     } catch (err) {
       showError(authErrorMessage(err));
       console.error(err);

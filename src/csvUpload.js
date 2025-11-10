@@ -108,7 +108,7 @@ async function parseAndUploadCSV(text, user) {
   }
 }
 
-export function displayCardsFromFirestore() {
+export function displayCardsFromFirestore(userGroup) {
   const container = document.getElementById("cards-go-here");
   const template = document.getElementById("cardTemplate");
   if (!container || !template) return;
@@ -121,6 +121,10 @@ export function displayCardsFromFirestore() {
     snapshot.forEach((docSnapshot) => {
       const card = docSnapshot.data();
       const docId = docSnapshot.id;
+
+       // --- Filter by user's group ---
+      if (card.group !== userGroup) return;
+      
       const newCard = template.content.cloneNode(true);
 
       let chapterText = "Chapter 1";

@@ -12,7 +12,7 @@
   </head>
   <body>
     <!-- Navigation -->
-    <site-navbar></site-navbar>
+    <!-- <site-navbar></site-navbar> -->
 
     <!-- Main Content -->
     <div class="container mt-4">
@@ -20,19 +20,19 @@
       <form>
         <fieldset class="mb-3" id="personalInfoFields" disabled>
           <div class="form-group mb-3">
-            <label>Name</label>
+            <label for="profileName">Name</label>
             <input
               type="text"
-              id="nameInput"
+              id="profileName"
               class="form-control"
               placeholder="Enter your name"
             />
           </div>
           <div class="form-group mb-3">
-            <label>School</label>
+            <label for="profileSchool">School</label>
             <input
               type="text"
-              id="schoolInput"
+              id="profileSchool"
               class="form-control"
               placeholder="Enter your school"
             />
@@ -63,7 +63,7 @@
     </div>
 
     <!-- Scripts -->
-    <script type="module" src="/src/site-navbar.js"></script>
+    <!-- <script type="module" src="/src/site-navbar.js"></script> -->
     <script type="module" src="/src/firebaseConfig.js"></script>
     <script type="module" src="/src/profile.js"></script>
   </body>

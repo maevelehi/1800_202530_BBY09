@@ -30,15 +30,16 @@ document.addEventListener("DOMContentLoaded", () => {
       const label = document.getElementById("labelInput").value.trim();
       const topic = document.getElementById("topicInput").value.trim();
 
-      if (!question || !answer || !label || !topic) return alert("All fields required!");
+      if (!question || !answer || !label || !topic)
+        return alert("All fields required!");
 
       await addDoc(collection(db, "cards"), {
         question,
         answer,
         label,
         topic,
-        group: userGroup,      // store user's group
-        createdBy: user.uid
+        group: userGroup, // store user's group
+        createdBy: user.uid,
       });
 
       // optionally reset form
@@ -113,9 +114,7 @@ import "/src/styles/style.css";
 
 //     console.log(cardData.createdBy); //TEST
 
-    
 //     container.appendChild(questionCard);
-
 
 //   });
 // }

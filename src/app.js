@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap";
 import { db } from "./firebaseConfig.js";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, addDoc } from "firebase/firestore";
 import { doc, getDoc } from "firebase/firestore";
 import { onAuthReady } from "./authentication.js";
 import { query, where, onSnapshot } from "firebase/firestore";
@@ -46,6 +46,28 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("cardForm").reset();
     });
   });
+});
+
+// Attach event listener to the parent container
+document.querySelector(".questions-list").addEventListener("click", (event) => {
+  // Check if the clicked element is a flip button
+  if (event.target.classList.contains("flip-btn")) {
+    console.log("Flip button clicked");
+
+    // Get the parent question card
+    const questionCard = event.target.closest(".question-card");
+
+    // Check if the question card is already flipped
+    if (questionCard.classList.contains("flipped")) {
+      // Remove the flip class to unflip it
+      questionCard.classList.remove("flipped");
+      return;
+    }
+
+    // Add the flip class for the animation
+    questionCard.classList.toggle("flipped");
+    questionCard.style.backgroundColor = "lightyellow";
+  }
 });
 
 // //--------------------------------------------------------------

@@ -91,6 +91,8 @@ async function parseAndUploadCSV(text, user) {
         } else {
           card.label = val;
         }
+      } else if (h === "group") {
+        card.group = val || group; // if CSV has group, use it; otherwise use user's group
       }
     });
 
@@ -101,7 +103,7 @@ async function parseAndUploadCSV(text, user) {
 
     await addDoc(cardsRef, {
       ...card,
-      group: group,
+      group: card.group || group, // new from maeve
       createdBy: user.uid,
       createdAt: new Date(),
     });
@@ -122,9 +124,9 @@ export function displayCardsFromFirestore(userGroup) {
       const card = docSnapshot.data();
       const docId = docSnapshot.id;
 
-       // --- Filter by user's group ---
+      // --- Filter by user's group ---
       if (card.group !== userGroup) return;
-      
+
       const newCard = template.content.cloneNode(true);
 
       let chapterText = "Chapter 1";

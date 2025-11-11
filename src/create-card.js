@@ -38,9 +38,8 @@
 //   }
 // });
 
-
 import { db } from "./firebaseConfig.js";
-import { collection, addDoc, doc, getDoc  } from "firebase/firestore";
+import { collection, addDoc, doc, getDoc } from "firebase/firestore";
 import { onAuthReady } from "./authentication.js"; // make sure you import this
 
 // update btn with selected option

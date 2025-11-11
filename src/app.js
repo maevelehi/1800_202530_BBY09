@@ -6,6 +6,10 @@ import { doc, getDoc } from "firebase/firestore";
 import { onAuthReady } from "./authentication.js";
 import { query, where, onSnapshot } from "firebase/firestore";
 import { displayCardsFromFirestore } from "./csvUpload.js";
+//--------------------------------------------------------------
+// If you have custom global styles, import them as well:
+//--------------------------------------------------------------
+import "/src/styles/style.css";
 
 let userGroup = "default";
 
@@ -49,31 +53,40 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Attach event listener to the parent container
-document.querySelector(".questions-list").addEventListener("click", (event) => {
-  // Check if the clicked element is a flip button
-  if (event.target.classList.contains("flip-btn")) {
-    console.log("Flip button clicked");
+// document.querySelector(".questions-list").addEventListener("click", (event) => {
+//   // Check if the clicked element is a flip button
+//   if (event.target.classList.contains("flip-btn")) {
+//     console.log("Flip button clicked");
 
-    // Get the parent question card
-    const questionCard = event.target.closest(".question-card");
+//     // Get the parent question card
+//     const questionCard = event.target.closest(".question-card");
 
-    // Check if the question card is already flipped
-    if (questionCard.classList.contains("flipped")) {
-      // Remove the flip class to unflip it
-      questionCard.classList.remove("flipped");
-      return;
+//     // Check if the question card is already flipped
+//     if (questionCard.classList.contains("flipped")) {
+//       // Remove the flip class to unflip it
+//       questionCard.classList.remove("flipped");
+//       return;
+//     }
+
+//     // Add the flip class for the animation
+//     questionCard.classList.toggle("flipped");
+//     questionCard.style.backgroundColor = "lightyellow";
+//   }
+// });
+
+const container = document.querySelector(".questions-list");
+if (container) {
+  container.addEventListener("click", (event) => {
+    if (event.target.classList.contains("flip-btn")) {
+      const questionCard = event.target.closest(".question-card");
+      questionCard.classList.toggle("flipped");
+      questionCard.style.backgroundColor = "lightyellow";
     }
+  });
+}
 
-    // Add the flip class for the animation
-    questionCard.classList.toggle("flipped");
-    questionCard.style.backgroundColor = "lightyellow";
-  }
-});
 
-// //--------------------------------------------------------------
-// // If you have custom global styles, import them as well:
-// //--------------------------------------------------------------
-import "/src/styles/style.css";
+
 
 // //--------------------------------------------------------------
 // // Custom global JS code (shared with all pages)can go here.

@@ -99,36 +99,36 @@ async function updateUserDocument(uid, name, school, group) {
 //call the function to run it
 populateUserInfo();
 
-document.addEventListener("DOMContentLoaded", () => {
-  const saveButton = document.getElementById("saveButton");
+// document.addEventListener("DOMContentLoaded", () => {
+//   const saveButton = document.getElementById("saveButton");
 
-  saveButton?.addEventListener("click", async (e) => {
-    e.preventDefault();
+//   saveButton?.addEventListener("click", async (e) => {
+//     e.preventDefault();
 
-    // Collect profile data (if applicable)
-    const nameInput = document.querySelector("#profileName");
-    const schoolInput = document.querySelector("#profileSchool");
+//     // Collect profile data (if applicable)
+//     const nameInput = document.querySelector("#profileName");
+//     const schoolInput = document.querySelector("#profileSchool");
 
-    const name = nameInput?.value.trim();
-    const school = schoolInput?.value.trim();
+//     const name = nameInput?.value.trim();
+//     const school = schoolInput?.value.trim();
 
-    if (!name || !school) {
-      alert("Please fill in all required fields.");
-      return;
-    }
+//     if (!name || !school) {
+//       alert("Please fill in all required fields.");
+//       return;
+//     }
 
-    try {
-      // Example: Save profile data (e.g., to Firebase or another backend)
-      console.log("Saving profile data:", { name, school });
+//     try {
+//       // Example: Save profile data (e.g., to Firebase or another backend)
+//       console.log("Saving profile data:", { name, school });
 
-      // Simulate saving process (replace with actual save logic)
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+//       // Simulate saving process (replace with actual save logic)
+//       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      // Redirect to home.html after saving
-      window.location.href = "/home.html";
-    } catch (err) {
-      console.error("Error saving profile:", err);
-      alert("Failed to save profile. Please try again.");
-    }
-  });
-});
+//       // Redirect to home.html after saving
+//       window.location.href = "/home.html";
+//     } catch (err) {
+//       console.error("Error saving profile:", err);
+//       alert("Failed to save profile. Please try again.");
+//     }
+//   });
+// });

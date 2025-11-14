@@ -17,7 +17,7 @@ class SiteNavbar extends HTMLElement {
     <div class="container-fluid">
       <a class="navbar-brand" href="/">
         <img src="/images/logo.png" height="36">
-         FlipIt
+         
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

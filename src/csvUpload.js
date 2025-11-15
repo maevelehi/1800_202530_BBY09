@@ -10,6 +10,7 @@ import {
   orderBy,
 } from "firebase/firestore";
 import { onAuthReady } from "./authentication.js";
+import { updateDoc, increment } from "firebase/firestore";
 // Modification: Import getDoc for reading user groups
 
 let currentUser = null;
@@ -118,16 +119,25 @@ export function displayCardsFromFirestore(userGroup) {
   const cardsRef = collection(db, "cards");
   const q = query(cardsRef, orderBy("createdAt", "desc"));
 
+  // Track which cards are flipped
+  const flippedCards = {};
+
   onSnapshot(q, (snapshot) => {
     container.innerHTML = "";
     snapshot.forEach((docSnapshot) => {
       const card = docSnapshot.data();
       const docId = docSnapshot.id;
-
       // --- Filter by user's group ---
       if (card.group !== userGroup) return;
 
-      const newCard = template.content.cloneNode(true);
+      // const cardElement = template.content.cloneNode(true);
+      // const cardElement = cardElement.querySelector(".question-card"); //new
+
+      // Clone template
+      const fragment = template.content.cloneNode(true);
+      const cardElement = fragment.querySelector(".question-card");
+      // Store Firestore ID
+      cardElement.dataset.cardId = docSnapshot.id; 
 
       let chapterText = "Chapter 1";
       if (card.label) {
@@ -136,23 +146,81 @@ export function displayCardsFromFirestore(userGroup) {
         const match = chapterText.match(/\d+/);
         const chapterNum = match ? parseInt(match[0]) : 1;
 
-        const label = newCard.querySelector(".chapter-label");
+        const label = cardElement.querySelector(".chapter-label");
         label.className = `chapter-label chapter-label${chapterNum}`;
         label.textContent = chapterText;
       }
 
-      newCard.querySelector(".question-text").textContent = card.question || "";
-      const answerEl = newCard.querySelector(".answer-text");
+      cardElement.querySelector(".question-text").textContent = card.question || "";
+      const answerEl = cardElement.querySelector(".answer-text");
+
+      //TESTING
+      // console.log("Answer element before flip:", answerEl, "display:", window.getComputedStyle(answerEl).display);
       answerEl.textContent = card.answer || "";
 
-      const flipBtn = newCard.querySelector(".flip-btn");
-      flipBtn.onclick = () => {
-        answerEl.style.display =
-          answerEl.style.display === "none" ? "block" : "none";
+      // Restore flipped state if previously flipped
+      if (flippedCards[docId]) {
+        answerEl.style.display = "block";
+      } else {
+        answerEl.style.display = "none";
+      }
+
+      container.appendChild(fragment);
+
+      //TESTING
+      // console.log("DOM after append:", container.innerHTML);
+
+      const flipBtn = cardElement.querySelector(".flip-btn");
+      // flipBtn.onclick = async () => {
+      //   // Toggle answer display
+      //   const isHidden = window.getComputedStyle(answerEl).display === "none";
+      //   //TESTING
+      //   console.log("isHidden:", isHidden, "current display:", window.getComputedStyle(answerEl).display);
+      //   answerEl.style.display = isHidden ? "block" : "none";
+      //   console.log("New display:", answerEl.style.display);
+
+      //   // Track flip in Firestore
+      //   const cardId = docSnapshot.id;
+      //   console.log("Card ID:", cardId, "Current user:", currentUser);
+
+      //   if (!currentUser || !cardId) return;
+
+      //   try {
+      //     const cardRef = doc(db, "cards", cardId);
+      //     console.log("FLIPPED: Updating Firestore for card:", cardId);
+
+      //     await updateDoc(cardRef, {
+      //       flipCount: increment(1),
+      //       lastFlipped: new Date(),
+      //     });
+      //     console.log("UPDATED!");
+      //   } catch (err) {
+      //     console.error("Error updating flip count:", err);
+      //   }
+      // };
+
+      flipBtn.onclick = async () => {
+        const isHidden = window.getComputedStyle(answerEl).display === "none";
+        answerEl.style.display = isHidden ? "block" : "none";
+
+        // Update local flipped state
+        flippedCards[docId] = !isHidden;
+
+        // Track flip in Firestore
+        if (!currentUser || !docId) return;
+        try {
+          const cardRef = doc(db, "cards", docId);
+          await updateDoc(cardRef, {
+            flipCount: increment(1),
+            lastFlipped: new Date(),
+          });
+        } catch (err) {
+          console.error("Error updating flip count:", err);
+        }
       };
 
       // --- Remove btn ---
-      const removeBtn = newCard.querySelector(".remove-btn");
+      const removeBtn = cardElement.querySelector(".remove-btn");
       removeBtn.onclick = async () => {
         if (confirm("Are you sure you want to delete this card?")) {
           const cardRef = doc(db, "cards", docId);
@@ -171,7 +239,10 @@ export function displayCardsFromFirestore(userGroup) {
         }
       };
 
-      container.appendChild(newCard);
+      // container.appendChild(cardElement);
     });
   });
 }
+onAuthReady((user) => {
+  currentUser = user;
+});

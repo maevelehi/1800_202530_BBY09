@@ -200,8 +200,8 @@ export function displayCardsFromFirestore(userGroup) {
       // };
 
       flipBtn.onclick = async () => {
-        const isHidden = window.getComputedStyle(answerEl).display === "none";
-        answerEl.style.display = isHidden ? "block" : "none";
+        const isHidden = window.getComputedStyle(answerEl).display === "block";
+        answerEl.style.display = isHidden ? "none" : "block";
 
         // Update local flipped state
         flippedCards[docId] = !isHidden;
@@ -257,6 +257,9 @@ async function logFlip(cardId, userId) {
   }
 }
 
+onAuthReady((user) => {
+  currentUser = user;
+});
 onAuthReady((user) => {
   currentUser = user;
 });

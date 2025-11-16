@@ -218,3 +218,31 @@ site-navbar {
     padding: 15px 80px 15px 15px;
   }
 }
+.filter-bar {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.filter-select {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #bbb;
+  font-size: 14px;
+  background: white;
+}
+
+.filter-clear-btn {
+  padding: 8px 14px;
+  background-color: #0077b6;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.filter-clear-btn:hover {
+  background-color: #005f87;
+}

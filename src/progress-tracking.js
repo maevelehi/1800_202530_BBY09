@@ -95,7 +95,7 @@ function renderChartAndStats(counts) {
   document.getElementById("today-count").textContent = today;
   document.getElementById("average-count").textContent = avg;
   const percent = avg ? Math.round(((today - avg) / avg) * 100) : 0;
-  document.getElementById("weekly-stats").textContent = `🔥 You’re ${Math.abs(
+  document.getElementById("weekly-stats").textContent = `⭐ You’re ${Math.abs(
     percent
   )}% ${percent >= 0 ? "above" : "below"} your weekly average!`;
 }
@@ -118,11 +118,27 @@ function renderStreakAndMotivation(counts) {
     streak > 0
       ? "Keep going, consistency is key!"
       : "Start today and build your streak!";
-  const motivationMsg =
-    streak >= 5
-      ? "💪 Amazing! You're building a strong habit!"
-      : "💪 Great job today! Keep the streak alive and your brain will thank you!";
-  document.querySelector("#motivation-msg p").textContent = motivationMsg;
+
+  // Dynamically change image based on streak
+  const streakImg = document.querySelector(".streak-card img");
+  if (streakImg) {
+    if (streak >= 50) {
+      streakImg.src = "images/study.png";
+      streakImg.alt = "You've been unstoppable!";
+    } else if (streak >= 40) {
+      streakImg.src = "images/aladin.png";
+      streakImg.alt = "Good streak!";
+    } else if (streak >= 30) {
+      streakImg.src = "images/research.png";
+      streakImg.alt = "Good streak!";
+    } else if (streak >= 20) {
+      streakImg.src = "images/mountain.png";
+      streakImg.alt = "Good streak!";
+    } else {
+      streakImg.src = "images/graph.png";
+      streakImg.alt = "Start your streak!";
+    }
+  }
 }
 
 // async function loadProgressForUser(uid) {

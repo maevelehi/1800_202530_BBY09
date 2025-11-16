@@ -35,6 +35,9 @@ class SiteNavbar extends HTMLElement {
             <li class="nav-item">
               <a class="nav-link active" href="/profile">Profile</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/progress-tracking">Progress Tracking</a>
+            </li>
           </ul>
         
           <div id="authControls" class="auth-controls d-flex align-items-center gap-2 my-2 my-lg-0">              

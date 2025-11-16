@@ -10,7 +10,7 @@ import {
   orderBy,
 } from "firebase/firestore";
 import { onAuthReady } from "./authentication.js";
-import { updateDoc, increment } from "firebase/firestore";
+import { updateDoc, increment, serverTimestamp  } from "firebase/firestore";
 // Modification: Import getDoc for reading user groups
 
 let currentUser = null;
@@ -214,6 +214,7 @@ export function displayCardsFromFirestore(userGroup) {
             flipCount: increment(1),
             lastFlipped: new Date(),
           });
+          await logFlip(docId, currentUser.uid);
         } catch (err) {
           console.error("Error updating flip count:", err);
         }
@@ -243,6 +244,19 @@ export function displayCardsFromFirestore(userGroup) {
     });
   });
 }
+
+async function logFlip(cardId, userId) {
+  try {
+    await addDoc(collection(db, "flipLogs"), {
+      cardId,
+      uid: userId,
+      timestamp: serverTimestamp(),
+    });
+  } catch (err) {
+    console.error("Error logging flip:", err);
+  }
+}
+
 onAuthReady((user) => {
   currentUser = user;
 });

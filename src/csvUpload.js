@@ -10,7 +10,7 @@ import {
   orderBy,
 } from "firebase/firestore";
 import { onAuthReady } from "./authentication.js";
-import { updateDoc, increment } from "firebase/firestore";
+import { updateDoc, increment, serverTimestamp  } from "firebase/firestore";
 // Modification: Import getDoc for reading user groups
 
 let currentUser = null;
@@ -137,7 +137,7 @@ export function displayCardsFromFirestore(userGroup) {
       const fragment = template.content.cloneNode(true);
       const cardElement = fragment.querySelector(".question-card");
       // Store Firestore ID
-      cardElement.dataset.cardId = docSnapshot.id;
+      cardElement.dataset.cardId = docSnapshot.id; 
 
       let chapterText = "Chapter 1";
       if (card.label) {
@@ -151,8 +151,7 @@ export function displayCardsFromFirestore(userGroup) {
         label.textContent = chapterText;
       }
 
-      cardElement.querySelector(".question-text").textContent =
-        card.question || "";
+      cardElement.querySelector(".question-text").textContent = card.question || "";
       const answerEl = cardElement.querySelector(".answer-text");
 
       //TESTING
@@ -215,6 +214,7 @@ export function displayCardsFromFirestore(userGroup) {
             flipCount: increment(1),
             lastFlipped: new Date(),
           });
+          await logFlip(docId, currentUser.uid);
         } catch (err) {
           console.error("Error updating flip count:", err);
         }
@@ -244,6 +244,22 @@ export function displayCardsFromFirestore(userGroup) {
     });
   });
 }
+
+async function logFlip(cardId, userId) {
+  try {
+    await addDoc(collection(db, "flipLogs"), {
+      cardId,
+      uid: userId,
+      timestamp: serverTimestamp(),
+    });
+  } catch (err) {
+    console.error("Error logging flip:", err);
+  }
+}
+
+onAuthReady((user) => {
+  currentUser = user;
+});
 onAuthReady((user) => {
   currentUser = user;
 });

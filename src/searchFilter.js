@@ -119,21 +119,21 @@ function loadCardsData(userGroup) {
       Topic结构: topicsData,
     });
 
-    // 渲染 Topic 下拉选项
+    // Render Topic drop-down options
     populateTopicSelect();
 
-    // 初始显示所有卡片
+    // Initially display all cards
     applyFilter();
   });
 }
 
-/* ==================== 下拉选项渲染 ==================== */
+/* ==================== Drop-down option rendering ==================== */
 
 function populateTopicSelect() {
   const topicSelect = document.getElementById("topicFilter");
   if (!topicSelect) return;
 
-  // 保留第一个“Select Topic”选项，移除其他
+  // Retain the first "Select Topic" option and remove the others
   topicSelect.innerHTML = `<option value="">Select Topic</option>`;
 
   Object.keys(topicsData)
@@ -145,7 +145,7 @@ function populateTopicSelect() {
       topicSelect.appendChild(option);
     });
 
-  console.log("🎨 Topic 下拉渲染完成");
+  console.log("The drop-down rendering of 🎨 Topic is completed");
 }
 
 function populateChapterSelect(topic) {
@@ -172,7 +172,7 @@ function resetChapterSelect() {
   chapterSelect.innerHTML = `<option value="">Select Chapter</option>`;
 }
 
-/* ==================== 筛选与渲染卡片 ==================== */
+/* ==================== Filter and render cards==================== */
 
 function applyFilter() {
   const container = document.getElementById("cards-go-here");
@@ -194,9 +194,9 @@ function applyFilter() {
       (card) => card.topic === selectedTopic
     );
   }
-  // 如果什么都没选，保持 allCards
+  // If nothing is chosen, keep allCards
 
-  console.log("📋 筛选结果:", {
+  console.log("filtered results:", {
     总卡片数: allCards.length,
     筛选后: filteredCards.length,
   });
@@ -224,7 +224,7 @@ function renderFilteredCards(container, cards) {
     const cardElement = fragment.querySelector(".question-card");
     cardElement.dataset.cardId = card.id;
 
-    // 设置章节标签
+    // Set chapter labels
     let chapterText = card.label || "Chapter 1";
     const label = cardElement.querySelector(".chapter-label");
 
@@ -233,26 +233,26 @@ function renderFilteredCards(container, cards) {
     label.className = `chapter-label chapter-label${chapterNum}`;
     label.textContent = chapterText;
 
-    // 问题 & 答案
+    // Questions & Answers
     cardElement.querySelector(".question-text").textContent =
       card.question || "";
     const answerEl = cardElement.querySelector(".answer-text");
     answerEl.textContent = card.answer || "";
     answerEl.style.display = "none";
 
-    // 翻转按钮
+    // flip-btn
     const flipBtn = cardElement.querySelector(".flip-btn");
     flipBtn.onclick = () => {
       const isHidden = answerEl.style.display === "none";
       answerEl.style.display = isHidden ? "block" : "none";
     };
 
-    // 删除按钮（这里你可以接上实际删除逻辑）
+    // // Delete Button (Here you can connect to the actual deletion logic)
     const removeBtn = cardElement.querySelector(".remove-btn");
     removeBtn.onclick = async () => {
-      if (confirm("确定要删除这张卡片吗？")) {
-        console.log("删除卡片:", card.id);
-        // TODO: 调用 Firestore 删除文档
+      if (confirm("Are you sure you want to delete this card？")) {
+        console.log("delete card:", card.id);
+        // TODO: Call Firestore to delete the document
       }
     };
 

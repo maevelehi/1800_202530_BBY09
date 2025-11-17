@@ -12,7 +12,7 @@ class SiteNavbar extends HTMLElement {
   }
 
   renderNavbar() {
-  this.innerHTML = `
+    this.innerHTML = `
   <nav class="navbar bg-body-tertiary bg-info">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">

@@ -6,6 +6,8 @@ import { doc, getDoc } from "firebase/firestore";
 import { onAuthReady } from "./authentication.js";
 import { query, where, onSnapshot } from "firebase/firestore";
 import { displayCardsFromFirestore } from "./csvUpload.js";
+import { initSearchFilter } from "./searchFilter.js";
+
 //--------------------------------------------------------------
 // If you have custom global styles, import them as well:
 //--------------------------------------------------------------
@@ -22,6 +24,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (userDoc.exists()) {
       userGroup = userDoc.data().group || "default";
     }
+
+    // Example: after you know the user's group (e.g., from auth or profile)
+    initSearchFilter(userGroup);
 
     // display only cards for this group
     displayCardsFromFirestore(userGroup);
@@ -84,9 +89,6 @@ if (container) {
     }
   });
 }
-
-
-
 
 // //--------------------------------------------------------------
 // // Custom global JS code (shared with all pages)can go here.

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Flashcards app</title>
+    <title>FlipIt</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script type="module" src="/src/components/site-navbar.js"></script>
@@ -24,6 +24,20 @@
           <div class="deck-info">
             <h1 class="page-title">Home</h1>
           </div>
+
+          <!-- Filter Bar 插入开始 -->
+          <div id="filter-bar" class="filter-bar" style="margin-top: 18px">
+            <select id="topicFilter" class="filter-select">
+              <option value="">Select Topic</option>
+            </select>
+
+            <select id="chapterFilter" class="filter-select" disabled>
+              <option value="">Select Chapter</option>
+            </select>
+
+            <button id="clearFilter" class="filter-clear-btn">Clear</button>
+          </div>
+          <!-- Filter Bar 插入结束 -->
 
           <!-- Move dropdown here and add positioning class -->
           <div class="dropdown-container">
@@ -91,5 +105,6 @@
     <script type="module" src="/src/loginSignup.js"></script>
     <script type="module" src="./src/csvUpload.js"></script>
     <script type="module" src="/src/app.js"></script>
+    <script type="module" src="./src/searchFilter.js"></script>
   </body>
 </html>

@@ -6,7 +6,8 @@
 
 body {
   font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom, #6d6eff, #116af8);
+  /* background: linear-gradient(to bottom, #6d6eff, #116af8); */
+  background-color: white;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -52,7 +53,7 @@ site-navbar {
 .page-title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #f8f4f4;
+  color: #090909;
   margin-bottom: 10px;
 }
 
@@ -97,6 +98,7 @@ site-navbar {
   background: #f8fafa;
   border-radius: 8px;
   padding: 20px 100px 20px 25px;
+  height: 200px;
   position: relative;
   border: 1px solid rgba(0, 0, 0, 0.05);
   transition: transform 0.2s;
@@ -112,6 +114,7 @@ site-navbar {
 .question-card p {
   margin: 0;
   font-size: 16px;
+  padding: 20px 20px;
   color: #03045e;
   width: calc(100% - 70px);
 }
@@ -129,9 +132,9 @@ site-navbar {
   left: 10px; /* Changed from right to left */
   top: 5px; /* Changed to fixed top position */
   transform: none; /* Removed transform */
-  padding: 0px 5px;
+  padding: 3px 10px;
   border-radius: 3px;
-  font-size: 0.6em;
+  font-size: 1.0em;
 }
 .chapter-label1 {
   color: #960000;

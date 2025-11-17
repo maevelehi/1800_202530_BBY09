@@ -6,10 +6,11 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
+  background: linear-gradient(to bottom, #6d6eff, #116af8);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  padding: 20px;
 }
 
 site-navbar {
@@ -28,9 +29,6 @@ site-navbar {
   max-width: 1200px;
   margin: 80px auto 20px;
   padding: 20px;
-  background: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
 }
 
 .content-wrapper {
@@ -54,7 +52,7 @@ site-navbar {
 .page-title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #111;
+  color: #f8f4f4;
   margin-bottom: 10px;
 }
 
@@ -65,8 +63,11 @@ site-navbar {
   line-height: 1.5;
 }
 
-.favorite-btn {
-  background: #0077b6;
+
+
+
+.drop-down {
+  background: #fda83a;
   color: #fbf7f7;
   border: none;
   padding: 12px 24px;
@@ -75,8 +76,8 @@ site-navbar {
   font-size: 14px;
   white-space: nowrap;
 }
-.favorite-btn:hover {
-  background: #005f87;
+.drop-down:hover {
+  background: #f7a950;
 }
 
 .questions-list {
@@ -93,13 +94,15 @@ site-navbar {
 }
 
 .question-card {
-  background: #caf0f8;
+  background: #f8fafa;
   border-radius: 8px;
   padding: 20px 100px 20px 25px;
   position: relative;
   border: 1px solid rgba(0, 0, 0, 0.05);
   transition: transform 0.2s;
   transition: opacity 0.4s ease, transform 0.4s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
 }
 
 .question-card:hover {
@@ -128,24 +131,22 @@ site-navbar {
   transform: none; /* Removed transform */
   padding: 0px 5px;
   border-radius: 3px;
-  font-size: 0.5em;
-  color: #ffffff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  font-size: 0.6em;
 }
 .chapter-label1 {
-  background-color: #960000;
+  color: #960000;
 }
 .chapter-label2 {
-  background-color: #ff6f00;
+  color: #ff6f00;
 }
 .chapter-label3 {
-  background-color: #029202;
+  color: #029202;
 }
 .chapter-label4 {
-  background-color: #2922f6;
+  color: #2922f6;
 }
 .chapter-label5 {
-  background-color: #8c1cf6;
+  color: #8c1cf6;
 }
 
 .flip-btn {
@@ -204,7 +205,7 @@ site-navbar {
 }
 
 /* responsive */
-@media (max-width: 768px) {
+@media (max-width: 2360px) {
   .main-container {
     margin: 70px 10px 10px;
     padding: 15px;

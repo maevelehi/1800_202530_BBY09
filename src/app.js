@@ -58,37 +58,37 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Attach event listener to the parent container
-// document.querySelector(".questions-list").addEventListener("click", (event) => {
-//   // Check if the clicked element is a flip button
-//   if (event.target.classList.contains("flip-btn")) {
-//     console.log("Flip button clicked");
+document.querySelector(".questions-list").addEventListener("click", (event) => {
+  // Check if the clicked element is a flip button
+  if (event.target.classList.contains("flip-btn")) {
+    console.log("Flip button clicked");
 
-//     // Get the parent question card
-//     const questionCard = event.target.closest(".question-card");
+    // Get the parent question card
+    const questionCard = event.target.closest(".question-card");
 
-//     // Check if the question card is already flipped
-//     if (questionCard.classList.contains("flipped")) {
-//       // Remove the flip class to unflip it
-//       questionCard.classList.remove("flipped");
-//       return;
-//     }
-
-//     // Add the flip class for the animation
-//     questionCard.classList.toggle("flipped");
-//     questionCard.style.backgroundColor = "lightyellow";
-//   }
-// });
-
-const container = document.querySelector(".questions-list");
-if (container) {
-  container.addEventListener("click", (event) => {
-    if (event.target.classList.contains("flip-btn")) {
-      const questionCard = event.target.closest(".question-card");
-      questionCard.classList.toggle("flipped");
-      questionCard.style.backgroundColor = "lightyellow";
+    // Check if the question card is already flipped
+    if (questionCard.classList.contains("flipped")) {
+      // Remove the flip class to unflip it
+      questionCard.classList.remove("flipped");
+      return;
     }
-  });
-}
+
+    // Add the flip class for the animation
+    questionCard.classList.toggle("flipped");
+    questionCard.style.backgroundColor = "lightyellow";
+  }
+});
+
+// const container = document.querySelector(".questions-list");
+// if (container) {
+//   container.addEventListener("click", (event) => {
+//     if (event.target.classList.contains("flip-btn")) {
+//       const questionCard = event.target.closest(".question-card");
+//       questionCard.classList.toggle("flipped");
+//       questionCard.style.backgroundColor = "lightyellow";
+//     }
+//   });
+// }
 
 // //--------------------------------------------------------------
 // // Custom global JS code (shared with all pages)can go here.

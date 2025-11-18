@@ -19,14 +19,17 @@ function populateUserInfo() {
             school = "",
             group = "",
             avatarUrl = "",
+            bio = "",
+            mood = "😊 Happy",
           } = userData;
 
-          // 设置表单值
           document.getElementById("nameInput").value = name;
           document.getElementById("schoolInput").value = school;
           document.getElementById("groupInput").value = group;
 
-          // 设置头像（如果有）
+          document.getElementById("bioInput").value = bio;
+          document.getElementById("moodInput").value = mood;
+
           if (avatarUrl) {
             document.getElementById("avatar").src = avatarUrl;
           }
@@ -47,23 +50,32 @@ function populateUserInfo() {
 //-------------------------------------------------------------
 function editUserInfo() {
   document.getElementById("personalInfoFields").disabled = false;
-  // 更改按钮文本
+  document.getElementById("personalDetailsFields").disabled = false;
   document.getElementById("editProfileBtn").textContent = "Save Profile";
 }
 
 //-------------------------------------------------------------
 // Updates the user document in Firestore with new values
 //-------------------------------------------------------------
-async function updateUserDocument(uid, name, school, group, avatarUrl) {
+async function updateUserDocument(
+  uid,
+  name,
+  school,
+  group,
+  avatarUrl,
+  bio,
+  mood
+) {
   try {
     const userRef = doc(db, "users", uid);
-    // 更新用户数据
     await updateDoc(userRef, {
       name,
       school,
       group,
       avatarUrl,
-      lastUpdated: new Date(), // 添加更新时间戳
+      bio,
+      mood,
+      lastUpdated: new Date(),
     });
     console.log("User document successfully updated!");
   } catch (error) {
@@ -72,7 +84,6 @@ async function updateUserDocument(uid, name, school, group, avatarUrl) {
   }
 }
 
-// 新增：保存用户资料功能
 async function saveUserProfile() {
   const user = auth.currentUser;
   if (!user) {
@@ -84,11 +95,15 @@ async function saveUserProfile() {
   const schoolInput = document.getElementById("schoolInput");
   const groupInput = document.getElementById("groupInput");
   const avatar = document.getElementById("avatar");
+  const bioInput = document.getElementById("bioInput");
+  const moodInput = document.getElementById("moodInput");
 
   const name = nameInput?.value.trim();
   const school = schoolInput?.value.trim();
   const group = groupInput?.value;
-  const avatarUrl = avatar.src; // 获取当前头像URL
+  const avatarUrl = avatar.src;
+  const bio = bioInput?.value.trim();
+  const mood = moodInput?.value;
 
   if (!name || !school) {
     alert("Please fill in all required fields (Name and School).");
@@ -96,13 +111,19 @@ async function saveUserProfile() {
   }
 
   try {
-    // 更新Firestore中的用户数据
-    await updateUserDocument(user.uid, name, school, group, avatarUrl);
+    await updateUserDocument(
+      user.uid,
+      name,
+      school,
+      group,
+      avatarUrl,
+      bio,
+      mood
+    );
 
-    // 禁用表单
     document.getElementById("personalInfoFields").disabled = true;
+    document.getElementById("personalDetailsFields").disabled = true;
 
-    // 恢复按钮文本
     document.getElementById("editProfileBtn").textContent = "Edit Profile";
 
     alert("Profile updated successfully!");
@@ -112,19 +133,12 @@ async function saveUserProfile() {
   }
 }
 
-// 新增：处理头像上传
 function handleAvatarUpload(event) {
   const file = event.target.files[0];
   if (file) {
-    // 创建文件阅读器来读取图片
     const reader = new FileReader();
     reader.onload = function (e) {
-      // 更新头像显示
       document.getElementById("avatar").src = e.target.result;
-
-      // 自动保存到Firebase（可选）
-      // 如果希望上传头像后立即保存，可以在这里调用saveUserProfile()
-      // 但目前我们只在点击Save时保存
     };
     reader.readAsDataURL(file);
   }
@@ -136,23 +150,23 @@ function handleAvatarUpload(event) {
 document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM loaded, initializing event listeners...");
 
-  // 编辑/保存按钮事件
   const editProfileBtn = document.getElementById("editProfileBtn");
   if (editProfileBtn) {
     editProfileBtn.addEventListener("click", function () {
-      const isEditing = !document.getElementById("personalInfoFields").disabled;
+      const personalInfoDisabled =
+        document.getElementById("personalInfoFields").disabled;
+      const personalDetailsDisabled = document.getElementById(
+        "personalDetailsFields"
+      ).disabled;
 
-      if (isEditing) {
-        // 当前是编辑模式，点击后保存
-        saveUserProfile();
-      } else {
-        // 当前是查看模式，点击后编辑
+      if (personalInfoDisabled || personalDetailsDisabled) {
         editUserInfo();
+      } else {
+        saveUserProfile();
       }
     });
   }
 
-  // 返回按钮事件
   const backButton = document.getElementById("backButton");
   if (backButton) {
     backButton.addEventListener("click", function () {
@@ -160,7 +174,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 头像上传事件
   const avatarUpload = document.getElementById("avatarUpload");
   const uploadAvatarBtn = document.getElementById("uploadAvatarBtn");
 
@@ -172,6 +185,5 @@ document.addEventListener("DOMContentLoaded", () => {
     avatarUpload.addEventListener("change", handleAvatarUpload);
   }
 
-  // 加载用户数据
   populateUserInfo();
 });

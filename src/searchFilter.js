@@ -50,13 +50,13 @@ function initFilterControls() {
   // When choosing a Chapter
   chapterSelect.addEventListener("change", (e) => {
     selectedChapter = e.target.value || "";
-    console.log("📖 选择 Chapter:", selectedChapter);
+    console.log("📖 choose Chapter:", selectedChapter);
     applyFilter();
   });
 
   // Clear the filter
   clearBtn.addEventListener("click", () => {
-    console.log("🧹 清除筛选");
+    console.log("delete");
 
     selectedTopic = "";
     selectedChapter = "";
@@ -145,7 +145,7 @@ function populateTopicSelect() {
       topicSelect.appendChild(option);
     });
 
-  console.log("The drop-down rendering of 🎨 Topic is completed");
+  console.log("The drop-down rendering of Topic is completed");
 }
 
 function populateChapterSelect(topic) {
@@ -153,7 +153,7 @@ function populateChapterSelect(topic) {
   if (!chapterSelect) return;
 
   const chapters = topicsData[topic] || [];
-  console.log(`📖 渲染 ${topic} 的章节列表:`, chapters);
+  console.log(`${topic} :`, chapters);
 
   chapterSelect.innerHTML = `<option value="">Select Chapter</option>`;
 
@@ -180,7 +180,7 @@ function applyFilter() {
 
   let filteredCards = allCards;
 
-  console.log("🔍 应用筛选:", {
+  console.log("search:", {
     selectedTopic,
     selectedChapter,
   });
@@ -213,7 +213,7 @@ function renderFilteredCards(container, cards) {
   if (cards.length === 0) {
     container.innerHTML = `
       <div class="no-cards-message">
-        <p>没有找到匹配的卡片</p>
+        <p>didn't find the card</p>
       </div>
     `;
     return;

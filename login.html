@@ -17,6 +17,7 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="./src/styles/Loginsignup.css" />
   </head>
 
   <body>
@@ -29,11 +30,20 @@
 
     <!-- Main content goes here -->
     <div class="container py-5" style="max-width: 420px">
-      <!-- Alerts -->
-      <div id="authAlert" class="alert alert-danger d-none" role="alert"></div>
-
       <!-- Login -->
       <div id="loginView">
+        <img
+          src="/images/study.png"
+          alt="Login illustration"
+          class="auth-image"
+        />
+
+        <div
+          id="authAlert"
+          class="alert alert-danger d-none"
+          role="alert"
+        ></div>
+
         <h3 class="mb-3 text-center">Login</h3>
         <form id="loginForm" novalidate>
           <div class="mb-3">
@@ -64,6 +74,18 @@
 
       <!-- Signup -->
       <div id="signupView" class="d-none">
+        <img
+          src="/images/mountain.png"
+          alt="Signup illustration"
+          class="auth-image"
+        />
+
+        <div
+          id="authAlert"
+          class="alert alert-danger d-none"
+          role="alert"
+        ></div>
+
         <h3 class="mb-3 text-center">Sign Up</h3>
         <form id="signupForm" novalidate>
           <div class="mb-3">
@@ -94,7 +116,11 @@
               required
             />
           </div>
-          <button type="submit" class="btn btn-success w-100">
+          <button
+            type="submit"
+            class="btn btn-primary w-100"
+            id="Create-account"
+          >
             Create Account
           </button>
         </form>

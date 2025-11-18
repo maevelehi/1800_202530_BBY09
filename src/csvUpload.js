@@ -10,7 +10,7 @@ import {
   orderBy,
 } from "firebase/firestore";
 import { onAuthReady } from "./authentication.js";
-import { updateDoc, increment, serverTimestamp  } from "firebase/firestore";
+import { updateDoc, increment, serverTimestamp } from "firebase/firestore";
 // Modification: Import getDoc for reading user groups
 
 let currentUser = null;
@@ -81,10 +81,7 @@ async function parseAndUploadCSV(text, user) {
       if (h === "question") card.question = val;
       else if (h === "answer") card.answer = val;
       else if (h === "topic") {
-        let processedTopic = val
-          .replace(/^[a-z]/, (match) => match.toUpperCase())
-          .replace(/([^0-9]*)([0-9])/, "$1 $2");
-        card.topic = processedTopic;
+        card.topic = val;
       } else if (h === "label") {
         const num = parseInt(val);
         if (!isNaN(num)) {
@@ -93,7 +90,7 @@ async function parseAndUploadCSV(text, user) {
           card.label = val;
         }
       } else if (h === "group") {
-        card.group = val || group; // if CSV has group, use it; otherwise use user's group
+        card.group = val || group;
       }
     });
 
@@ -104,7 +101,7 @@ async function parseAndUploadCSV(text, user) {
 
     await addDoc(cardsRef, {
       ...card,
-      group: card.group || group, // new from maeve
+      group: card.group || group,
       createdBy: user.uid,
       createdAt: new Date(),
     });
@@ -137,7 +134,7 @@ export function displayCardsFromFirestore(userGroup) {
       const fragment = template.content.cloneNode(true);
       const cardElement = fragment.querySelector(".question-card");
       // Store Firestore ID
-      cardElement.dataset.cardId = docSnapshot.id; 
+      cardElement.dataset.cardId = docSnapshot.id;
 
       let chapterText = "Chapter 1";
       if (card.label) {
@@ -151,7 +148,8 @@ export function displayCardsFromFirestore(userGroup) {
         label.textContent = chapterText;
       }
 
-      cardElement.querySelector(".question-text").textContent = card.question || "";
+      cardElement.querySelector(".question-text").textContent =
+        card.question || "";
       const answerEl = cardElement.querySelector(".answer-text");
 
       //TESTING

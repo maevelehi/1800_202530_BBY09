@@ -5,6 +5,9 @@ body {
   padding: 0;
   margin: 0;
 }
+.bg.info {
+  background-color: important!;
+}
 .container {
   margin: 0 auto;
   padding: 20px;
@@ -19,7 +22,7 @@ body {
   border: none;
   font-size: 20px;
   cursor: pointer;
-  color: #4361ee;
+  color: #006af7;
   padding: 5px 10px;
 }
 .page-title {
@@ -48,14 +51,14 @@ body {
   height: 100px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #4361ee;
+  border: 3px solid #006af7;
   margin-bottom: 10px;
 }
 .upload-btn {
   position: relative;
   bottom: auto;
   right: auto;
-  background: #4361ee;
+  background: #006af7;
   color: white;
   width: 30px;
   height: 30px;
@@ -70,8 +73,8 @@ body {
 }
 .edit-profile-btn {
   background: none;
-  border: 1px solid #4361ee;
-  color: #4361ee;
+  border: 1px solid #006af7;
+  color: #006af7;
   padding: 8px 20px;
   border-radius: 20px;
   font-weight: 500;

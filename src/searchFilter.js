@@ -1,5 +1,12 @@
 // src/searchFilter.js
-import { collection, query, orderBy, onSnapshot } from "firebase/firestore";
+import {
+  collection,
+  query,
+  orderBy,
+  onSnapshot,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
 import { db } from "./firebaseConfig.js";
 
 let allCards = [];
@@ -249,13 +256,25 @@ function renderFilteredCards(container, cards) {
 
     // // Delete Button (Here you can connect to the actual deletion logic)
     const removeBtn = cardElement.querySelector(".remove-btn");
-    removeBtn.onclick = async () => {
-      if (confirm("Are you sure you want to delete this card？")) {
-        console.log("delete card:", card.id);
-        // TODO: Call Firestore to delete the document
+    removeBtn.onclick = async (event) => {
+      event.stopPropagation();
+
+      if (confirm("Are you sure you want to delete this card?")) {
+        const cardElementToRemove = event.target.closest(".question-card");
+
+        cardElementToRemove.classList.add("fade-out");
+
+        try {
+          const cardRef = doc(db, "cards", card.id);
+          await deleteDoc(cardRef);
+          console.log("Card deleted successfully");
+        } catch (error) {
+          console.error("Error deleting card:", error);
+          alert("Failed to delete card. Please try again.");
+          cardElementToRemove.classList.remove("fade-out");
+        }
       }
     };
-
     container.appendChild(fragment);
   });
 }

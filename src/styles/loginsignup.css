@@ -1,0 +1,71 @@
+/* .auth-image {
+  display: block; 
+  margin: 0 auto 30px auto;
+
+  width: 100%; 
+  max-width: 420px;
+
+  height: 260px;
+  object-fit: cover;
+
+  border-radius: 10px;
+} */
+
+/* Entrance animation for auth-image */
+.auth-image {
+  display: block;
+  margin: 0 auto 30px auto;
+  width: 100%;
+  max-width: 420px;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 10px;
+
+  /* Entrance animation */
+  opacity: 0;                 /* start invisible */
+  transform: translateY(-50px); /* start slightly above */
+  animation: slideFadeIn 1s ease-out forwards;
+}
+
+/* Define the animation */
+@keyframes slideFadeIn {
+  to {
+    opacity: 1;               /* fade in */
+    transform: translateY(0); /* slide to original position */
+  }
+}
+
+
+/* Add nice spacing between form inputs */
+#loginView .form-control,
+#signupView .form-control {
+  padding: 12px;
+  margin-bottom: 18px;
+}
+
+#loginView button,
+#signupView button {
+  padding: 12px;
+  font-size: 16px;
+}
+
+#loginView small,
+#signupView small {
+  margin-top: 20px;
+  display: block;
+}
+
+/* Inputs and buttons in login/signup forms */
+#loginForm .form-control,
+#loginForm button,
+#signupForm .form-control,
+#signupForm button {
+  border-radius: 12px;  /* adjust this for more or less rounding */
+}
+
+/* Optional: make button text bold and slightly bigger */
+#loginForm button,
+#signupForm button {
+  font-weight: 500;
+  font-size: 16px;
+}

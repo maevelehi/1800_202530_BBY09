@@ -22,6 +22,13 @@
   <body class="d-flex flex-column min-vh-100">
     <site-navbar></site-navbar>
 
+    <img
+      id="userAvatar"
+      src=""
+      alt="User Avatar"
+      style="width: 40px; height: 40px; border-radius: 50%"
+    />
+
     <div class="main-container flex-fill pb-5">
       <div class="content-wrapper">
         <div class="top-info-grid">
@@ -29,7 +36,6 @@
             <h1 class="page-title">Home</h1>
           </div>
 
-          <!-- Filter Bar 插入开始 -->
           <div id="filter-bar" class="filter-bar" style="margin-top: 18px">
             <select id="topicFilter" class="filter-select">
               <option value="">Select Topic</option>
@@ -41,7 +47,6 @@
 
             <button id="clearFilter" class="filter-clear-btn">Clear</button>
           </div>
-          <!-- Filter Bar 插入结束 -->
 
           <!-- Move dropdown here and add positioning class -->
           <div class="dropdown-container">
@@ -113,5 +118,6 @@
     <script type="module" src="./src/csvUpload.js"></script>
     <script type="module" src="/src/app.js"></script>
     <script type="module" src="./src/searchFilter.js"></script>
+    <script type="module" src="./src/userprofilepicture.js"></script>
   </body>
 </html>

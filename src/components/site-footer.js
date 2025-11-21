@@ -11,7 +11,7 @@ class SiteFooter extends HTMLElement {
     this.innerHTML = `
     <footer class="fixed-bottom w-100 d-flex justify-content-center">
       <div class="bg-primary rounded-pill shadow-lg d-flex w-100 justify-content-around align-items-center" 
-           style="max-width: 1600px; padding: 8px 16px; height: 62px;">
+           style="max-width: 1600px; padding: 35px 16px; height: 62px;">
         <!-- Home -->
         <a href="/home.html" class="nav-link d-flex flex-column align-items-center px-3 py-1 rounded-pill">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

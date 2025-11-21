@@ -324,3 +324,15 @@ site-navbar {
 .filter-clear-btn:hover {
   background-color: #005f87;
 }
+
+#userAvatar {
+  position: fixed;
+  top: 10px;
+  right: 100px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  z-index: 1001;
+  border: 2px solid white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}

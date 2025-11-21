@@ -6,19 +6,29 @@ import {
   onSnapshot,
   deleteDoc,
   doc,
+  addDoc,
+  serverTimestamp,
 } from "firebase/firestore";
 import { db } from "./firebaseConfig.js";
+import { onAuthReady } from "./authentication.js";
 
 let allCards = [];
 let topicsData = {}; // { topic: [chapters] }
 let selectedTopic = "";
 let selectedChapter = "";
+let currentUser = null;
 
 // Entry point – call this from your app with the current userGroup
 export function initSearchFilter(userGroup) {
   console.log("Initialize the filtering function, user group:", userGroup);
-  initFilterControls();
-  loadCardsData(userGroup);
+  onAuthReady((user) => {
+    if (user) {
+      currentUser = user;
+      console.log("User authenticated:", user.uid);
+    }
+    initFilterControls();
+    loadCardsData(userGroup);
+  });
 }
 
 /* ==================== Initialize the drop-down control ==================== */
@@ -121,9 +131,9 @@ function loadCardsData(userGroup) {
     });
 
     console.log("Data processing completed: ", {
-      可用卡片数: allCards.length,
-      发现的Topic数量: Object.keys(topicsData).length,
-      Topic结构: topicsData,
+      TheNumberOfAvailableCards: allCards.length,
+      TheNumberOfTopic: Object.keys(topicsData).length,
+      Topic: topicsData,
     });
 
     // Render Topic drop-down options
@@ -204,8 +214,8 @@ function applyFilter() {
   // If nothing is chosen, keep allCards
 
   console.log("filtered results:", {
-    总卡片数: allCards.length,
-    筛选后: filteredCards.length,
+    TotalCards: allCards.length,
+    AfterFilter: filteredCards.length,
   });
 
   renderFilteredCards(container, filteredCards);
@@ -249,9 +259,21 @@ function renderFilteredCards(container, cards) {
 
     // flip-btn
     const flipBtn = cardElement.querySelector(".flip-btn");
-    flipBtn.onclick = () => {
+    flipBtn.onclick = async () => {
       const isHidden = answerEl.style.display === "none";
       answerEl.style.display = isHidden ? "block" : "none";
+
+      try {
+        const logsRef = collection(db, "flipLogs");
+        await addDoc(logsRef, {
+          uid: currentUser.uid,
+          cardId: card.id,
+          timestamp: serverTimestamp(),
+        });
+        console.log("Flip logged for card:", card.id);
+      } catch (error) {
+        console.error("Error logging flip:", error);
+      }
     };
 
     // // Delete Button (Here you can connect to the actual deletion logic)

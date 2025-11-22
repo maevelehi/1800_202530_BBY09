@@ -16,7 +16,7 @@ class SiteNavbar extends HTMLElement {
   <nav class="navbar bg-body-tertiary bg-info">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">
-        <img src="/images/logo.png" height="36">
+        <img src="/images/transparent-logo.png" height="36">
          
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">

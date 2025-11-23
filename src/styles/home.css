@@ -336,3 +336,25 @@ site-navbar {
   border: 2px solid white;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
+
+.card-total {
+  background-color: #f6f4ff !important;
+}
+
+.card-studied {
+  background-color: #fef2e6 !important;
+}
+
+/* Make sure text-muted doesn't override your color */
+.card-total p,
+.card-total h2 {
+  color: #8e85bb !important;
+}
+
+.card-studied p,
+.card-studied h2 {
+  color: #c79261 !important;
+}
+
+
+

@@ -6,7 +6,7 @@ body {
   margin: 0;
 }
 .bg.info {
-  background-color: important!;
+  background-color: !important;
 }
 .container {
   margin: 0 auto;

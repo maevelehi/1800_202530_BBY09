@@ -17,8 +17,10 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-
-    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
@@ -32,23 +34,25 @@
     <!-- Main content goes here -->
 
     <form class="container">
-      <div class="card-body">
-        <h1 class="card-title ps-3">Create a new flashcard</h1>
-        <br />
-        <!-- <h4>Chapter 1</h4> -->
-        <br />
-      </div>
+      <div
+        class="card-body position-relative d-flex justify-content-center align-items-center"
+      >
+        <!-- Back icon as a button -->
+        <button class="back-btn" id="backBtn">←</button>
+        <!-- Centered heading -->
+        <h1 class="card-title mb-0">Create a new flashcard</h1>
+      </div></br>
 
       <!-- Content here -->
       <!-- front box -->
       <div class="card-body form-group mb-5 ps-3 pe-3">
-        <label for="front" class=" fs-5">Front:</label>
+        <label for="front" class="fs-5">Front:</label>
         <input type="text" id="front" class="form-control cb-info" />
       </div>
 
       <!-- back box -->
       <div class="card-body form-group mb-5 mt-3, ps-3 pe-3">
-        <label for="back" class=" fs-5">Back:</label>
+        <label for="back" class="fs-5">Back:</label>
         <textarea
           class="form-control cb-info"
           rows="5"
@@ -58,10 +62,10 @@
       </div>
 
       <!-- dropdown for label -->
-      <div class="card-body form-group dropdown mb-3 mt-5 ps-3 pe-3 ">
+      <div class="card-body form-group dropdown mb-3 mt-5 ps-3 pe-3">
         <div class="d-flex align-items-center gap-2">
           <!-- <span>Label:</span> -->
-          <div class="drop-down ">
+          <div class="drop-down">
             <button
               class="btn btn-secondary dropdown-toggle"
               type="button"
@@ -83,74 +87,42 @@
                 </button>
               </li>
               <li>
-                <button
-                  class="dropdown-item"
-                  type="button"
-                  id="chap3"
-                >
+                <button class="dropdown-item" type="button" id="chap3">
                   Chapter 3
                 </button>
               </li>
               <li>
-                <button
-                  class="dropdown-item"
-                  type="button"
-                  id="chap4"
-                >
+                <button class="dropdown-item" type="button" id="chap4">
                   Chapter 4
                 </button>
               </li>
               <li>
-                <button
-                  class="dropdown-item"
-                  type="button"
-                  id="chap5"
-                >
+                <button class="dropdown-item" type="button" id="chap5">
                   Chapter 5
                 </button>
               </li>
               <li>
-                <button
-                  class="dropdown-item"
-                  type="button"
-                  id="chap6"
-                >
+                <button class="dropdown-item" type="button" id="chap6">
                   Chapter 6
                 </button>
               </li>
               <li>
-                <button
-                  class="dropdown-item"
-                  type="button"
-                  id="chap7"
-                >
+                <button class="dropdown-item" type="button" id="chap7">
                   Chapter 7
                 </button>
               </li>
               <li>
-                <button
-                  class="dropdown-item"
-                  type="button"
-                  id="chap8"
-                >
+                <button class="dropdown-item" type="button" id="chap8">
                   Chapter 8
                 </button>
               </li>
               <li>
-                <button
-                  class="dropdown-item"
-                  type="button"
-                  id="chap9"
-                >
+                <button class="dropdown-item" type="button" id="chap9">
                   Chapter 9
                 </button>
               </li>
               <li>
-                <button
-                  class="dropdown-item"
-                  type="button"
-                  id="chap10"
-                >
+                <button class="dropdown-item" type="button" id="chap10">
                   Chapter 10
                 </button>
               </li>
@@ -185,38 +157,22 @@
                 </button>
               </li>
               <li>
-                <button
-                  class="dropdown-item"
-                  type="button"
-                  id="1113"
-                >
+                <button class="dropdown-item" type="button" id="1113">
                   Comp 1113
                 </button>
               </li>
               <li>
-                <button
-                  class="dropdown-item"
-                  type="button"
-                  id="1800"
-                >
-                  Comp 1800 
+                <button class="dropdown-item" type="button" id="1800">
+                  Comp 1800
                 </button>
               </li>
               <li>
-                <button
-                  class="dropdown-item"
-                  type="button"
-                  id="1116"
-                >
+                <button class="dropdown-item" type="button" id="1116">
                   Comm 1116
                 </button>
               </li>
               <li>
-                <button
-                  class="dropdown-item"
-                  type="button"
-                  id="1712"
-                >
+                <button class="dropdown-item" type="button" id="1712">
                   Comp 1712
                 </button>
               </li>
@@ -228,7 +184,13 @@
       <br />
       <!-- save button -->
       <div class="card-body d-flex justify-content-center">
-        <button id="submit" class="btn btn-primary mb-5 rounded-pill px-4 py-3 fs-5" type="button">Save</button>
+        <button
+          id="submit"
+          class="btn btn-primary mb-5 rounded-pill px-4 py-2 fs-5"
+          type="button"
+        >
+          Save
+        </button>
       </div>
     </form>
 
@@ -241,6 +203,5 @@
     <script type="module" src="/src/app.js"></script>
     <script type="module" src="/src/main.js"></script>
     <script type="module" src="/src/create-card.js"></script>
-
   </body>
 </html>

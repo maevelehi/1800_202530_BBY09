@@ -81,3 +81,13 @@ body {
     height: 250px;
   }
 }
+.back-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: black;
+  padding: 5px 10px;
+  position: absolute;
+  left: 0.5rem; /* distance from the left edge */
+}

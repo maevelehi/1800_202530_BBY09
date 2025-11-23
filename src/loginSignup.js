@@ -1,10 +1,5 @@
 // -------------------------------------------------------------
 // src/loginSignup.js
-// -------------------------------------------------------------
-// Part of the COMP1800 Projects 1 Course (BCIT).
-// Starter code provided for students to use and adapt.
-// Manages the login/signup form behaviour and redirects.
-// -------------------------------------------------------------
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap";
@@ -18,12 +13,25 @@ import { loginUser, signupUser, authErrorMessage } from "./authentication.js";
 function initAuthUI() {
   // --- DOM Elements ---
   const alertEl = document.getElementById("authAlert");
+  // const loginAlertEl = document.getElementById("loginAlert");
+  // const signupAlertEl = document.getElementById("signupAlert");
   const loginView = document.getElementById("loginView");
   const signupView = document.getElementById("signupView");
   const toSignupBtn = document.getElementById("toSignup");
   const toLoginBtn = document.getElementById("toLogin");
   const loginForm = document.getElementById("loginForm");
   const signupForm = document.getElementById("signupForm");
+
+  // // --- Error functions ---
+  // function showLoginError(msg) {
+  //   loginAlertEl.textContent = msg || "";
+  //   loginAlertEl.classList.remove("d-none");
+  // }
+
+  // function showSignupError(msg) {
+  //   signupAlertEl.textContent = msg || "";
+  //   signupAlertEl.classList.remove("d-none");
+  // }
 
   // Define redirect URLs
   const loginRedirectUrl = "/home.html"; // Redirect after login

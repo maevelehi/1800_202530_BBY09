@@ -13,7 +13,6 @@
     <!-- <script type="module" src="/src/components/site-footer.js"></script> -->
 
     <link href="./src/styles/progress-tracking.css" rel="stylesheet">
-
     <!-- footer icon link  -->
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -24,12 +23,18 @@
   <body>
     <!-- our own navbar goes here -->
     <site-navbar></site-navbar>
-    <br />
 
     <!-- Main content goes here -->
-    <div class="container py-4">
-      <!-- Heading -->
+    <div class="container py-4 pb-7">
+      <div
+        class="card-body position-relative d-flex justify-content-center align-items-center"
+      >
+      <button class="back-btn" id="backBtnProgress">←</button>
       <h1 class="mb-4 text-center">Progress Tracking</h1>
+
+      </div>
+
+      <!-- Heading -->
 
       <!-- Week Card -->
       <div class="card rounded-3 p-3 mb-3 mx-5 text-center">
@@ -77,24 +82,7 @@
         🔥 You’re 50% above your weekly average!
       </p>
 
-      <!-- Streak Card -->
-      <!-- <div class="card rounded-3 p-3 d-flex align-items-center mb-3 gap- mx-4">
-        <div class="flex-fill">
-          <h5>🔥 5-Day Streak!</h5>
-          <p>Keep going, consistency is key!</p>
-        </div>
-        <div
-          class="illustration"
-          style="
-            width: 80px;
-            height: 80px;
-            background-color: #d1d5db;
-            border-radius: 0.5rem;
-          "
-        ></div>
-      </div> -->
-
-      <div class="streak-card mx-4">
+      <div class="streak-card mx-4 mb-5">
         <div class="flex-fill">
           <h5 id="streak-count">🔥 5-Day Streak!</h5>
           <p id="streak-msg">Keep going, consistency is key!</p>
@@ -103,37 +91,10 @@
           <img src="images/aladin.png" alt="graph shows consistent">
         
       </div>
-
-      <!-- Motivation Card -->
-      <!-- <div class="card rounded-3 p-3 d-flex align-items-center gap-3 mx-4">
-        <div class="flex-fill">
-          <p>
-            💪 Great job today! Keep the streak alive and your brain will thank
-            you!
-          </p>
-        </div>
-        <div
-          class="illustration"
-        ></div>
-      </div> -->
-      <!-- <div id="motivation-msg" class="motivation-card mx-4">
-        <div class="flex-fill">
-          <p>
-            💪 Great job today! Keep the streak alive and your brain will thank you!
-          </p>
-        </div>
-        <div class="illustration"></div>
-      </div> -->
     </div>
     </div>
-
-    
-
     <!-- our own footer goes here -->
     <site-footer></site-footer>
-
-
-
     <!---------------------------------------------->
     <!-- Your own JavaScript scripts go here      -->
     <!---------------------------------------------->

@@ -15,7 +15,7 @@ class SiteNavbar extends HTMLElement {
     this.innerHTML = `
   <nav class="navbar bg-body-tertiary bg-info">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/">
+      <a class="navbar-brand" href="/home.html">
         <img src="/images/logo.png" height="36">
          
       </a>

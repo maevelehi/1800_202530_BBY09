@@ -25,11 +25,42 @@ document.addEventListener("DOMContentLoaded", () => {
       userGroup = userDoc.data().group || "default";
     }
 
-    // Example: after you know the user's group (e.g., from auth or profile)
     initSearchFilter(userGroup);
 
     // display only cards for this group
     displayCardsFromFirestore(userGroup);
+
+    // ---------------------------------------------
+    // DASHBOARD CARDS
+    // ---------------------------------------------
+
+    // 1. Load TOTAL CARDS for the user's group
+    async function loadTotalCards(group) {
+      const q = query(collection(db, "cards"), where("group", "==", group));
+      const snap = await getDocs(q);
+      document.getElementById("totalCards").textContent = snap.size;
+    }
+
+    // 2. Load STUDIED TODAY using flipLogs
+    async function loadStudiedToday(uid) {
+      const logsRef = collection(db, "flipLogs");
+      const snap = await getDocs(query(logsRef, where("uid", "==", uid)));
+
+      const startOfDay = new Date();
+      startOfDay.setHours(0, 0, 0, 0);
+
+      let count = 0;
+      snap.forEach((doc) => {
+        const ts = doc.data().timestamp?.toDate?.();
+        if (ts && ts >= startOfDay) count++;
+      });
+
+      document.getElementById("studiedToday").textContent = count;
+    }
+
+    // Call both
+    loadTotalCards(userGroup);
+    loadStudiedToday(user.uid);
 
     // manual card creation
     const submitBtn = document.getElementById("submitCard");
@@ -51,7 +82,6 @@ document.addEventListener("DOMContentLoaded", () => {
         createdBy: user.uid,
       });
 
-      // optionally reset form
       document.getElementById("cardForm").reset();
     });
   });

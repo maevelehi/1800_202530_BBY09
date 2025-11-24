@@ -19,16 +19,11 @@ function populateUserInfo() {
             school = "",
             group = "",
             avatarUrl = "",
-            bio = "",
-            mood = "😊 Happy",
           } = userData;
 
           document.getElementById("nameInput").value = name;
           document.getElementById("schoolInput").value = school;
           document.getElementById("groupInput").value = group;
-
-          document.getElementById("bioInput").value = bio;
-          document.getElementById("moodInput").value = mood;
 
           if (avatarUrl) {
             document.getElementById("avatar").src = avatarUrl;
@@ -50,22 +45,13 @@ function populateUserInfo() {
 //-------------------------------------------------------------
 function editUserInfo() {
   document.getElementById("personalInfoFields").disabled = false;
-  document.getElementById("personalDetailsFields").disabled = false;
   document.getElementById("editProfileBtn").textContent = "Save Profile";
 }
 
 //-------------------------------------------------------------
 // Updates the user document in Firestore with new values
 //-------------------------------------------------------------
-async function updateUserDocument(
-  uid,
-  name,
-  school,
-  group,
-  avatarUrl,
-  bio,
-  mood
-) {
+async function updateUserDocument(uid, name, school, group, avatarUrl) {
   try {
     const userRef = doc(db, "users", uid);
     await updateDoc(userRef, {
@@ -73,8 +59,6 @@ async function updateUserDocument(
       school,
       group,
       avatarUrl,
-      bio,
-      mood,
       lastUpdated: new Date(),
     });
     console.log("User document successfully updated!");
@@ -95,15 +79,11 @@ async function saveUserProfile() {
   const schoolInput = document.getElementById("schoolInput");
   const groupInput = document.getElementById("groupInput");
   const avatar = document.getElementById("avatar");
-  const bioInput = document.getElementById("bioInput");
-  const moodInput = document.getElementById("moodInput");
 
   const name = nameInput?.value.trim();
   const school = schoolInput?.value.trim();
   const group = groupInput?.value;
   const avatarUrl = avatar.src;
-  const bio = bioInput?.value.trim();
-  const mood = moodInput?.value;
 
   if (!name || !school) {
     alert("Please fill in all required fields (Name and School).");
@@ -111,18 +91,9 @@ async function saveUserProfile() {
   }
 
   try {
-    await updateUserDocument(
-      user.uid,
-      name,
-      school,
-      group,
-      avatarUrl,
-      bio,
-      mood
-    );
+    await updateUserDocument(user.uid, name, school, group, avatarUrl);
 
     document.getElementById("personalInfoFields").disabled = true;
-    document.getElementById("personalDetailsFields").disabled = true;
 
     document.getElementById("editProfileBtn").textContent = "Edit Profile";
 
@@ -155,11 +126,8 @@ document.addEventListener("DOMContentLoaded", () => {
     editProfileBtn.addEventListener("click", function () {
       const personalInfoDisabled =
         document.getElementById("personalInfoFields").disabled;
-      const personalDetailsDisabled = document.getElementById(
-        "personalDetailsFields"
-      ).disabled;
 
-      if (personalInfoDisabled || personalDetailsDisabled) {
+      if (personalInfoDisabled) {
         editUserInfo();
       } else {
         saveUserProfile();

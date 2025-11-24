@@ -15,21 +15,21 @@ class SiteNavbar extends HTMLElement {
     this.innerHTML = `
   <nav class="navbar bg-body-tertiary bg-info">
     <div class="container-fluid">
+      <a class="navbar-brand" href="/home.html">
+        <img src="/images/transparent-logo.png" height="43">
+      </a>
+
       <div class="d-flex align-items-center">
-        <button class="navbar-toggler me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <img
+          id="userAvatar"
+          src="/images/profilePicture.png"
+          alt="User Avatar"
+          style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; margin-right: 10px;"
+        />
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation" >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="/home.html">
-          <img src="/images/logo.png" height="36">
-        </a>
       </div>
-
-      <img
-        id="userAvatar"
-        src="/images/profilePicture.png"
-        alt="User Avatar"
-        style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;"
-      />
 
       <div class="offcanvas offcanvas-end w-75" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
         <div class="offcanvas-header">

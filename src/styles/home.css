@@ -286,7 +286,7 @@ site-navbar {
 }
 
 .filter-dropdown-menu {
-  min-width: 280px;
+  min-width: 240px !important;
   border: 1px solid #dee2e6;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -373,7 +373,6 @@ site-navbar {
   .filter-dropdown-container {
     grid-column: 1;
     grid-row: 2;
-    width: 100%;
   }
   
   .dropdown-container {
@@ -381,7 +380,6 @@ site-navbar {
     grid-row: 2;
     width: 100%;
   }
-  
   .drop-down,
   .filter-toggle-btn {
     width: 100%;
@@ -415,35 +413,6 @@ site-navbar {
   color: white;
   border-radius: 6px;
   cursor: pointer;
-}
-
-.chapter-label1,
-.chapter-label2,
-.chapter-label3,
-.chapter-label4,
-.chapter-label5 {
-  position: absolute;
-  left: 10px; /* Changed from right to left */
-  top: 5px; /* Changed to fixed top position */
-  transform: none; /* Removed transform */
-  padding: 15px 10px;
-  border-radius: 3px;
-  font-size: 1.2em;
-  /* make font bold now for it */
-  font-weight: bold;
-}
-
-
-#userAvatar {
-  position: fixed;
-  top: 15px;
-  right: 20px;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  z-index: 1001;
-  border: 2px solid white;
-  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); */
 }
 
 .card-total {

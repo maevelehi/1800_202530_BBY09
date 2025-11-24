@@ -38,7 +38,8 @@ document.addEventListener("DOMContentLoaded", () => {
     async function loadTotalCards(group) {
       const q = query(collection(db, "cards"), where("group", "==", group));
       const snap = await getDocs(q);
-      document.getElementById("totalCards").textContent = snap.size;
+      const el = document.getElementById("totalCards");
+      if (el) el.textContent = snap.size; // only update if exists
     }
 
     // 2. Load STUDIED TODAY using flipLogs
@@ -55,7 +56,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (ts && ts >= startOfDay) count++;
       });
 
-      document.getElementById("studiedToday").textContent = count;
+      const el = document.getElementById("studiedToday");
+      if (el) el.textContent = count; // only update if exists
     }
 
     // Call both
@@ -106,7 +108,7 @@ if (container) {
     if (event.target.classList.contains("flip-btn")) {
       const questionCard = event.target.closest(".question-card");
       questionCard.classList.toggle("flipped");
-      questionCard.style.backgroundColor = "lightyellow";
+      questionCard.style.backgroundColor = "white";
     }
   });
 }

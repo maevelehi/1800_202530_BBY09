@@ -91,3 +91,15 @@ body {
   position: absolute;
   left: 0.5rem; /* distance from the left edge */
 }
+
+.card.weekcard {
+  background-color: #f6f4ff !important;
+  border: none;
+  color: #716a95 !important;
+}
+
+.card.totalToday, .card.avg7day {
+  border: 0.px solid #6b6394;
+  background-color: #f6f4ff !important;
+  color: #6b6394 !important;
+}

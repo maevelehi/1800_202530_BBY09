@@ -101,15 +101,13 @@ document.addEventListener("DOMContentLoaded", () => {
 // });
 
 const container = document.querySelector(".questions-list");
-if (container) {
-  container.addEventListener("click", (event) => {
-    if (event.target.classList.contains("flip-btn")) {
-      const questionCard = event.target.closest(".question-card");
-      questionCard.classList.toggle("flipped");
-      questionCard.style.backgroundColor = "white";
-    }
-  });
-}
+
+container?.addEventListener("click", (event) => {
+  if (event.target.classList.contains("flip-btn")) {
+    const card = event.target.closest(".question-card");
+    card.classList.toggle("flipped");
+  }
+});
 
 // //--------------------------------------------------------------
 // // Custom global JS code (shared with all pages)can go here.

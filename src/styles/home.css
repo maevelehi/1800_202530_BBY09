@@ -65,6 +65,7 @@ site-navbar {
 }
 
 .drop-down {
+  display: inline-block;
   background: #fda83a;
   color: #fbf7f7;
   border: none;
@@ -75,7 +76,7 @@ site-navbar {
   margin: 0;
   position: relative;
   padding: 0px 5px;
-  z-index: 9999; /* <-- FIX */
+  z-index: 1; /* <-- FIX */
 }
 
 .drop-down-container {
@@ -87,6 +88,13 @@ site-navbar {
   background: #f7a950;
   cursor: pointer;
   transform: scale(1.03);
+}
+.add-card-btn:focus,
+.add-card-btn:active,
+.add-card-btn:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
 }
 
 .questions-list {
@@ -138,7 +146,12 @@ site-navbar {
 .chapter-label2,
 .chapter-label3,
 .chapter-label4,
-.chapter-label5 {
+.chapter-label5,
+.chapter-label6,
+.chapter-label7,
+.chapter-label8,
+.chapter-label9,
+.chapter-label10 {
   position: absolute;
   left: 10px; /* Changed from right to left */
   top: 5px; /* Changed to fixed top position */
@@ -163,6 +176,21 @@ site-navbar {
 }
 .chapter-label5 {
   color: #8c1cf6;
+}
+.chapter-label6 {
+  color: #00d567;
+}
+.chapter-label7 {
+  color: #f61ce8;
+}
+.chapter-label8 {
+  color: #f61c1c;
+}
+.chapter-label9 {
+  color: #ddf61c;
+}
+.chapter-label10 {
+  color: #1cddf6;
 }
 
 .flip-btn {
@@ -213,7 +241,7 @@ site-navbar {
 .remove-btn {
   position: absolute;
   top: 21%;
-  right: 4.3%;
+  right: 7.3%;
   transform: translateY(-50%);
   width: 25px;
   height: 25px;
@@ -436,5 +464,3 @@ site-navbar {
 .card-studied h2 {
   color: #c79261 !important;
 }
-
-

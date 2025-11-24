@@ -9,8 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Web Components for shared navbar and footer layout -->
-    <script type="module" src="/src/components/site-navbar.js"></script>
+    <script type="module" src="/src/components/site-navbarbefore.js"></script>
     <!-- <script type="module" src="/src/components/site-footer.js"></script> -->
+
+    <link rel="stylesheet" href="./src/styles/index.css" />
 
     <!-- footer icon link  -->
     <link
@@ -52,7 +54,7 @@
           src="/images/transparent-logo.png"
           alt=""
           width="72"
-          height="57"
+          height="80"
         />
         <h1 class="display-5 fw-bold">
           Welcome to FlipIt, <span id="name-goes-here">my friend!</span>
@@ -64,7 +66,7 @@
             <button
               onclick="window.location.href='login.html'"
               type="button"
-              class="btn btn-info btn-lg"
+              class="btn-login-signup btn-lg"
             >
               Login/Signup
             </button>

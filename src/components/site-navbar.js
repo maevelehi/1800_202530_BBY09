@@ -42,10 +42,10 @@ class SiteNavbar extends HTMLElement {
               <a class="nav-link active" aria-current="page" href="/home.html">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="/profile">Profile</a>
+              <a class="nav-link active" href="/profile.html">Profile</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="/progress-tracking">Progress Tracking</a>
+              <a class="nav-link active" href="/progress-tracking.html">Progress Tracking</a>
             </li>
           </ul>
         

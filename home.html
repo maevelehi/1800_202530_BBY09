@@ -34,18 +34,64 @@
         <div class="top-info-grid">
           <div class="deck-info">
             <h1 class="page-title">Home</h1>
+
+            <!-- NEW DASHBOARD CARDS -->
+              <div class="row g-3 mt-2">
+                <div class="col-6">
+                  <div class="card text-center p-3 card-total border-0">
+                    <h2 id="totalCards" class="fw-bold mb-1">0</h2>
+                    <p class="text-muted mb-0">Total Cards</p>
+                  </div>
+                </div>
+
+                <div class="col-6">
+                  <div
+                    class="card text-center p-3 shadow-sm card-studied border-0"
+                  >
+                    <h2 id="studiedToday" class="fw-bold mb-1">0</h2>
+                    <p class="text-muted mb-0">Studied Cards</p>
+                  </div>
+                </div>
+              </div>
+
+            <!-- END DASHBOARD CARDS -->
           </div>
 
-          <div id="filter-bar" class="filter-bar" style="margin-top: 18px">
-            <select id="topicFilter" class="filter-select">
-              <option value="">Select Topic</option>
-            </select>
-
-            <select id="chapterFilter" class="filter-select" disabled>
-              <option value="">Select Chapter</option>
-            </select>
-
-            <button id="clearFilter" class="filter-clear-btn">Clear</button>
+          <div class="filter-dropdown-container">
+            <button
+              class="btn filter-toggle-btn"
+              type="button"
+              id="filterToggle"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <span class="material-icons">filter_list</span>
+              Filter
+            </button>
+            <div class="dropdown-menu filter-dropdown-menu p-3">
+              <div class="filter-content">
+                <h6 class="filter-title">Filter Cards</h6>
+                <div class="filter-controls">
+                  <div class="mb-3">
+                    <label for="topicFilter" class="form-label">Topic</label>
+                    <select id="topicFilter" class="form-select filter-select">
+                      <option value="">Select Topic</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="chapterFilter" class="form-label">Chapter</label>
+                    <select id="chapterFilter" class="form-select filter-select" disabled>
+                      <option value="">Select Chapter</option>
+                    </select>
+                  </div>
+                  <div class="filter-actions">
+                    <button id="clearFilter" class="btn btn-outline-secondary btn-sm">
+                      Clear Filter
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <!-- Move dropdown here and add positioning class -->

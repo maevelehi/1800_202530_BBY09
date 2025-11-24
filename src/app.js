@@ -25,11 +25,42 @@ document.addEventListener("DOMContentLoaded", () => {
       userGroup = userDoc.data().group || "default";
     }
 
-    // Example: after you know the user's group (e.g., from auth or profile)
     initSearchFilter(userGroup);
 
     // display only cards for this group
     displayCardsFromFirestore(userGroup);
+
+    // ---------------------------------------------
+    // DASHBOARD CARDS
+    // ---------------------------------------------
+
+    // 1. Load TOTAL CARDS for the user's group
+    async function loadTotalCards(group) {
+      const q = query(collection(db, "cards"), where("group", "==", group));
+      const snap = await getDocs(q);
+      document.getElementById("totalCards").textContent = snap.size;
+    }
+
+    // 2. Load STUDIED TODAY using flipLogs
+    async function loadStudiedToday(uid) {
+      const logsRef = collection(db, "flipLogs");
+      const snap = await getDocs(query(logsRef, where("uid", "==", uid)));
+
+      const startOfDay = new Date();
+      startOfDay.setHours(0, 0, 0, 0);
+
+      let count = 0;
+      snap.forEach((doc) => {
+        const ts = doc.data().timestamp?.toDate?.();
+        if (ts && ts >= startOfDay) count++;
+      });
+
+      document.getElementById("studiedToday").textContent = count;
+    }
+
+    // Call both
+    loadTotalCards(userGroup);
+    loadStudiedToday(user.uid);
 
     // manual card creation
     const submitBtn = document.getElementById("submitCard");
@@ -51,44 +82,34 @@ document.addEventListener("DOMContentLoaded", () => {
         createdBy: user.uid,
       });
 
-      // optionally reset form
       document.getElementById("cardForm").reset();
     });
   });
 });
 
 // Attach event listener to the parent container
-document.querySelector(".questions-list").addEventListener("click", (event) => {
-  // Check if the clicked element is a flip button
-  if (event.target.classList.contains("flip-btn")) {
-    console.log("Flip button clicked");
-
-    // Get the parent question card
-    const questionCard = event.target.closest(".question-card");
-
-    // Check if the question card is already flipped
-    if (questionCard.classList.contains("flipped")) {
-      // Remove the flip class to unflip it
-      questionCard.classList.remove("flipped");
-      return;
-    }
-
-    // Add the flip class for the animation
-    questionCard.classList.toggle("flipped");
-    questionCard.style.backgroundColor = "lightyellow";
-  }
-});
-
-// const container = document.querySelector(".questions-list");
-// if (container) {
-//   container.addEventListener("click", (event) => {
-//     if (event.target.classList.contains("flip-btn")) {
-//       const questionCard = event.target.closest(".question-card");
-//       questionCard.classList.toggle("flipped");
-//       questionCard.style.backgroundColor = "lightyellow";
+// document.querySelector(".questions-list").addEventListener("click", (event) => {
+//   if (event.target.classList.contains("flip-btn")) {
+//     const questionCard = event.target.closest(".question-card");
+//     if (questionCard.classList.contains("flipped")) {
+//       questionCard.classList.remove("flipped");
+//       return;
 //     }
-//   });
-// }
+//     questionCard.classList.toggle("flipped");
+//     questionCard.style.backgroundColor = "lightyellow";
+//   }
+// });
+
+const container = document.querySelector(".questions-list");
+if (container) {
+  container.addEventListener("click", (event) => {
+    if (event.target.classList.contains("flip-btn")) {
+      const questionCard = event.target.closest(".question-card");
+      questionCard.classList.toggle("flipped");
+      questionCard.style.backgroundColor = "lightyellow";
+    }
+  });
+}
 
 // //--------------------------------------------------------------
 // // Custom global JS code (shared with all pages)can go here.

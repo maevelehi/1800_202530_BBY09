@@ -259,22 +259,22 @@ function renderFilteredCards(container, cards) {
 
     // flip-btn
     const flipBtn = cardElement.querySelector(".flip-btn");
-    // flipBtn.onclick = async () => {
-    //   const isHidden = answerEl.style.display === "none";
-    //   answerEl.style.display = isHidden ? "block" : "none";
+    flipBtn.onclick = async () => {
+      const isHidden = answerEl.style.display === "none";
+      answerEl.style.display = isHidden ? "block" : "none";
 
-    //   try {
-    //     const logsRef = collection(db, "flipLogs");
-    //     await addDoc(logsRef, {
-    //       uid: currentUser.uid,
-    //       cardId: card.id,
-    //       timestamp: serverTimestamp(),
-    //     });
-    //     console.log("Flip logged for card:", card.id);
-    //   } catch (error) {
-    //     console.error("Error logging flip:", error);
-    //   }
-    // };
+      try {
+        const logsRef = collection(db, "flipLogs");
+        await addDoc(logsRef, {
+          uid: currentUser.uid,
+          cardId: card.id,
+          timestamp: serverTimestamp(),
+        });
+        console.log("Flip logged for card:", card.id);
+      } catch (error) {
+        console.error("Error logging flip:", error);
+      }
+    };
 
     // // Delete Button (Here you can connect to the actual deletion logic)
     const removeBtn = cardElement.querySelector(".remove-btn");

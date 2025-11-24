@@ -42,6 +42,17 @@ import { db } from "./firebaseConfig.js";
 import { collection, addDoc, doc, getDoc } from "firebase/firestore";
 import { onAuthReady } from "./authentication.js"; // make sure you import this
 
+document.addEventListener("DOMContentLoaded", () => {
+  const backButton = document.getElementById("backBtn");
+  if (backButton) {
+    backButton.addEventListener("click", (e) => {
+      e.preventDefault(); // prevent form submit
+      window.history.back();
+    });
+  }
+});
+
+
 // update btn with selected option
 document.querySelectorAll(".drop-down").forEach((drop) => {
   const btn = drop.querySelector(".dropdown-toggle");

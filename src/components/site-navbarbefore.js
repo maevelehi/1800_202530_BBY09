@@ -15,9 +15,9 @@ class SiteNavbar extends HTMLElement {
     this.innerHTML = `
   <nav class="navbar bg-body-tertiary bg-info">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/">
+      <a class="navbar-brand" href="/home.html">
         <img src="/images/logo.png" height="36">
-         FlipIt
+      
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -51,7 +51,7 @@ class SiteNavbar extends HTMLElement {
     authControls.innerHTML = `<div class="btn btn-outline-light" style="visibility: hidden; min-width: 80px;">Log out</div>`;
 
     onAuthStateChanged(auth, (user) => {
-      let updatedAuthControl;
+      let updatedAuthControl;y
       if (user) {
         updatedAuthControl = `<button class="btn btn-outline-dark" id="signOutBtn" type="button" style="min-width: 80px;">Log out</button>`;
         authControls.innerHTML = updatedAuthControl;

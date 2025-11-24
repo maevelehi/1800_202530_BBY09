@@ -3,17 +3,50 @@
 }
 
 .cb-info {
-  background-color: #caf0f8;
+  background-color: #e7e9eb;
 }
 
-.btn-secondary {
+/* .btn-secondary {
   background-color: #00b4d8;
 }
 
 .btn-primary {
   background-color: #00b4d8;
-}
+} */
 
 .Create-account {
   color-scheme: #00b4d8;
 }
+
+.btn-primary, .btn-secondary {
+  background-color: #4868fa !important;
+  border-color: #4361ee !important;
+  color: white !important;
+}
+
+/* Keep same color on hover/click/focus */
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.show > .btn-primary.dropdown-toggle,
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn-secondary:active,
+.btn-secondary.active,
+.show > .btn-secondary.dropdown-toggle {
+  background-color: #4868fa !important;
+  border-color: #4868fa !important;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: black;
+  padding: 5px 10px;
+  position: absolute;
+  left: 0.3rem; /* distance from the left edge */
+}
+

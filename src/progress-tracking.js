@@ -2,6 +2,16 @@ import { db } from "./firebaseConfig.js";
 import { collection, getDocs, query, where, orderBy, serverTimestamp  } from "firebase/firestore";
 import { onAuthReady } from "./authentication.js";
 
+document.addEventListener("DOMContentLoaded", () => {
+  const backButton = document.getElementById("backBtnProgress");
+  if (backButton) {
+    backButton.addEventListener("click", (e) => {
+      e.preventDefault(); // prevent form submit
+      window.history.back();
+    });
+  }
+});
+
 // entry
 onAuthReady(async (user) => {
   if (!user) return;

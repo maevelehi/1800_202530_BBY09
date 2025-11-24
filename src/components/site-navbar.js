@@ -16,7 +16,7 @@ class SiteNavbar extends HTMLElement {
   <nav class="navbar bg-body-tertiary bg-info">
     <div class="container-fluid">
       <a class="navbar-brand" href="/home.html">
-        <img src="/images/logo.png" height="36">
+        <img src="/images/transparent-logo.png" height="36">
          
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
@@ -33,10 +33,10 @@ class SiteNavbar extends HTMLElement {
               <a class="nav-link active" aria-current="page" href="/home.html">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="/profile">Profile</a>
+              <a class="nav-link active" href="/profile.html">Profile</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="/progress-tracking">Progress Tracking</a>
+              <a class="nav-link active" href="/progress-tracking.html">Progress Tracking</a>
             </li>
           </ul>
         

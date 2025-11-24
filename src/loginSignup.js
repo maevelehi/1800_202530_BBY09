@@ -112,14 +112,15 @@ function initAuthUI() {
     const name = document.querySelector("#signupName")?.value?.trim() ?? "";
     const email = document.querySelector("#signupEmail")?.value?.trim() ?? "";
     const password = document.querySelector("#signupPassword")?.value ?? "";
-    if (!name || !email || !password) {
-      showError("Please fill in name, email, and password.");
+    const group = document.querySelector("#signupSet")?.value ?? "";
+    if (!name || !email || !password || !group) {
+      showError("Please fill in name, email, password, and group.");
       return;
     }
     setSubmitDisabled(signupForm, true);
     try {
-      await signupUser(name, email, password);
-      location.href = signupRedirectUrl; // Redirect to profile.html after signup
+      await signupUser(name, email, password, group);
+      window.location.href = "./home.html"; // Redirect to home.html after signup
     } catch (err) {
       showError(authErrorMessage(err));
       console.error(err);

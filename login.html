@@ -8,8 +8,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Web Components for shared navbar and footer layout -->
-    <script type="module" src="/src/components/site-navbarbefore.js"></script>
     <!-- <script type="module" src="/src/components/site-footer.js"></script> -->
 
     <!-- footer icon link  -->
@@ -31,14 +29,14 @@
     <!-- Main content goes here -->
     <div class="container py-5" style="max-width: 420px">
       <div id="authAlert" class="alert alert-danger d-none" role="alert"></div>
-      
-      <!-- Login change needed--> 
+
+      <!-- Login change needed-->
       <div id="loginView">
         <img
-          src="/images/login2.jpg" 
+          src="/images/login2.jpg"
           alt="Login illustration"
           class="auth-image"
-        />   
+        />
 
         <h3 class="mb-3 text-center">Login</h3>
         <form id="loginForm" novalidate>
@@ -105,6 +103,17 @@
               placeholder="Password"
               required
             />
+            <div class="mb-3">
+              <select id="signupSet" class="form-control" required>
+                <option value="">Select a group</option>
+                <option value="Set A">Set A</option>
+                <option value="Set B">Set B</option>
+                <option value="Set C">Set C</option>
+                <option value="Set D">Set D</option>
+                <option value="Set E">Set E</option>
+                <option value="Set F">Set F</option>
+              </select>
+            </div>
           </div>
           <button
             type="submit"
@@ -129,6 +138,8 @@
 
     <script type="module" src="/src/app.js"></script>
 
+    <!-- Web Components for shared navbar and footer layout -->
+    <script type="module" src="/src/components/site-navbarbefore.js"></script>
     <!-- Firebase and authentication related scripts -->
     <!-- The order of loading matters -->
     <script type="module" src="/src/firebaseConfig.js"></script>

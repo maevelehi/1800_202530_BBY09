@@ -20,7 +20,7 @@ class SiteNavbar extends HTMLElement {
           <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand" href="/home.html">
-          <img src="/images/logo.png" height="36">
+          <img src="/images/transparent-logo.png" height="36">
         </a>
       </div>
 

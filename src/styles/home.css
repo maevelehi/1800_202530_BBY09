@@ -111,6 +111,7 @@ site-navbar {
 }
 
 .question-card {
+  perspective: 1000px;
   background: #ffffff;
   border-radius: 20px;
   padding: 20px 100px 20px 25px;
@@ -382,4 +383,28 @@ site-navbar {
 .card-studied p,
 .card-studied h2 {
   color: #c79261 !important;
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.card-back {
+  transform: rotateX(180deg);
+}
+
+.card-back * {
+  transform: rotateX(180deg);
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
 }

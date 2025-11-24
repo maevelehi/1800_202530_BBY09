@@ -106,7 +106,7 @@ if (container) {
     if (event.target.classList.contains("flip-btn")) {
       const questionCard = event.target.closest(".question-card");
       questionCard.classList.toggle("flipped");
-      questionCard.style.backgroundColor = "lightyellow";
+      questionCard.style.backgroundColor = "white";
     }
   });
 }

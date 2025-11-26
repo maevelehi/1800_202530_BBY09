@@ -12,7 +12,6 @@ export default defineConfig({
                 login: resolve(__dirname, "login.html"),
                 profile: resolve(__dirname, "profile.html"),
                 "progress-tracking": resolve(__dirname, "progress-tracking.html"),
-                settings: resolve(__dirname, "settings.html"),
                 "create-card": resolve(__dirname, "create-card.html"),
                 home: resolve(__dirname, "home.html")
             }

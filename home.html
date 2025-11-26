@@ -128,23 +128,17 @@
 
         <template id="cardTemplate">
           <div class="question-card">
-            <div class="card-inner">
-
-              <div class="card-front">
-                <div class="chapter-label">
-                  Chapter <span class="chapter-num"></span>
-                </div>
-                <p class="question-text"></p>
-                <button class="flip-btn">Flip</button>
-                <img src="./images/removeIcon.png" alt="Remove" class="remove-btn" />
-              </div>
-
-              <div class="card-back">
-                <p class="answer-text"></p>
-                <button class="flip-btn">Flip</button>
-              </div>
-
+            <div class="chapter-label">
+              Chapter <span class="chapter-num"></span>
             </div>
+
+            <p class="question-text"></p>
+
+            <button class="flip-btn">Flip</button>
+
+            <p class="answer-text" style="display: none;"></p>
+
+            <img src="./images/removeIcon.png" alt="Remove" class="remove-btn" />
           </div>
         </template>
       </div>

@@ -20,7 +20,7 @@ let currentUser = null;
 
 // Entry point – call this from your app with the current userGroup
 export function initSearchFilter(userGroup) {
-  console.log("Initialize the filtering function, user group:", userGroup);
+  // console.log("Initialize the filtering function, user group:", userGroup);
   onAuthReady((user) => {
     if (user) {
       currentUser = user;
@@ -94,16 +94,16 @@ function loadCardsData(userGroup) {
   const cardsRef = collection(db, "cards");
   const q = query(cardsRef, orderBy("createdAt", "desc"));
 
-  console.log("upload cards data from Firebase");
+  // console.log("upload cards data from Firebase");
 
   onSnapshot(q, (snapshot) => {
     allCards = [];
     topicsData = {};
 
-    console.log(
-      "Received data snapshot, total number of cards:",
-      snapshot.size
-    );
+    // console.log(
+    //   "Received data snapshot, total number of cards:",
+    //   snapshot.size
+    // );
 
     snapshot.forEach((docSnapshot) => {
       const card = docSnapshot.data();
@@ -130,11 +130,11 @@ function loadCardsData(userGroup) {
       topicsData[topic] = Array.from(topicsData[topic]);
     });
 
-    console.log("Data processing completed: ", {
-      TheNumberOfAvailableCards: allCards.length,
-      TheNumberOfTopic: Object.keys(topicsData).length,
-      Topic: topicsData,
-    });
+    // console.log("Data processing completed: ", {
+    //   TheNumberOfAvailableCards: allCards.length,
+    //   TheNumberOfTopic: Object.keys(topicsData).length,
+    //   Topic: topicsData,
+    // });
 
     // Render Topic drop-down options
     populateTopicSelect();
@@ -162,7 +162,7 @@ function populateTopicSelect() {
       topicSelect.appendChild(option);
     });
 
-  console.log("The drop-down rendering of Topic is completed");
+  // console.log("The drop-down rendering of Topic is completed");
 }
 
 function populateChapterSelect(topic) {
@@ -170,7 +170,7 @@ function populateChapterSelect(topic) {
   if (!chapterSelect) return;
 
   const chapters = topicsData[topic] || [];
-  console.log(`${topic} :`, chapters);
+  // console.log(`${topic} :`, chapters);
 
   chapterSelect.innerHTML = `<option value="">Select Chapter</option>`;
 
@@ -197,10 +197,10 @@ function applyFilter() {
 
   let filteredCards = allCards;
 
-  console.log("search:", {
-    selectedTopic,
-    selectedChapter,
-  });
+  // console.log("search:", {
+  //   selectedTopic,
+  //   selectedChapter,
+  // });
 
   if (selectedTopic && selectedChapter) {
     filteredCards = filteredCards.filter(
@@ -213,10 +213,10 @@ function applyFilter() {
   }
   // If nothing is chosen, keep allCards
 
-  console.log("filtered results:", {
-    TotalCards: allCards.length,
-    AfterFilter: filteredCards.length,
-  });
+  // console.log("filtered results:", {
+  //   TotalCards: allCards.length,
+  //   AfterFilter: filteredCards.length,
+  // });
 
   renderFilteredCards(container, filteredCards);
 }
@@ -270,7 +270,7 @@ function renderFilteredCards(container, cards) {
           cardId: card.id,
           timestamp: serverTimestamp(),
         });
-        console.log("Flip logged for card:", card.id);
+        // console.log("Flip logged for card:", card.id);
       } catch (error) {
         console.error("Error logging flip:", error);
       }

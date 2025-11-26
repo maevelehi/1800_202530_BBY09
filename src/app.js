@@ -38,7 +38,8 @@ document.addEventListener("DOMContentLoaded", () => {
     async function loadTotalCards(group) {
       const q = query(collection(db, "cards"), where("group", "==", group));
       const snap = await getDocs(q);
-      document.getElementById("totalCards").textContent = snap.size;
+      const totalEl = document.getElementById("totalCards");
+      if (totalEl) totalEl.textContent = snap.size;
     }
 
     // 2. Load STUDIED TODAY using flipLogs
@@ -55,7 +56,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (ts && ts >= startOfDay) count++;
       });
 
-      document.getElementById("studiedToday").textContent = count;
+      const todayEl = document.getElementById("studiedToday");
+      if (todayEl) todayEl.textContent = count;
     }
 
     // Call both
@@ -100,8 +102,6 @@ document.addEventListener("DOMContentLoaded", () => {
 //   }
 // });
 
-
-
 // const container = document.querySelector(".questions-list");
 // if (container) {
 //   container.addEventListener("click", (event) => {
@@ -112,7 +112,6 @@ document.addEventListener("DOMContentLoaded", () => {
 //     }
 //   });
 // }
-
 
 // //--------------------------------------------------------------
 // // Custom global JS code (shared with all pages)can go here.

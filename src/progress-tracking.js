@@ -5,9 +5,9 @@ import {
   query,
   where,
   orderBy,
-  serverTimestamp,
 } from "firebase/firestore";
 import { onAuthReady } from "./authentication.js";
+import { dateIdFromDate } from "./utils.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const backButton = document.getElementById("backBtnProgress");
@@ -25,43 +25,50 @@ onAuthReady(async (user) => {
   await loadProgressForUser(user.uid);
 });
 
-async function fetchUserFlips(uid) {
-  const logsRef = collection(db, "flipLogs");
-  const q = query(
-    logsRef,
-    where("uid", "==", uid),
-    orderBy("timestamp", "asc")
-  );
+async function fetchUserHistoryFor7Days(uid) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const start = new Date(today);
+  start.setDate(today.getDate() - 6); 
+
+  const historyRef = collection(db, "users", uid, "history");
+  // Firestore timestamps are stored in `date` field (serverTimestamp), so query on that
+  const q = query(historyRef, where("date", ">=", start), orderBy("date", "asc"));
   const snap = await getDocs(q);
-  return snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+  // Map to { id: docId (YYYY-MM-DD), date: Date, count: number }
+  return snap.docs.map((d) => {
+    const data = d.data();
+    const dateField = data.date?.toDate ? data.date.toDate() : data.date ? new Date(data.date) : new Date(d.id);
+    return { id: d.id, date: dateField, count: data.count || 0 };
+  });
 }
 
-function build7DayCountsFromLogs(logs) {
+
+function build7DayCountsFromHistory(historyDocs) {
+  // Build array of 7 date strings (YYYY-MM-DD) from start -> today
   const today = new Date();
+  today.setHours(0, 0, 0, 0);
   const start = new Date(today);
   start.setDate(today.getDate() - 6);
 
-  const days = Array.from({ length: 7 }, (_, i) => {
+  const dayIds = Array.from({ length: 7 }, (_, i) => {
     const d = new Date(start);
     d.setDate(start.getDate() + i);
-    return d.toDateString();
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, "0");
+    const day = String(d.getDate()).padStart(2, "0");
+    return `${y}-${m}-${day}`; // same format as stored doc IDs
   });
 
   const counts = Array(7).fill(0);
-
-  logs.forEach((log) => {
-    const ts = log.timestamp?.toDate
-      ? log.timestamp.toDate()
-      : new Date(log.timestamp);
-    if (!ts) return;
-    const idx = days.findIndex(
-      (d) => new Date(d).toDateString() === ts.toDateString()
-    );
-    if (idx !== -1) counts[idx] += 1; // each log = 1 flip
+  historyDocs.forEach((doc) => {
+    const idx = dayIds.indexOf(doc.id); // doc.id should be YYYY-MM-DD
+    if (idx !== -1) counts[idx] = doc.count || 0;
   });
 
   return counts;
 }
+
 
 function renderChartAndStats(counts) {
   const cols = Array.from(document.querySelectorAll(".chart-column"));
@@ -154,8 +161,8 @@ function renderStreakAndMotivation(counts) {
 }
 
 async function loadProgressForUser(uid) {
-  const logs = await fetchUserFlips(uid);
-  const counts = build7DayCountsFromLogs(logs);
+  const historyDocs = await fetchUserHistoryFor7Days(uid);
+  const counts = build7DayCountsFromHistory(historyDocs);
   renderChartAndStats(counts);
   renderStreakAndMotivation(counts);
   renderDayLabels();

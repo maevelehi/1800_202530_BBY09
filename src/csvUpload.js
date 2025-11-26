@@ -8,10 +8,13 @@ import {
   deleteDoc,
   query,
   orderBy,
+  setDoc
 } from "firebase/firestore";
 import { onAuthReady } from "./authentication.js";
 import { updateDoc, increment, serverTimestamp } from "firebase/firestore";
-// Modification: Import getDoc for reading user groups
+import { dateIdFromDate } from "./utils.js";
+import { initSearchFilter } from "./searchFilter.js";
+
 
 let currentUser = null;
 
@@ -165,37 +168,7 @@ export function displayCardsFromFirestore(userGroup) {
 
       container.appendChild(fragment);
 
-      //TESTING
-      // console.log("DOM after append:", container.innerHTML);
-
       const flipBtn = cardElement.querySelector(".flip-btn");
-      // flipBtn.onclick = async () => {
-      //   // Toggle answer display
-      //   const isHidden = window.getComputedStyle(answerEl).display === "none";
-      //   //TESTING
-      //   console.log("isHidden:", isHidden, "current display:", window.getComputedStyle(answerEl).display);
-      //   answerEl.style.display = isHidden ? "block" : "none";
-      //   console.log("New display:", answerEl.style.display);
-
-      //   // Track flip in Firestore
-      //   const cardId = docSnapshot.id;
-      //   console.log("Card ID:", cardId, "Current user:", currentUser);
-
-      //   if (!currentUser || !cardId) return;
-
-      //   try {
-      //     const cardRef = doc(db, "cards", cardId);
-      //     console.log("FLIPPED: Updating Firestore for card:", cardId);
-
-      //     await updateDoc(cardRef, {
-      //       flipCount: increment(1),
-      //       lastFlipped: new Date(),
-      //     });
-      //     console.log("UPDATED!");
-      //   } catch (err) {
-      //     console.error("Error updating flip count:", err);
-      //   }
-      // };
 
       flipBtn.onclick = async () => {
         const isHidden = window.getComputedStyle(answerEl).display === "block";
@@ -206,6 +179,8 @@ export function displayCardsFromFirestore(userGroup) {
 
         // Track flip in Firestore
         if (!currentUser || !docId) return;
+        console.log("Flipping card:", docId, "by user:", currentUser.uid);
+
         try {
           const cardRef = doc(db, "cards", docId);
           await updateDoc(cardRef, {
@@ -244,20 +219,31 @@ export function displayCardsFromFirestore(userGroup) {
 }
 
 async function logFlip(cardId, userId) {
+  if (!userId) return;
   try {
-    await addDoc(collection(db, "flipLogs"), {
-      cardId,
-      uid: userId,
-      timestamp: serverTimestamp(),
-    });
+    const todayId = dateIdFromDate(new Date());
+    const historyRef = doc(db, "users", userId, "history", todayId);
+
+    await setDoc(
+      historyRef,
+      {
+        date: serverTimestamp(), 
+        count: increment(1),
+      },
+      { merge: true }
+    );
   } catch (err) {
-    console.error("Error logging flip:", err);
+    console.error("Error logging flip to history:", err);
   }
 }
 
-onAuthReady((user) => {
+onAuthReady(async (user) => {
+  if (!user) return;
   currentUser = user;
+  const userDoc = await getDoc(doc(db, "users", user.uid));
+  const group = userDoc.exists() ? userDoc.data().group || "default" : "default";
+
+  initSearchFilter(group);
+  displayCardsFromFirestore(group);  // currentUser is now set
 });
-onAuthReady((user) => {
-  currentUser = user;
-});
+

@@ -7,6 +7,7 @@ import { onAuthReady } from "./authentication.js";
 import { query, where, onSnapshot } from "firebase/firestore";
 import { displayCardsFromFirestore } from "./csvUpload.js";
 import { initSearchFilter } from "./searchFilter.js";
+import { dateIdFromDate } from "./utils.js";
 
 //--------------------------------------------------------------
 // If you have custom global styles, import them as well:
@@ -44,20 +45,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 2. Load STUDIED TODAY using flipLogs
     async function loadStudiedToday(uid) {
-      const logsRef = collection(db, "flipLogs");
-      const snap = await getDocs(query(logsRef, where("uid", "==", uid)));
-
-      const startOfDay = new Date();
-      startOfDay.setHours(0, 0, 0, 0);
-
-      let count = 0;
-      snap.forEach((doc) => {
-        const ts = doc.data().timestamp?.toDate?.();
-        if (ts && ts >= startOfDay) count++;
-      });
-
-      const el = document.getElementById("studiedToday");
-      if (el) el.textContent = count; // only update if exists
+      const todayId = dateIdFromDate(new Date());
+      const histRef = doc(db, "users", uid, "history", todayId);
+      try {
+        const histDoc = await getDoc(histRef);
+        const count = histDoc.exists() ? histDoc.data().count || 0 : 0;
+        const el = document.getElementById("studiedToday");
+        if (el) el.textContent = count;
+      } catch (err) {
+        console.error("Error reading today's history:", err);
+      }
     }
 
     // Call both
@@ -102,105 +99,13 @@ document.addEventListener("DOMContentLoaded", () => {
 //   }
 // });
 
-const container = document.querySelector(".questions-list");
-if (container) {
-  container.addEventListener("click", (event) => {
-    if (event.target.classList.contains("flip-btn")) {
-      const questionCard = event.target.closest(".question-card");
-      questionCard.classList.toggle("flipped");
-      questionCard.style.backgroundColor = "white";
-    }
-  });
-}
-
-// //--------------------------------------------------------------
-// // Custom global JS code (shared with all pages)can go here.
-// //--------------------------------------------------------------
 // const container = document.querySelector(".questions-list");
-
-// async function loadSavedCards(userGr) {
-//   if (!container) return; // stop if not found
-//   container.innerHTML = ""; //TEST
-
-//   const q = query(collection(db, "cards"), where("group", "==", userGr));
-//   const querySnapshot = await getDocs(q);
-//   // const querySnapshot = await getDocs(collection(db, "cards"));
-
-//   querySnapshot.forEach((doc) => {
-//     const cardData = doc.data();
-
-//         console.log("Card group =", `"${cardData.group}"`); //TEST
-
-//     const questionCard = document.createElement("div");
-//     questionCard.classList.add("question-card");
-
-//     //determined chapter base on label dynamically
-//     let chapterClass = "";
-//     if (cardData.label.trim() === "Chapter 1") {
-//       chapterClass = "chapter-label1";
-//     } else if (cardData.label.trim() === "Chapter 2") {
-//       chapterClass = "chapter-label2";
-//     } else if (cardData.label.trim() === "Chapter 3") {
-//       chapterClass = "chapter-label3";
-//     } else if (cardData.label.trim() === "Chapter 4") {
-//       chapterClass = "chapter-label4";
-//     } else {
-//       chapterClass = "chapter-label5";
+// if (container) {
+//   container.addEventListener("click", (event) => {
+//     if (event.target.classList.contains("flip-btn")) {
+//       const questionCard = event.target.closest(".question-card");
+//       questionCard.classList.toggle("flipped");
+//       questionCard.style.backgroundColor = "white";
 //     }
-
-//     const chapterLabel = document.createElement("div");
-//     chapterLabel.classList.add(chapterClass);
-//     chapterLabel.textContent = cardData.label;
-//     questionCard.appendChild(chapterLabel);
-
-//     // assign questionText to cards
-//     const questionText = document.createElement("p");
-//     questionText.textContent = `Q${cardData.question}`;
-//     questionCard.appendChild(questionText);
-
-//     const answerText = document.createElement("p");
-//     answerText.textContent = `A: ${cardData.answer}`;
-//     answerText.style.display = "none";
-//     questionCard.appendChild(answerText);
-
-//     const flipBtn = document.createElement("button");
-//     flipBtn.classList.add("flip-btn");
-//     flipBtn.textContent = "Flip";
-//     flipBtn.addEventListener("click", () => {
-//       answerText.style.display =
-//         answerText.style.display === "none" ? "block" : "none";
-//     });
-//     questionCard.appendChild(flipBtn);
-
-//     console.log(cardData.createdBy); //TEST
-
-//     container.appendChild(questionCard);
-
 //   });
 // }
-
-// // document.addEventListener("DOMContentLoaded", async () => {
-// //   let userGr = "default";
-// //   await onAuthReady(async (user) => {
-// //     const userDoc = await getDoc(doc(db, "users", user.uid));
-// //     if (userDoc.exists()) {
-// //       userGr = userDoc.data().group || "default";
-// //     }
-// //   });
-
-// //   loadSavedCards(userGr);
-// // });
-
-// document.addEventListener("DOMContentLoaded", () => {
-//   onAuthReady(async (user) => {
-//     const userDoc = await getDoc(doc(db, "users", user.uid));
-//     let userGr = "default";
-
-//     if (userDoc.exists()) {
-//       userGr = userDoc.data().group || "default";
-//     }
-
-//     console.log("User group =", `"${userGr}"`); // now correct
-//     loadSavedCards(userGr); // <-- moved inside here
-//   });
-// });

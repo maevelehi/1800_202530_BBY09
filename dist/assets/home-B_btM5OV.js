@@ -1,0 +1,1 @@
+import"./app-BiaT0_M0.js";import"./main-CtMNwQc0.js";import"./site-footer-BeA8OlxG.js";import"./loginSignup-Dgxjx4y_.js";document.addEventListener("DOMContentLoaded",function(){const t=document.getElementById("addCardsManually");t&&t.addEventListener("click",function(){window.location.href="create-card.html"})});

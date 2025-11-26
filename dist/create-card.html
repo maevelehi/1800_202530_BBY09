@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>FlipIt</title>
+    <meta name="comp1800 template" content="My 1800 App" />
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Web Components for shared navbar and footer layout -->
+    <!-- <script type="module" src="/src/components/site-footer.js"></script> -->
+
+    <!-- footer icon link  -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <script type="module" crossorigin src="/assets/create-card-C_7WvXH3.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/app-BiaT0_M0.js">
+    <link rel="modulepreload" crossorigin href="/assets/main-CtMNwQc0.js">
+    <link rel="stylesheet" crossorigin href="/assets/app-XRNwkiOd.css">
+  </head>
+
+  <body>
+    <!------------------------------>
+    <!-- Your HTML Layout go here -->
+    <!------------------------------>
+
+    <!-- our own navbar goes here -->
+    <site-navbar></site-navbar>
+    <br />
+    <!-- Main content goes here -->
+
+    <form class="container">
+      <div
+        class="card-body position-relative d-flex justify-content-center align-items-center"
+      >
+        <!-- Back icon as a button -->
+        <button class="back-btn" id="backBtn">←</button>
+        <!-- Centered heading -->
+        <h1 class="card-title mb-0">Create a new flashcard</h1>
+      </div></br>
+
+      <!-- Content here -->
+      <!-- front box -->
+      <div class="card-body form-group mb-5 ps-3 pe-3">
+        <label for="front" class="fs-5">Front:</label>
+        <input type="text" id="front" class="form-control cb-info" />
+      </div>
+
+      <!-- back box -->
+      <div class="card-body form-group mb-5 mt-3, ps-3 pe-3">
+        <label for="back" class="fs-5">Back:</label>
+        <textarea
+          class="form-control cb-info"
+          rows="5"
+          id="back"
+          name="text"
+        ></textarea>
+      </div>
+
+      <!-- dropdown for label -->
+      <div class="card-body form-group dropdown mb-3 mt-5 ps-3 pe-3">
+        <div class="d-flex align-items-center gap-2">
+          <!-- <span>Label:</span> -->
+          <div class="drop-down">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              id="dropdownMenu"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Chapter
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <li>
+                <button class="dropdown-item" type="button" id="chap1">
+                  Chapter 1
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item" type="button" id="chap2">
+                  Chapter 2
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item" type="button" id="chap3">
+                  Chapter 3
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item" type="button" id="chap4">
+                  Chapter 4
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item" type="button" id="chap5">
+                  Chapter 5
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item" type="button" id="chap6">
+                  Chapter 6
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item" type="button" id="chap7">
+                  Chapter 7
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item" type="button" id="chap8">
+                  Chapter 8
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item" type="button" id="chap9">
+                  Chapter 9
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item" type="button" id="chap10">
+                  Chapter 10
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- dropdown for topic -->
+      <div class="card-body form-group dropdown mb-3 mt-5 ps-3 pe-3">
+        <div class="d-flex align-items-center gap-2">
+          <!-- <span>Topic:</span> -->
+          <div class="drop-down">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              id="dropdownTopic"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Courses
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <li>
+                <button class="dropdown-item" type="button" id="1510">
+                  Comp 1510
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item" type="button" id="1537">
+                  Comp 1537
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item" type="button" id="1113">
+                  Comp 1113
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item" type="button" id="1800">
+                  Comp 1800
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item" type="button" id="1116">
+                  Comm 1116
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item" type="button" id="1712">
+                  Comp 1712
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <br />
+      <br />
+      <!-- save button -->
+      <div class="card-body d-flex justify-content-center">
+        <button
+          id="submit"
+          class="btn btn-primary mb-5 rounded-pill px-4 py-2 fs-5"
+          type="button"
+        >
+          Save
+        </button>
+      </div>
+    </form>
+
+    <!-- our own footer goes here -->
+
+    <!---------------------------------------------->
+    <!-- Your own JavaScript scripts go here      -->
+    <!---------------------------------------------->
+
+  </body>
+</html>

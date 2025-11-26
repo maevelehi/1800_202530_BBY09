@@ -105,7 +105,6 @@ site-navbar {
   border: none !important;
 }
 
-
 .questions-list {
   display: flex;
   flex-direction: column;
@@ -134,18 +133,36 @@ site-navbar {
   transition: opacity 0.4s ease, transform 0.4s ease;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .question-card:hover {
   transform: translateY(-2px);
 }
 
-.question-card p {
-  margin: 0;
+/* .question-card p {
+  margin-bottom: 0;
+  margin: 0 0 10px 0;
   font-size: 18px;
-  padding: 40px 30px;
+  padding: 30px 30px 0px;
   color: #03045e;
   width: calc(100% - 70px);
+} */
+
+.question-text {
+  font-size: 18px;
+  color: #03045e;
+  padding: 40px 30px 0px;
+  margin-bottom: 10px; /* space before flip button */
+}
+
+.answer-text {
+  font-size: 18px;
+  color: #03045e;
+  display: none; /* initially hidden, JS shows it */
+  margin-top: 0;
+  padding: 5px 30px;
 }
 .question-card.fade-out {
   opacity: 0;
@@ -205,7 +222,7 @@ site-navbar {
 
 .flip-btn {
   position: absolute;
-  right: -10%;
+  right: 5%;
   top: 70%;
   background: #fdcf94;
   border: none;
@@ -227,7 +244,7 @@ site-navbar {
   transform: scale(1.05);
 }
 
-@-webkit-keyframes flip-horizontal-top {
+/* @-webkit-keyframes flip-horizontal-top {
   0% {
     -webkit-transform: rotateX(0);
     transform: rotateX(0);
@@ -246,12 +263,12 @@ site-navbar {
     -webkit-transform: rotateX(180deg);
     transform: rotateX(180deg);
   }
-}
+} */
 
 .remove-btn {
   position: absolute;
   top: 16%;
-  right: -5.8%;
+  right: 8%;
   transform: translateY(-50%);
   width: 25px;
   height: 25px;
@@ -401,10 +418,10 @@ site-navbar {
     width: 100%;
   }
   .flip-btn {
-    right: -25%;
+    right: 5%;
   }
   .remove-btn {
-    right: -17%;
+    right: 8.8%;
   }
 }
 .filter-bar {
@@ -450,7 +467,45 @@ site-navbar {
   color: #c79261 !important;
 }
 
-.card-front,
+/* .question-card {
+  perspective: 1000px;
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  height: 170px;
+  margin: 0 auto;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.question-card.flipped .card-inner {
+  transform: rotateX(180deg);
+}
+
+.card-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  padding: 20px;
+}
+
+.card-content.front {
+  z-index: 2;
+}
+
+.card-content.back {
+  transform: rotateX(180deg);
+  z-index: 1;
+} */
+
+/* .card-front,
 .card-back {
   position: absolute;
   width: 100%;
@@ -472,4 +527,4 @@ site-navbar {
   height: 100%;
   transition: transform 0.6s;
   transform-style: preserve-3d;
-}
+} */

@@ -38,8 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     async function loadTotalCards(group) {
       const q = query(collection(db, "cards"), where("group", "==", group));
       const snap = await getDocs(q);
-      const el = document.getElementById("totalCards");
-      if (el) el.textContent = snap.size; // only update if exists
+      document.getElementById("totalCards").textContent = snap.size;
     }
 
     // 2. Load STUDIED TODAY using flipLogs
@@ -56,8 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (ts && ts >= startOfDay) count++;
       });
 
-      const el = document.getElementById("studiedToday");
-      if (el) el.textContent = count; // only update if exists
+      document.getElementById("studiedToday").textContent = count;
     }
 
     // Call both
@@ -102,16 +100,19 @@ document.addEventListener("DOMContentLoaded", () => {
 //   }
 // });
 
-const container = document.querySelector(".questions-list");
-if (container) {
-  container.addEventListener("click", (event) => {
-    if (event.target.classList.contains("flip-btn")) {
-      const questionCard = event.target.closest(".question-card");
-      questionCard.classList.toggle("flipped");
-      questionCard.style.backgroundColor = "white";
-    }
-  });
-}
+
+
+// const container = document.querySelector(".questions-list");
+// if (container) {
+//   container.addEventListener("click", (event) => {
+//     if (event.target.classList.contains("flip-btn")) {
+//       const questionCard = event.target.closest(".question-card");
+//       questionCard.classList.toggle("flipped");
+//       questionCard.style.backgroundColor = "white";
+//     }
+//   });
+// }
+
 
 // //--------------------------------------------------------------
 // // Custom global JS code (shared with all pages)can go here.

@@ -296,7 +296,7 @@ site-navbar {
 }
 
 .filter-dropdown-menu {
-  min-width: 280px;
+  min-width: 240px !important;
   border: 1px solid #dee2e6;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -383,7 +383,6 @@ site-navbar {
   .filter-dropdown-container {
     grid-column: 1;
     grid-row: 2;
-    width: 100%;
   }
 
   .drop-down {
@@ -391,7 +390,6 @@ site-navbar {
     grid-row: 2;
     width: 100%;
   }
-
   .drop-down,
   .filter-toggle-btn {
     width: 85%;
@@ -433,19 +431,6 @@ site-navbar {
   border-radius: 6px;
   cursor: pointer;
 }
-
-#userAvatar {
-  position: fixed;
-  top: 15px;
-  right: 20px;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  z-index: 1001;
-  border: 2px solid white;
-  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); */
-}
-
 .card-total {
   background-color: #f6f4ff !important;
 }

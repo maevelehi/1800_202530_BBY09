@@ -39,22 +39,24 @@ document.addEventListener("DOMContentLoaded", () => {
     async function loadTotalCards(group) {
       const q = query(collection(db, "cards"), where("group", "==", group));
       const snap = await getDocs(q);
-      const el = document.getElementById("totalCards");
-      if (el) el.textContent = snap.size; // only update if exists
+      document.getElementById("totalCards").textContent = snap.size;
     }
 
     // 2. Load STUDIED TODAY using flipLogs
     async function loadStudiedToday(uid) {
-      const todayId = dateIdFromDate(new Date());
-      const histRef = doc(db, "users", uid, "history", todayId);
-      try {
-        const histDoc = await getDoc(histRef);
-        const count = histDoc.exists() ? histDoc.data().count || 0 : 0;
-        const el = document.getElementById("studiedToday");
-        if (el) el.textContent = count;
-      } catch (err) {
-        console.error("Error reading today's history:", err);
-      }
+      const logsRef = collection(db, "flipLogs");
+      const snap = await getDocs(query(logsRef, where("uid", "==", uid)));
+
+      const startOfDay = new Date();
+      startOfDay.setHours(0, 0, 0, 0);
+
+      let count = 0;
+      snap.forEach((doc) => {
+        const ts = doc.data().timestamp?.toDate?.();
+        if (ts && ts >= startOfDay) count++;
+      });
+
+      document.getElementById("studiedToday").textContent = count;
     }
 
     // Call both

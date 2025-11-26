@@ -1,14 +1,4 @@
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "/src/firebaseConfig.js";
-
-class SiteFooter extends HTMLElement {
-  constructor() {
-    super();
-    this.renderFooter();
-  }
-
-  renderFooter() {
-    this.innerHTML = `
+import"./app-7i-ascS-.js";class o extends HTMLElement{constructor(){super(),this.renderFooter()}renderFooter(){this.innerHTML=`
     <footer class="fixed-bottom w-100 d-flex justify-content-center">
       <div class="bg-primary rounded-pill shadow-lg d-flex w-100 justify-content-around align-items-center" 
            style="max-width: 1600px; padding: 35px 16px; height: 62px;">
@@ -39,40 +29,4 @@ class SiteFooter extends HTMLElement {
         </a>
       </div>
     </footer>
-    `;
-
-    this.addActiveState();
-  }
-
-  addActiveState() {
-    const currentPath = window.location.pathname;
-    const navItems = this.querySelectorAll(".nav-link");
-
-    navItems.forEach((item) => {
-      const href = item.getAttribute("href");
-      const itemPath = href.replace(".html", "");
-
-      if (
-        currentPath === itemPath ||
-        (currentPath.includes(itemPath.replace("/", "")) && itemPath !== "/")
-      ) {
-        item.classList.add("active", "bg-white", "text-primary");
-        item.classList.remove("text-light");
-
-        const svg = item.querySelector("svg");
-        if (svg) {
-          svg.style.stroke = "#006af7"; // Bootstrap primary color
-        }
-      } else {
-        item.classList.add("text-light");
-        item.classList.remove("active", "bg-white", "text-primary");
-        const svg = item.querySelector("svg");
-        if (svg) {
-          svg.style.stroke = "#e9ecef"; // Light gray color
-        }
-      }
-    });
-  }
-}
-
-customElements.define("site-footer", SiteFooter);
+    `,this.addActiveState()}addActiveState(){const r=window.location.pathname;this.querySelectorAll(".nav-link").forEach(e=>{const s=e.getAttribute("href").replace(".html","");if(r===s||r.includes(s.replace("/",""))&&s!=="/"){e.classList.add("active","bg-white","text-primary"),e.classList.remove("text-light");const t=e.querySelector("svg");t&&(t.style.stroke="#006af7")}else{e.classList.add("text-light"),e.classList.remove("active","bg-white","text-primary");const t=e.querySelector("svg");t&&(t.style.stroke="#e9ecef")}})}}customElements.define("site-footer",o);

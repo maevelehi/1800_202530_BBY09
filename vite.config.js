@@ -1,5 +1,4 @@
-// This Vite config file (vite.config.js) tells Rollup (production bundler)
-// to treat multiple HTML files as entry points so each becomes its own built page.
+// vite.config.js
 
 import { defineConfig } from "vite";
 import { resolve } from "path";
@@ -16,26 +15,34 @@ export default defineConfig({
         home: resolve(__dirname, "home.html"),
       },
       output: {
-        // 定义所有资产（图片、CSS等）的输出文件名格式
+        entryFileNames: "assets/js/[name]-[hash].js",
+        chunkFileNames: "assets/js/[name]-[hash].js",
+
         assetFileNames: (assetInfo) => {
-          // 如果是 CSS 文件，放到 assets/css 目录下
           if (assetInfo.name.endsWith(".css")) {
-            return "assets/style/[name]-[hash][extname]";
+            return "assets/styles/[name]-[hash][extname]";
           }
-          // 如果是图片文件，放到 assets/images 目录下
           if (assetInfo.name.match(/\.(png|jpe?g|gif|svg|webp)$/)) {
             return "assets/images/[name]-[hash][extname]";
           }
-          // 其他所有文件（如字体）保持在 assets 根目录
           return "assets/[name]-[hash][extname]";
         },
-        // 定义 JS 入口文件和代码块的输出目录
-        entryFileNames: "assets/js/[name]-[hash].js",
-        chunkFileNames: "assets/js/[name]-[hash].js",
+
+        manualChunks(id) {
+          if (id.includes("src/components/site-navbar.js")) {
+            return "site-navbar";
+          }
+          if (id.includes("src/components/site-navbarbefore.js")) {
+            return "site-navbarbefore";
+          }
+
+          return null;
+        },
       },
     },
     chunkSizeWarningLimit: 1000,
   },
 
+  // 确保默认头像路径正确
   publicDir: "public",
 });

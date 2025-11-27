@@ -1,6 +1,6 @@
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f5f7fb;
+  background-color: white;
   color: #333;
   padding: 0;
   margin: 0;
@@ -9,14 +9,14 @@ body {
 .container {
   margin: 0 auto;
   padding: 20px;
-  position: relative; 
+  position: relative;
 }
 
 .header {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
-  padding-left: 20px; 
+  padding-left: 20px;
 }
 
 .back-btn {
@@ -26,7 +26,7 @@ body {
   cursor: pointer;
   color: #006af7;
   padding: 5px 10px;
-  margin-left: 0; 
+  margin-left: 0;
   position: static;
 }
 

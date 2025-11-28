@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>FlipIt</title>
+    <meta name="comp1800 template" content="My 1800 App" />
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Web Components for shared navbar and footer layout -->
+    <!-- <script type="module" src="/src/components/site-footer.js"></script> -->
+
+
+    <!-- footer icon link  -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <style>
+      h1,
+      .lead,
+      .btn.btn-info.btn-lg {
+        color: white !important;
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/js/site-navbar-CJE8ti2D.js"></script>
+    <script type="module" crossorigin src="/assets/js/app-D-chPbn8.js"></script>
+    <script type="module" crossorigin src="/assets/js/site-navbarbefore-BJ-vDQcT.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/styles/app-XRNwkiOd.css">
+    <link rel="stylesheet" crossorigin href="/assets/styles/index-CENA6yxQ.css">
+  </head>
+
+  <body>
+    <!------------------------------>
+    <!-- Your HTML Layout go here -->
+    <!------------------------------>
+
+    <!-- our own navbar goes here -->
+    <site-navbar></site-navbar>
+
+    <!-- Main content goes here -->
+    <!-- This is the welcome on the landing page, with a login/signup button -->
+    <div class="container">
+      <style>
+        body {
+          background: linear-gradient(to bottom, #73c5ff, #f8fafc);
+          min-height: 100vh;
+          margin: 0;
+          padding: 20px;
+          font-family: Arial, sans-serif;
+        }
+      </style>
+      <div class="px-4 py-5 my-5 text-center">
+        <img
+          class="d-block mx-auto mb-4"
+          src="/images/transparent-logo.png"
+          alt=""
+          width="72"
+          height="80"
+        />
+        <h1 class="display-5 fw-bold">
+          Welcome to FlipIt, <span id="name-goes-here">my friend!</span>
+        </h1>
+        <div class="col-lg-6 mx-auto">
+          <p class="lead mb-4">Join the community to develop your learning.</p>
+          <div class="d-grid justify-content-sm-center">
+            <!-- Make this button clickable, using onclick event listener -->
+            <button
+              onclick="window.location.href='login.html'"
+              type="button"
+              class="btn-login-signup btn-lg"
+            >
+              Login/Signup
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- our own footer goes here -->
+
+    <!---------------------------------------------->
+    <!-- Your own JavaScript scripts go here      -->
+    <!---------------------------------------------->
+  </body>
+</html>

@@ -258,6 +258,3 @@ async function logFlip(cardId, userId) {
 onAuthReady((user) => {
   currentUser = user;
 });
-onAuthReady((user) => {
-  currentUser = user;
-});

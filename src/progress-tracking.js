@@ -1,4 +1,3 @@
-
 import { db } from "./firebaseConfig.js";
 import {
   collection,
@@ -76,7 +75,12 @@ function renderChartAndStats(counts) {
   });
 
   const today = counts[6];
-  const avg = Math.round(counts.reduce((a, b) => a + b, 0) / 7);
+
+  const validCounts = counts.filter((count) => count > 0);
+  const daysWithData = validCounts.length || 1;
+
+  const avg = Math.round(validCounts.reduce((a, b) => a + b, 0) / daysWithData);
+  // const avg = Math.round(counts.reduce((a, b) => a + b, 0) / 7);
 
   document.getElementById("today-count").textContent = today;
   document.getElementById("average-count").textContent = avg;
@@ -84,13 +88,13 @@ function renderChartAndStats(counts) {
   const percent = avg ? Math.round(((today - avg) / avg) * 100) : 0;
   const isAbove = percent >= 0;
 
-  const icon = isAbove ? "⭐" : "⚠️"; 
+  const icon = isAbove ? "⭐" : "⚠️";
 
   document.getElementById(
     "weekly-stats"
   ).textContent = `${icon} You’re ${Math.abs(percent)}% ${
     isAbove ? "above" : "below"
-  } your weekly average!`;
+  } your daily average!`;
 }
 
 function renderDayLabels() {
@@ -111,7 +115,6 @@ function renderDayLabels() {
     div.textContent = labels[i];
   });
 }
-
 
 function computeStreak(counts) {
   let streak = 0;

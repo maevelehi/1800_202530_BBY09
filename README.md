@@ -2,42 +2,35 @@
 
 ## Overview
 
-Elmo Hikes is a client-side JavaScript web application that helps users discover and explore hiking trails. The app displays a curated list of hike trails, each with details such as name, location, difficulty, and an image. Users can browse the list and mark their favorite trails for easy access later.
+FlipIt is a collaborative mobile flashcard app engineered to help students memorize and retain information more effectively in a fast-paced academic world. It directly tackles common student challenges such as exam anxiety and inefficient study routines by facilitating shared flashcard sets and offering dual creation methods—manual input and bulk CSV uploads.
 
-Developed for the COMP 1800 course, this project applies User-Centred Design practices and agile project management, and demonstrates integration with Firebase backend services for storing user favorites.
-
-
-In today’s fast-paced academic environment, students often struggle to retain large volumes of course material. Our team, BBY09, is developing FlipIt, a mobile flashcard app designed to help students memorize and retain information more effectively. Many students face anxiety when preparing for exams, especially when they lack efficient study methods or time to organize learning materials.
-
-FlipIt aims to address these challenges by making studying interactive, collaborative, and consistent. By allowing students to share flashcards within a set, users can learn from each other without needing to create every card themselves. This collaborative approach not only saves time but also enhances understanding by exposing students to multiple perspectives on the same topic.
-
-FlipIt offers two convenient ways to create flashcards: users can either manually enter questions and answers or upload a CSV file containing multiple cards at once. This feature enables students to focus more on studying rather than spending excessive time creating their flashcards.
-Our app also tracks study habits, showing users how many times they review cards daily and providing a 7-day performance summary. Users receive feedback on their progress compared to their weekly average, helping them identify areas that need more attention. To further motivate consistent study, FlipIt maintains streaks and delivers encouraging messages to keep users engaged.
-
-By combining collaboration, interactive study tools, and performance tracking, FlipIt empowers students to study smarter, reduce anxiety, and retain knowledge more effectively.
-
+Beyond content creation, FlipIt is a comprehensive study companion that tracks user engagement and progress. It provides actionable feedback through a 7-day performance summary and habit tracking, while built-in gamification elements like motivational prompts encourage daily use. By seamlessly blending shared knowledge resources with interactive study tools and performance analytics, FlipIt equips students with a smarter, more strategic approach to learning, leading to reduced stress and improved long-term knowledge retention.
 
 ---
 
 ## Features
 
-- Browse a list of curated hiking trails with images and details
-- Mark and unmark trails as favorites
-- View a personalized list of favorite hikes
-- Responsive design for desktop and mobile
+- Create Flashcards
+  Add flashcards manually or upload multiple cards using a CSV file.
 
+- Group Sharing
+  Share flashcards within your group so members can study together.
 
-Flexible Card Creation: Manual entry or CSV bulk upload
-Collaborative Learning: Share flashcard sets within study groups
-Progress Tracking: Monitor daily activity with day-over-day comparisons
-Motivation System: Learning streaks with personalized encouragement
-Mobile-First Design: Optimized interface for studying on the go
+- Progress Tracking
+  Track daily flip counts and compare today’s progress with yesterday’s performance.
+
+- Streak System & Encouragement
+  Maintain study streaks and receive motivational messages based on your consistency.
+
+- Mobile-First UI
+  Designed with a mobile-first layout for convenient studying anytime, anywhere.
+
 ---
 
 ## Technologies Used
 
 - **Frontend**: HTML, CSS, JavaScript
-- **Build Tool**: [Vite](https://vitejs.dev/)
+- **Build Tool**: Vite
 - **Backend**: Firebase for hosting
 - **Database**: Firestore
 - **Collaboration**: Github, Trello, Instagram, Figma
@@ -46,29 +39,60 @@ Mobile-First Design: Optimized interface for studying on the go
 
 ## Usage
 
-1. Open your browser and visit `http://localhost:3000`.
-2. Browse the list of hiking trails displayed on the main page.
-3. Click the heart icon (or similar) to mark a trail as a favorite.
-4. View your favorite hikes in the favorites section.
+### 1. Log in/Register/Log out
 
+- Open your browser and visit (e.g. https://flipit-b1370.web.app/)
 
+- click "Login / Signup" (If you already have an account, enter your username and password to log in. If you don't have an account, click "Signup" to register a new one: name, email, password, group).
 
----
+### 2. Create user profiles
+
+- After logging in, fill in your personal information (nickname/school/profile picture/etc.).
+
+- Save the data to complete the account setup.
+
+### 3. Use the main functions
+
+#### -1 Add a Flashcard:
+
+- Method A: Add Manually
+  Enter the question and answer.
+  Select a topic and chapter.
+  Click "Save".
+  The new card will appear immediately on the Home Page.
+
+- Method B: Add by CSV (Batch Import)
+  Click "Add by CSV"
+  Upload a CSV file containing question, answer, topic, and chapter.
+  The system will quickly generate multiple cards at once.
+
+#### -2 Filtering Cards
+
+- You can filter flashcards on the Home Page by selecting:
+  Topic and Chapter
+
+- Only cards that match your selected criteria will be displayed.
+
+#### -3 Flashcard Actions
+
+- Flip a Card
+  Click the "Flip" button to reveal the answer.
+
+- Delete a Card
+  Click the "Delete" icon to remove the card from your collection.
+
+#### -4 View Your Learning Progress
+
+Go to the Progress page
+
+- A chart displays how many times you flipped cards each day over the past 7 days.
+
+- The system compares today’s flip count with your 7-day average.
+
+- The displayed image changes based on how consistently you study over time, helping motivate your learning habit.
 
 ## Project Structure
 
-```
-elmo-hikes/
-├── src/
-│   ├── main.js
-├── styles/
-│   └── style.css
-├── public/
-├── images/
-├── index.html
-├── package.json
-├── README.md
-```
 ```
 1800_202530_BBY09/
 ├── public/
@@ -119,33 +143,34 @@ elmo-hikes/
 ├── home.html
 ├── index.html
 ├── login.html
-├── package-lock.json
-├── package.json
 ├── profile.html
 ├── progress-tracking.html
+├── package-lock.json
+├── package.json
 ├── README.md
-├── test4.csv
 └── vite.config.js
 ```
 
-
 ---
 
-## Contributors
+## Contributor
 
-- **Eric** - I’m a BCIT CST student with a passion for ballgames and solving problems. Fun fact: I have acrophobia, and my legs were shaking when I was at WildPlay.
+- **Eric** - Backend development and Firebase database design.
 
-- **Arjun** - BCIT CST Student with a passion for outdoor adventures and user-friendly applications. Fun fact: Likes sports like soccer and volleyball.
+- **Arjun** - Frontend component development.
 
-- **Maeve** - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
+- **Maeve** - Frontend design and backend refinement.
 
-- **Arjun and Maeve and Eric** - BCIT CST Student
+- **Arjun and Maeve and Eric** participated in cross-end discussions and code reviews.
 
 ## Acknowledgments
 
-- Trail data and images are for demonstration purposes only.
-- Code snippets were adapted from resources such as [Stack Overflow](https://stackoverflow.com/) and [MDN Web Docs](https://developer.mozilla.org/).
-- Icons sourced from [FontAwesome](https://fontawesome.com/) and images from [Unsplash](https://unsplash.com/).
+- Flashcard content and sample data are for demonstration purposes only.
+- Some of cade are from [bootstrapt](https://getbootstrap.com/)
+- UI icons sourced from [FontAwesome](https://icon-icons.com/zh/) and images were obtained through Google Search .
+- Special thanks to our client Carly for her valuable feedback and guidance throughout the development process.
+- Built using Firebase for backend services and hosting.
+- Team collaboration managed via Trello and GitHub.
 
 ---
 
@@ -153,17 +178,17 @@ elmo-hikes/
 
 ### Limitations
 
-- Limited trail details (e.g., no live trail conditions).
-- Accessibility features can be further improved.
+- Chapter Capacity: Each topic is restricted to a maximum of 10 chapters, which may not be sufficient for subjects with extensive curricula.
+- Fixed Subject Offerings: The app currently only supports six predefined subjects for the current semester, limiting its immediate usability for students in other disciplines or academic terms.
 
 ### Future Work
 
-- Implement map view and trailhead directions.
-- Add filtering and sorting options (e.g., by difficulty, distance).
-- Create a dark mode for better usability in low-light conditions.
+- Finalize UI styling and animations for a cohesive user experience.
+- Enhance progress tracking visualization with detailed analytics.
+- Expand flashcard sharing and collaboration features.
 
 ---
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is developed for Comp1800 at BCIT.

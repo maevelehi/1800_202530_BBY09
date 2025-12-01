@@ -92,11 +92,8 @@ async function saveUserProfile() {
 
   try {
     await updateUserDocument(user.uid, name, school, group, avatarUrl);
-
     document.getElementById("personalInfoFields").disabled = true;
-
     document.getElementById("editProfileBtn").textContent = "Edit Profile";
-
     alert("Profile updated successfully!");
   } catch (err) {
     console.error("Error saving profile:", err);
@@ -119,8 +116,6 @@ function handleAvatarUpload(event) {
 // DOM Content Loaded
 // ------------------------------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("DOM loaded, initializing event listeners...");
-
   const editProfileBtn = document.getElementById("editProfileBtn");
   if (editProfileBtn) {
     editProfileBtn.addEventListener("click", function () {
@@ -152,6 +147,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
     avatarUpload.addEventListener("change", handleAvatarUpload);
   }
-
   populateUserInfo();
 });

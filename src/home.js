@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("✅ home.js loaded successfully");
-
   // Search function for filtering topics
   const searchForm = document.querySelector("form.d-flex");
   if (searchForm) {
@@ -56,8 +54,4 @@ document.addEventListener("DOMContentLoaded", function () {
       window.location.href = "topic.html";
     });
   });
-
-  // Debug information
-  console.log("Search form found:", !!searchForm);
-  console.log("Topic cards found:", topicCards.length);
 });

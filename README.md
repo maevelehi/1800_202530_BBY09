@@ -114,7 +114,6 @@ Go to the Progress page
 │   |   ├── progress-tracking.css
 │   |   ├── style.css
 │   |   └── topic.css
-|   ├──addcard.js
 |   ├──app.js
 |   ├──authentication.js
 |   ├──create-card.js
@@ -126,8 +125,7 @@ Go to the Progress page
 |   ├──main.js
 |   ├──profile.js
 |   ├──progress-tracking.js
-|   ├──searchFilter.js
-|   └──utils.js
+|   └──searchFilter.js
 ├── .env
 ├── .env_template
 ├── .gitignore
@@ -153,8 +151,6 @@ Go to the Progress page
 
 - **Maeve** - Frontend design and backend refinement.
 
-- **Arjun and Maeve and Eric** participated in cross-end discussions and code reviews.
-
 ## Acknowledgments
 
 - Flashcard content and sample data are for demonstration purposes only.
@@ -172,7 +168,7 @@ Go to the Progress page
 
 - Chapter Capacity: Each topic is restricted to a maximum of 10 chapters, which may not be sufficient for subjects with extensive curricula.
 - Fixed Subject Offerings: The app currently only supports six predefined subjects for the current semester, limiting its immediate usability for students in other disciplines or academic terms.
-- The flip button doesn't actually produce the desired effect.
+- Limited flips per day: The app currently only tracks a set number of flips per day. If a user taps the flip button too many times, the extra flips won’t be recorded correctly, causing the stats to become inaccurate.
 
 ### Future Work
 

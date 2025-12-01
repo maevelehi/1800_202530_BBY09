@@ -1,6 +1,3 @@
-// -------------------------------------------------------------
-// src/loginSignup.js
-
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap";
 import "./styles/style.css";
@@ -22,17 +19,6 @@ function initAuthUI() {
   const loginForm = document.getElementById("loginForm");
   const signupForm = document.getElementById("signupForm");
 
-  // // --- Error functions ---
-  // function showLoginError(msg) {
-  //   loginAlertEl.textContent = msg || "";
-  //   loginAlertEl.classList.remove("d-none");
-  // }
-
-  // function showSignupError(msg) {
-  //   signupAlertEl.textContent = msg || "";
-  //   signupAlertEl.classList.remove("d-none");
-  // }
-
   // Define redirect URLs
   const loginRedirectUrl = "/home.html"; // Redirect after login
   const signupRedirectUrl = "/profile.html"; // Redirect after signup
@@ -49,7 +35,7 @@ function initAuthUI() {
     alertEl.textContent = msg || "";
     alertEl.classList.remove("d-none");
     clearTimeout(errorTimeout);
-    errorTimeout = setTimeout(hideError, 5000); // Auto-hide after 5s
+    errorTimeout = setTimeout(hideError, 5000); 
   }
 
   // Hide error message

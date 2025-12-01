@@ -1,59 +1,19 @@
-// import { db } from "./firebaseConfig.js";
-// import { collection, addDoc } from "firebase/firestore";
-
-// // update btn with selected option
-// document.querySelectorAll(".drop-down").forEach((drop) => {
-//   const btn = drop.querySelector(".dropdown-toggle");
-//   const items = drop.querySelectorAll(".dropdown-item");
-
-//   items.forEach((item) => {
-//     item.addEventListener("click", () => {
-//       btn.textContent = item.textContent;
-//     });
-//   });
-// });
-
-// // save button
-// const savebtn = document.getElementById("submit");
-
-// savebtn.addEventListener("click", async () => {
-//   const chapter = document.getElementById("dropdownMenu").textContent.trim();
-//   const course = document.getElementById("dropdownTopic").textContent.trim();
-
-//   const data = {
-//     question: document.getElementById("front").value.trim(),
-//     answer: document.getElementById("back").value.trim(),
-//     label: chapter,
-//     topic: course,
-//     group: "set C",
-//     createdBy: user.uid,
-//   };
-
-//   try {
-//     await addDoc(collection(db, "cards"), data);
-//     console.log("Card saved to Firestore:", data);
-//     window.location.href = "/home.html";
-//   } catch (error) {
-//     console.error("Error saving card:", error);
-//   }
-// });
-
 import { db } from "./firebaseConfig.js";
 import { collection, addDoc, doc, getDoc } from "firebase/firestore";
-import { onAuthReady } from "./authentication.js"; // make sure you import this
+import { onAuthReady } from "./authentication.js"; 
 
+// Back button: navigate to previous page
 document.addEventListener("DOMContentLoaded", () => {
   const backButton = document.getElementById("backBtn");
   if (backButton) {
     backButton.addEventListener("click", (e) => {
-      e.preventDefault(); // prevent form submit
+      e.preventDefault(); 
       window.history.back();
     });
   }
 });
 
-
-// update btn with selected option
+// Update dropdown toggle button text when an item is selected
 document.querySelectorAll(".drop-down").forEach((drop) => {
   const btn = drop.querySelector(".dropdown-toggle");
   const items = drop.querySelectorAll(".dropdown-item");
@@ -65,7 +25,7 @@ document.querySelectorAll(".drop-down").forEach((drop) => {
   });
 });
 
-// save button
+// Save button: add new card to Firestore
 const savebtn = document.getElementById("submit");
 
 savebtn.addEventListener("click", async () => {
@@ -75,17 +35,16 @@ savebtn.addEventListener("click", async () => {
       return;
     }
 
-    // Fetch current user's document to get their group
+    // Fetch current user's group from Firestore
     const userDocRef = doc(db, "users", user.uid);
     const userSnapshot = await getDoc(userDocRef);
     if (!userSnapshot.exists()) {
       alert("User data not found!");
       return;
     }
+    const userGroup = userSnapshot.data().group; 
 
-    const userData = userSnapshot.data();
-    const userGroup = userData.group; // assuming 'group' field exists in user doc
-
+    // Collect card info from input fields
     const chapter = document.getElementById("dropdownMenu").textContent.trim();
     const course = document.getElementById("dropdownTopic").textContent.trim();
 
@@ -94,7 +53,7 @@ savebtn.addEventListener("click", async () => {
       answer: document.getElementById("back").value.trim(),
       label: chapter,
       topic: course,
-      group: userGroup, // can make dynamic later
+      group: userGroup, 
       createdBy: user.uid, 
       createdAt: new Date(),
     };

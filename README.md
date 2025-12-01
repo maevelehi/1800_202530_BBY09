@@ -2,9 +2,9 @@
 
 ## Overview
 
-FlipIt is a collaborative mobile flashcard app engineered to help students memorize and retain information more effectively in a fast-paced academic world. It directly tackles common student challenges such as exam anxiety and inefficient study routines by facilitating shared flashcard sets and offering dual creation methods—manual input and bulk CSV uploads.
+FlipIt is a collaborative mobile flashcard app designed to help students memorize and retain information more effectively in a fast-paced academic world. It directly tackles common student challenges such as exam anxiety and inefficient study routines by enabling shared flashcard sets and offering flexible creation methods—both manual input and bulk CSV uploads.
 
-Beyond content creation, FlipIt is a comprehensive study companion that tracks user engagement and progress. It provides actionable feedback through a 7-day performance summary and habit tracking, while built-in gamification elements like motivational prompts encourage daily use. By seamlessly blending shared knowledge resources with interactive study tools and performance analytics, FlipIt equips students with a smarter, more strategic approach to learning, leading to reduced stress and improved long-term knowledge retention.
+Beyond content creation, FlipIt is a comprehensive study companion that tracks user engagement and progress. It provides actionable feedback through daily performance summaries and habit tracking, while built-in gamification elements like motivational prompts encourage consistent use. By seamlessly blending shared knowledge resources with interactive study tools and performance analytics, FlipIt equips students with a smarter, more strategic approach to learning—reducing stress and improving long-term knowledge retention.
 
 ---
 

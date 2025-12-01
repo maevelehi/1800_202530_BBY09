@@ -42,7 +42,5 @@ export default defineConfig({
     },
     chunkSizeWarningLimit: 1000,
   },
-
-  // 确保默认头像路径正确
   publicDir: "public",
 });

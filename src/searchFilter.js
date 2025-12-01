@@ -1,4 +1,3 @@
-// src/searchFilter.js
 import {
   collection,
   query,
@@ -94,17 +93,9 @@ function loadCardsData(userGroup) {
   const cardsRef = collection(db, "cards");
   const q = query(cardsRef, orderBy("createdAt", "desc"));
 
-  // console.log("upload cards data from Firebase");
-
   onSnapshot(q, (snapshot) => {
     allCards = [];
     topicsData = {};
-
-    // console.log(
-    //   "Received data snapshot, total number of cards:",
-    //   snapshot.size
-    // );
-
     snapshot.forEach((docSnapshot) => {
       const card = docSnapshot.data();
       const docId = docSnapshot.id;
@@ -129,12 +120,6 @@ function loadCardsData(userGroup) {
     Object.keys(topicsData).forEach((topic) => {
       topicsData[topic] = Array.from(topicsData[topic]);
     });
-
-    // console.log("Data processing completed: ", {
-    //   TheNumberOfAvailableCards: allCards.length,
-    //   TheNumberOfTopic: Object.keys(topicsData).length,
-    //   Topic: topicsData,
-    // });
 
     // Render Topic drop-down options
     populateTopicSelect();
@@ -162,7 +147,6 @@ function populateTopicSelect() {
       topicSelect.appendChild(option);
     });
 
-  // console.log("The drop-down rendering of Topic is completed");
 }
 
 function populateChapterSelect(topic) {
@@ -170,7 +154,6 @@ function populateChapterSelect(topic) {
   if (!chapterSelect) return;
 
   const chapters = topicsData[topic] || [];
-  // console.log(`${topic} :`, chapters);
 
   chapterSelect.innerHTML = `<option value="">Select Chapter</option>`;
 
@@ -197,11 +180,6 @@ function applyFilter() {
 
   let filteredCards = allCards;
 
-  // console.log("search:", {
-  //   selectedTopic,
-  //   selectedChapter,
-  // });
-
   if (selectedTopic && selectedChapter) {
     filteredCards = filteredCards.filter(
       (card) => card.topic === selectedTopic && card.label === selectedChapter
@@ -211,13 +189,6 @@ function applyFilter() {
       (card) => card.topic === selectedTopic
     );
   }
-  // If nothing is chosen, keep allCards
-
-  // console.log("filtered results:", {
-  //   TotalCards: allCards.length,
-  //   AfterFilter: filteredCards.length,
-  // });
-
   renderFilteredCards(container, filteredCards);
 }
 

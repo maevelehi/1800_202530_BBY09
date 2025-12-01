@@ -6,18 +6,6 @@
   background-color: #e7e9eb;
 }
 
-/* .btn-secondary {
-  background-color: #00b4d8;
-}
-
-.btn-primary {
-  background-color: #00b4d8;
-} */
-
-.Create-account {
-  color-scheme: #00b4d8;
-}
-
 .btn-primary, .btn-secondary {
   background-color: #4868fa !important;
   border-color: #4361ee !important;
@@ -47,6 +35,6 @@
   color: black;
   padding: 5px 10px;
   position: absolute;
-  left: 0.3rem; /* distance from the left edge */
+  left: 0.3rem; 
 }
 

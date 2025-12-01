@@ -1,16 +1,3 @@
-/* .auth-image {
-  display: block; 
-  margin: 0 auto 30px auto;
-
-  width: 100%; 
-  max-width: 420px;
-
-  height: 260px;
-  object-fit: cover;
-
-  border-radius: 10px;
-} */
-
 /* Entrance animation for auth-image */
 .auth-image {
   display: block;

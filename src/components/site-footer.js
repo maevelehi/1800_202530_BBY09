@@ -1,6 +1,3 @@
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "/src/firebaseConfig.js";
-
 class SiteFooter extends HTMLElement {
   constructor() {
     super();

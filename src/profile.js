@@ -92,11 +92,8 @@ async function saveUserProfile() {
 
   try {
     await updateUserDocument(user.uid, name, school, group, avatarUrl);
-
     document.getElementById("personalInfoFields").disabled = true;
-
     document.getElementById("editProfileBtn").textContent = "Edit Profile";
-
     alert("Profile updated successfully!");
   } catch (err) {
     console.error("Error saving profile:", err);
@@ -152,6 +149,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
     avatarUpload.addEventListener("change", handleAvatarUpload);
   }
-
   populateUserInfo();
 });

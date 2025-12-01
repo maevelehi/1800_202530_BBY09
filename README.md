@@ -50,14 +50,14 @@ Beyond content creation, FlipIt is a comprehensive study companion that tracks u
 
 #### a. Add a Flashcard:
 
-- 1st option: Add Manually
-  Enter the question and answer.
+- 1st option: add by manually
+  enter the question and answer.
   Select a topic and chapter.
   Click "Save".
   The new card will appear immediately on the Home Page.
 
 - 2nd option: Add by CSV (Batch Import)
-  Click "Add by CSV"
+  click "Add by CSV"
   Upload a CSV file containing question, answer, topic, and chapter.
   The system will quickly generate multiple cards at once.
 
@@ -78,9 +78,9 @@ Beyond content creation, FlipIt is a comprehensive study companion that tracks u
 
 Go to the Progress page
 
-- A chart displays how many times you flipped cards each day over the past 7 days.
+- A chart displays how many times you flipped cards each day.
 
-- The system compares today’s flip count with your 7-day average.
+- The system compares today’s flip count with your daily average.
 
 - The displayed image changes based on how consistently you study over time, helping motivate your learning habit.
 
@@ -127,7 +127,6 @@ Go to the Progress page
 |   ├──profile.js
 |   ├──progress-tracking.js
 |   ├──searchFilter.js
-|   ├──userprofilepicture.js
 |   └──utils.js
 ├── .env
 ├── .env_template

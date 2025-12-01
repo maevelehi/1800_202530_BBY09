@@ -38,7 +38,7 @@ Beyond content creation, FlipIt is a comprehensive study companion that tracks u
 
 - Open your browser and visit (e.g. https://flipit-b1370.web.app/)
 
-- click "Login / Signup" (If you already have an account, enter your username and password to log in. If you don't have an account, click "Signup" to register a new one: name, email, password, group).
+- Click "Login / Signup" (If you already have an account, enter your username and password to log in. If you don't have an account, click "Signup" to register a new one).
 
 ### 2. Create user profiles
 
@@ -50,13 +50,13 @@ Beyond content creation, FlipIt is a comprehensive study companion that tracks u
 
 #### a. Add a Flashcard:
 
-- Method A: Add Manually
+- 1st option: Add Manually
   Enter the question and answer.
   Select a topic and chapter.
   Click "Save".
   The new card will appear immediately on the Home Page.
 
-- Method B: Add by CSV (Batch Import)
+- 2nd option: Add by CSV (Batch Import)
   Click "Add by CSV"
   Upload a CSV file containing question, answer, topic, and chapter.
   The system will quickly generate multiple cards at once.
@@ -173,6 +173,7 @@ Go to the Progress page
 
 - Chapter Capacity: Each topic is restricted to a maximum of 10 chapters, which may not be sufficient for subjects with extensive curricula.
 - Fixed Subject Offerings: The app currently only supports six predefined subjects for the current semester, limiting its immediate usability for students in other disciplines or academic terms.
+- The flip button doesn't actually produce the desired effect.
 
 ### Future Work
 

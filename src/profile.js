@@ -116,8 +116,6 @@ function handleAvatarUpload(event) {
 // DOM Content Loaded
 // ------------------------------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("DOM loaded, initializing event listeners...");
-
   const editProfileBtn = document.getElementById("editProfileBtn");
   if (editProfileBtn) {
     editProfileBtn.addEventListener("click", function () {

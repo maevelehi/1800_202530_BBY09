@@ -64,22 +64,15 @@ class SiteNavbar extends HTMLElement {
       const avatarElement = this.querySelector("#userAvatar");
 
       if (user) {
-        console.log("Get the ID:", user.uid);
-
         try {
           const userRef = doc(db, "users", user.uid);
           const userSnap = await getDoc(userRef);
 
           if (userSnap.exists()) {
             const userData = userSnap.data();
-            console.log("user data:", userData);
 
             if (userData.avatarUrl && avatarElement) {
-              console.log("Find the URL:", userData.avatarUrl);
               avatarElement.src = userData.avatarUrl;
-              console.log(
-                "The picture already set (custom or default if error)"
-              );
             } else {
               console.log(
                 "The user didn't set the picture or no avatar element"

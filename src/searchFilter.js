@@ -23,7 +23,6 @@ export function initSearchFilter(userGroup) {
   onAuthReady((user) => {
     if (user) {
       currentUser = user;
-      console.log("User authenticated:", user.uid);
     }
     initFilterControls();
     loadCardsData(userGroup);
@@ -38,7 +37,6 @@ function initFilterControls() {
   const clearBtn = document.getElementById("clearFilter");
 
   if (!topicSelect || !chapterSelect || !clearBtn) {
-    console.error("The filter control element cannot be found");
     return;
   }
 

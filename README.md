@@ -56,7 +56,7 @@ Beyond content creation, FlipIt is a comprehensive study companion that tracks u
   Click "Save".
   The new card will appear immediately on the Home Page.
 
-- 2nd option: Add by CSV (Batch Import)
+- 2nd option: add by CSV (Batch Import)
   click "Add by CSV"
   Upload a CSV file containing question, answer, topic, and chapter.
   The system will quickly generate multiple cards at once.

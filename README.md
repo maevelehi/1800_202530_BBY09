@@ -10,20 +10,15 @@ Beyond content creation, FlipIt is a comprehensive study companion that tracks u
 
 ## Features
 
-- Create Flashcards
-  Add flashcards manually or upload multiple cards using a CSV file.
+- Create Flashcards: Add flashcards manually or upload multiple cards using a CSV file.
 
-- Group Sharing
-  Share flashcards within your group so members can study together.
+- Group Sharing: Share flashcards within your group so members can study together.
 
-- Progress Tracking
-  Track daily flip counts and compare today’s progress with yesterday’s performance.
+- Progress Tracking: Track daily flip counts and compare today’s progress with yesterday’s performance.
 
-- Streak System & Encouragement
-  Maintain study streaks and receive motivational messages based on your consistency.
+- Streak System & Encouragement: Maintain study streaks and receive motivational messages based on your consistency.
 
-- Mobile-First UI
-  Designed with a mobile-first layout for convenient studying anytime, anywhere.
+- Mobile-First UI: Designed with a mobile-first layout for convenient studying anytime, anywhere.
 
 ---
 
@@ -53,7 +48,7 @@ Beyond content creation, FlipIt is a comprehensive study companion that tracks u
 
 ### 3. Use the main functions
 
-#### -1 Add a Flashcard:
+#### a. Add a Flashcard:
 
 - Method A: Add Manually
   Enter the question and answer.
@@ -66,22 +61,20 @@ Beyond content creation, FlipIt is a comprehensive study companion that tracks u
   Upload a CSV file containing question, answer, topic, and chapter.
   The system will quickly generate multiple cards at once.
 
-#### -2 Filtering Cards
+#### b. Filtering Cards
 
 - You can filter flashcards on the Home Page by selecting:
   Topic and Chapter
 
 - Only cards that match your selected criteria will be displayed.
 
-#### -3 Flashcard Actions
+#### c. Flashcard Actions
 
-- Flip a Card
-  Click the "Flip" button to reveal the answer.
+- Flip a Card: Click the "Flip" button to reveal the answer.
 
-- Delete a Card
-  Click the "Delete" icon to remove the card from your collection.
+- Delete a Card: Click the "Delete" icon to remove the card from your collection.
 
-#### -4 View Your Learning Progress
+#### d. View Your Learning Progress
 
 Go to the Progress page
 
@@ -121,20 +114,20 @@ Go to the Progress page
 │   |   ├── progress-tracking.css
 │   |   ├── style.css
 │   |   └── topic.css
-|   |── JS addcard.js
-|   ├──JS app.js
-|   ├──JS authentication.js
-|   ├──JS create-card.js
-|   ├──JS csvUpload.js
-|   ├──JS deck.js
-|   ├──JS firebaseConfig.js
-|   ├──JS home.js
-|   ├──JS loginSignup.js
-|   ├──JS main.js
-|   ├──JS profile.js
-|   ├──JS progress-tracking.js
-|   ├──JS searchFilter.js
-|   ├──JS userprofilepicture.js
+|   ├──addcard.js
+|   ├──app.js
+|   ├──authentication.js
+|   ├──create-card.js
+|   ├──csvUpload.js
+|   ├──deck.js
+|   ├──firebaseConfig.js
+|   ├──home.js
+|   ├──loginSignup.js
+|   ├──main.js
+|   ├──profile.js
+|   ├──progress-tracking.js
+|   ├──searchFilter.js
+|   ├──userprofilepicture.js
 |   └──utils.js
 ├── .env
 ├── .env_template
@@ -166,7 +159,7 @@ Go to the Progress page
 ## Acknowledgments
 
 - Flashcard content and sample data are for demonstration purposes only.
-- Some of cade are from [bootstrapt](https://getbootstrap.com/)
+- Some of cade are from [bootstrap](https://getbootstrap.com/)
 - UI icons sourced from [FontAwesome](https://icon-icons.com/zh/) and images were obtained through Google Search .
 - Special thanks to our client Carly for her valuable feedback and guidance throughout the development process.
 - Built using Firebase for backend services and hosting.

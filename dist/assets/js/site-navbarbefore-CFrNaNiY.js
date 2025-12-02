@@ -1,4 +1,4 @@
-import{o as s,l as e,a as i}from"./site-navbar-CJE8ti2D.js";class o extends HTMLElement{constructor(){super(),this.renderNavbar(),this.renderAuthControls()}renderNavbar(){this.innerHTML=`
+import{o as s,l as e,a as i}from"./site-navbar--heEX1I6.js";class o extends HTMLElement{constructor(){super(),this.renderNavbar(),this.renderAuthControls()}renderNavbar(){this.innerHTML=`
   <nav class="navbar bg-body-tertiary bg-info">
     <div class="container-fluid">
       <a class="navbar-brand" href="/home.html">

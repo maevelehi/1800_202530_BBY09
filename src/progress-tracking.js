@@ -1,18 +1,12 @@
 import { db } from "./firebaseConfig.js";
-import {
-  collection,
-  getDocs,
-  query,
-  where,
-  orderBy,
-} from "firebase/firestore";
+import { collection, getDocs, query, where, orderBy } from "firebase/firestore";
 import { onAuthReady } from "./authentication.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const backButton = document.getElementById("backBtnProgress");
   if (backButton) {
     backButton.addEventListener("click", (e) => {
-      e.preventDefault(); 
+      e.preventDefault();
       window.history.back();
     });
   }
@@ -91,7 +85,7 @@ function renderChartAndStats(counts) {
   document.getElementById("average-count").textContent = avg;
 
   const percent = avg ? Math.round(((today - avg) / avg) * 100) : 0;
-  const isAbove = percent >= 0;
+  const isAbove = percent >= avg;
 
   const icon = isAbove ? "⭐" : "⚠️";
 

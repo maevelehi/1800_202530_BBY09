@@ -1,4 +1,4 @@
-import"./site-navbar-CJE8ti2D.js";class o extends HTMLElement{constructor(){super(),this.renderFooter()}renderFooter(){this.innerHTML=`
+class o extends HTMLElement{constructor(){super(),this.renderFooter()}renderFooter(){this.innerHTML=`
     <footer class="fixed-bottom w-100 d-flex justify-content-center">
       <div class="bg-primary rounded-pill shadow-lg d-flex w-100 justify-content-around align-items-center" 
            style="max-width: 1600px; padding: 35px 16px; height: 62px;">

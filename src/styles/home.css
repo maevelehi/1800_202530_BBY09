@@ -1,12 +1,13 @@
+/* Global reset for margins, padding, and box-sizing */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Main body styling: full height, centered layout */
 body {
   font-family: Arial, sans-serif;
-  /* background: linear-gradient(to bottom, #73c5ff, #f8fafc); */
   background-color: white;
   min-height: 100vh;
   display: flex;
@@ -14,17 +15,18 @@ body {
   padding: 20px;
 }
 
+/* Sticky navbar positioned at the top */
 site-navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   background: white;
-  /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
   z-index: 1000;
   height: 60px;
 }
 
+/* Main container for page content */
 .main-container {
   flex: 1;
   max-width: 1200px;
@@ -32,10 +34,12 @@ site-navbar {
   padding: 20px;
 }
 
+/* Wrapper for spacing inside the content */
 .content-wrapper {
   padding: 20px;
 }
 
+/* Layout for top section with title and dropdowns */
 .top-info-grid {
   display: flex;
   justify-content: space-between;
@@ -45,11 +49,13 @@ site-navbar {
   gap: 20px;
 }
 
+/* Section containing deck title and description */
 .deck-info {
   flex: 1;
   min-width: 300px;
 }
 
+/* Page title styling */
 .page-title {
   font-size: 2.5rem;
   font-weight: 700;
@@ -57,6 +63,7 @@ site-navbar {
   margin-bottom: 10px;
 }
 
+/* Deck description text styling */
 .deck-description {
   font-size: 1.1rem;
   color: #777;
@@ -64,6 +71,7 @@ site-navbar {
   line-height: 1.5;
 }
 
+/* Main dropdown button styling */
 .drop-down {
   display: inline-block;
   background: #fda83a;
@@ -84,6 +92,7 @@ site-navbar {
   transform: scale(1.03);
 }
 
+/* Remove Bootstrap dropdown outlines */
 .dropdown-item,
 .dropdown-item:focus,
 .dropdown-item:active,
@@ -92,6 +101,8 @@ site-navbar {
   box-shadow: none !important;
   border: none !important;
 }
+
+/* Remove outlines from add card button */
 .add-card-btn,
 .add-card-btn:focus,
 .add-card-btn:active,
@@ -101,25 +112,20 @@ site-navbar {
   border: none !important;
 }
 
+/* Remove the arrow icon from dropdown toggle */
 .add-card-btn.dropdown-toggle::after {
   border: none !important;
 }
 
+/* List that holds all the flashcard questions */
 .questions-list {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.flipped {
-  -webkit-animation: flip-horizontal-top 0.4s
-    cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
-  animation: flip-horizontal-top 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955)
-    both;
-}
-
+/* Individual flashcard styling */
 .question-card {
-  perspective: 1000px;
   background: #ffffff;
   border-radius: 20px;
   padding: 20px 100px 20px 25px;
@@ -141,15 +147,7 @@ site-navbar {
   transform: translateY(-2px);
 }
 
-/* .question-card p {
-  margin-bottom: 0;
-  margin: 0 0 10px 0;
-  font-size: 18px;
-  padding: 30px 30px 0px;
-  color: #03045e;
-  width: calc(100% - 70px);
-} */
-
+/* Styling for the question text */
 .question-text {
   font-size: 18px;
   color: #03045e;
@@ -157,6 +155,7 @@ site-navbar {
   margin-bottom: 10px; /* space before flip button */
 }
 
+/* Hidden answer text (revealed on flip) */
 .answer-text {
   font-size: 18px;
   color: #03045e;
@@ -164,11 +163,14 @@ site-navbar {
   margin-top: 0;
   padding: 5px 30px;
 }
+
+/* Fade-out animation when deleting a card */
 .question-card.fade-out {
   opacity: 0;
   transform: translateY(-20px);
 }
 
+/* Chapter label colors and positioning */
 .chapter-label1,
 .chapter-label2,
 .chapter-label3,
@@ -186,7 +188,6 @@ site-navbar {
   padding: 6px 15px;
   border-radius: 3px;
   font-size: 1.2em;
-  /* make font bold now for it */
   font-weight: bold;
 }
 .chapter-label1 {
@@ -220,6 +221,7 @@ site-navbar {
   color: #1cddf6;
 }
 
+/* Flip button styling */
 .flip-btn {
   position: absolute;
   right: 5%;
@@ -239,32 +241,11 @@ site-navbar {
 .flip-btn:hover {
   background: #f7a950;
   color: #fffefe;
-  /* transform: translateY(-2px); */
   cursor: pointer;
   transform: scale(1.05);
 }
 
-/* @-webkit-keyframes flip-horizontal-top {
-  0% {
-    -webkit-transform: rotateX(0);
-    transform: rotateX(0);
-  }
-  100% {
-    -webkit-transform: rotateX(180deg);
-    transform: rotateX(180deg);
-  }
-}
-@keyframes flip-horizontal-top {
-  0% {
-    -webkit-transform: rotateX(0);
-    transform: rotateX(0);
-  }
-  100% {
-    -webkit-transform: rotateX(180deg);
-    transform: rotateX(180deg);
-  }
-} */
-
+/* Delete (X) button */
 .remove-btn {
   position: absolute;
   top: 16%;
@@ -279,11 +260,13 @@ site-navbar {
   display: inline-flex;
 }
 
+/* Dropdown wrapper for filters */
 .filter-dropdown-container {
   position: relative;
   display: inline-block;
 }
 
+/* Filter toggle button styling */
 .filter-toggle-btn {
   display: flex;
   align-items: center;
@@ -312,6 +295,7 @@ site-navbar {
   font-size: 18px;
 }
 
+/* Styling for filter dropdown contents */
 .filter-dropdown-menu {
   min-width: 240px !important;
   border: 1px solid #dee2e6;
@@ -320,6 +304,7 @@ site-navbar {
   margin-top: 8px !important;
 }
 
+/* Section title inside filter dropdown */
 .filter-title {
   color: #495057;
   font-weight: 600;
@@ -328,12 +313,14 @@ site-navbar {
   border-bottom: 1px solid #e9ecef;
 }
 
+/* Filter option labels */
 .filter-controls .form-label {
   font-weight: 500;
   color: #495057;
   margin-bottom: 6px;
 }
 
+/* Filter dropdown select box */
 .filter-select {
   border-radius: 6px;
   border: 1px solid #ced4da;
@@ -346,6 +333,7 @@ site-navbar {
   box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.25);
 }
 
+/* Buttons at bottom of filter menu */
 .filter-actions {
   display: flex;
   justify-content: flex-end;
@@ -357,7 +345,7 @@ site-navbar {
   padding: 6px 12px;
 }
 
-/* responsive */
+/* Responsive adjustments */
 @media (max-width: 2360px) {
   .main-container {
     padding: 15px;
@@ -384,6 +372,8 @@ site-navbar {
   .question-card {
     padding: 15px 80px 15px 15px;
   }
+
+  /* Mobile layout for top section */
   .top-info-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -391,12 +381,14 @@ site-navbar {
     gap: 15px;
   }
 
+  /* Deck info full width */
   .deck-info {
     grid-column: 1 / -1;
     grid-row: 1;
     width: 100%;
   }
 
+  /* Filter dropdown positioning for mobile */
   .filter-dropdown-container {
     grid-column: 1;
     grid-row: 2;
@@ -466,65 +458,3 @@ site-navbar {
 .card-studied h2 {
   color: #c79261 !important;
 }
-
-/* .question-card {
-  perspective: 1000px;
-  position: relative;
-  width: 100%;
-  max-width: 600px;
-  height: 170px;
-  margin: 0 auto;
-}
-
-.card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-}
-
-.question-card.flipped .card-inner {
-  transform: rotateX(180deg);
-}
-
-.card-content {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  padding: 20px;
-}
-
-.card-content.front {
-  z-index: 2;
-}
-
-.card-content.back {
-  transform: rotateX(180deg);
-  z-index: 1;
-} */
-
-/* .card-front,
-.card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-}
-
-.card-back {
-  transform: rotateX(180deg);
-}
-
-.card-back * {
-  transform: rotateX(180deg);
-}
-
-.card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-} */

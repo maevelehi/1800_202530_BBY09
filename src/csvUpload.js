@@ -11,8 +11,8 @@ import {
 } from "firebase/firestore";
 import { onAuthReady } from "./authentication.js";
 import { updateDoc, increment, serverTimestamp } from "firebase/firestore";
-// Modification: Import getDoc for reading user groups
 
+// Track which user is currently logged in
 let currentUser = null;
 
 // Initialize the upload button
@@ -53,17 +53,18 @@ async function handleCSVUpload(e) {
   });
 }
 
-// Firestore
+// Handle CSV upload: parse file and add cards to Firestore
 async function parseAndUploadCSV(text, user) {
   const rows = text
     .split("\n")
     .map((r) => r.trim())
     .filter(Boolean);
-  if (rows.length < 2) return;
+  if (rows.length < 2) return; // skip if no data rows
 
   const headers = rows[0].split(",").map((h) => h.trim().toLowerCase());
   const cardsRef = collection(db, "cards");
 
+  // Determine user group from Firestore (default if missing)
   let group = "default";
   try {
     const userDoc = await getDoc(doc(db, "users", user.uid));
@@ -72,6 +73,7 @@ async function parseAndUploadCSV(text, user) {
     console.warn("Failed to get group:", err);
   }
 
+  // Process each CSV row into a card
   for (let i = 1; i < rows.length; i++) {
     const values = rows[i].split(",").map((v) => v.trim());
     const card = {};
@@ -94,11 +96,13 @@ async function parseAndUploadCSV(text, user) {
       }
     });
 
+    // Skip invalid rows missing required fields
     if (!card.question || !card.answer || !card.topic || !card.label) {
       console.warn(`Skipping row ${i + 1}: missing required field.`);
       continue;
     }
 
+    // Add card to Firestore
     await addDoc(cardsRef, {
       ...card,
       group: card.group || group,
@@ -124,18 +128,16 @@ export function displayCardsFromFirestore(userGroup) {
     snapshot.forEach((docSnapshot) => {
       const card = docSnapshot.data();
       const docId = docSnapshot.id;
+
       // --- Filter by user's group ---
       if (card.group !== userGroup) return;
 
-      // const cardElement = template.content.cloneNode(true);
-      // const cardElement = cardElement.querySelector(".question-card"); //new
-
-      // Clone template
+      // Clone template and populate data
       const fragment = template.content.cloneNode(true);
       const cardElement = fragment.querySelector(".question-card");
-      // Store Firestore ID
       cardElement.dataset.cardId = docSnapshot.id;
 
+      // --- Set chapter label with dynamic class ---
       let chapterText = "Chapter 1";
       if (card.label) {
         chapterText = card.label.toString();
@@ -148,12 +150,10 @@ export function displayCardsFromFirestore(userGroup) {
         label.textContent = chapterText;
       }
 
+      // Questions & answers
       cardElement.querySelector(".question-text").textContent =
         card.question || "";
       const answerEl = cardElement.querySelector(".answer-text");
-
-      //TESTING
-      // console.log("Answer element before flip:", answerEl, "display:", window.getComputedStyle(answerEl).display);
       answerEl.textContent = card.answer || "";
 
       // Restore flipped state if previously flipped
@@ -165,38 +165,9 @@ export function displayCardsFromFirestore(userGroup) {
 
       container.appendChild(fragment);
 
-      //TESTING
-      // console.log("DOM after append:", container.innerHTML);
 
+      // --- Flip button ---
       const flipBtn = cardElement.querySelector(".flip-btn");
-      // flipBtn.onclick = async () => {
-      //   // Toggle answer display
-      //   const isHidden = window.getComputedStyle(answerEl).display === "none";
-      //   //TESTING
-      //   console.log("isHidden:", isHidden, "current display:", window.getComputedStyle(answerEl).display);
-      //   answerEl.style.display = isHidden ? "block" : "none";
-      //   console.log("New display:", answerEl.style.display);
-
-      //   // Track flip in Firestore
-      //   const cardId = docSnapshot.id;
-      //   console.log("Card ID:", cardId, "Current user:", currentUser);
-
-      //   if (!currentUser || !cardId) return;
-
-      //   try {
-      //     const cardRef = doc(db, "cards", cardId);
-      //     console.log("FLIPPED: Updating Firestore for card:", cardId);
-
-      //     await updateDoc(cardRef, {
-      //       flipCount: increment(1),
-      //       lastFlipped: new Date(),
-      //     });
-      //     console.log("UPDATED!");
-      //   } catch (err) {
-      //     console.error("Error updating flip count:", err);
-      //   }
-      // };
-
       flipBtn.onclick = async () => {
         const isHidden = window.getComputedStyle(answerEl).display === "block";
         answerEl.style.display = isHidden ? "none" : "block";
@@ -237,12 +208,11 @@ export function displayCardsFromFirestore(userGroup) {
           }
         }
       };
-
-      // container.appendChild(cardElement);
     });
   });
 }
 
+// Log each flip to Firestore
 async function logFlip(cardId, userId) {
   try {
     await addDoc(collection(db, "flipLogs"), {
@@ -255,9 +225,7 @@ async function logFlip(cardId, userId) {
   }
 }
 
-onAuthReady((user) => {
-  currentUser = user;
-});
+// Track current authenticated user
 onAuthReady((user) => {
   currentUser = user;
 });

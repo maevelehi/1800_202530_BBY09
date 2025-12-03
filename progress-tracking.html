@@ -8,12 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Web Components for shared navbar and footer layout -->
-    <script type="module" src="/src/components/site-navbar.js"></script>
-    <!-- <script type="module" src="/src/components/site-footer.js"></script> -->
-
     <link href="./src/styles/progress-tracking.css" rel="stylesheet">
-    <!-- footer icon link  -->
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
@@ -21,7 +16,6 @@
   </head>
 
   <body>
-    <!-- our own navbar goes here -->
     <site-navbar></site-navbar>
 
     <!-- Main content goes here -->
@@ -31,10 +25,7 @@
       >
       <button class="back-btn" id="backBtnProgress">←</button>
       <h1 class="mb-4 text-center">Progress Tracking</h1>
-
       </div>
-
-      <!-- Heading -->
 
       <!-- Week Card -->
       <div class="card rounded-3 px-1 py-2 mb-5 text-center weekcard" style="margin: 0 6rem;">
@@ -79,7 +70,7 @@
 
       <!-- Motivational text -->
       <p id="weekly-stats" class="text-center fw-bold mb-3">
-        🔥 You’re 50% above your weekly average!
+        🔥 You’re 50% above your daily average!
       </p>
 
       <div class="streak-card mx-4 mb-5">
@@ -98,6 +89,7 @@
     <!---------------------------------------------->
     <!-- Your own JavaScript scripts go here      -->
     <!---------------------------------------------->
+    <script type="module" src="/src/components/site-navbar.js"></script>
     <script type="module" src="/src/components/site-footer.js"></script>
     <script type="module" src="/src/app.js"></script>
     <script type="module" src="/src/main.js"></script>

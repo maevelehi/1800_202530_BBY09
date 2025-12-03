@@ -1,6 +1,3 @@
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "/src/firebaseConfig.js";
-
 class SiteFooter extends HTMLElement {
   constructor() {
     super();
@@ -13,7 +10,7 @@ class SiteFooter extends HTMLElement {
       <div class="bg-primary rounded-pill shadow-lg d-flex w-100 justify-content-around align-items-center" 
            style="max-width: 1600px; padding: 35px 16px; height: 62px;">
         <!-- Progress -->
-        <a href="/progress-tracking" class="nav-link d-flex flex-column align-items-center px-3 py-1 rounded-pill">
+        <a href="/progress-tracking.html" class="nav-link d-flex flex-column align-items-center px-3 py-1 rounded-pill">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
@@ -30,7 +27,7 @@ class SiteFooter extends HTMLElement {
         </a>
 
         <!-- Profile -->
-        <a href="/profile" class="nav-link d-flex flex-column align-items-center px-3 py-1 rounded-pill">
+        <a href="/profile.html" class="nav-link d-flex flex-column align-items-center px-3 py-1 rounded-pill">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

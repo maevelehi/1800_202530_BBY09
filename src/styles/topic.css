@@ -1,4 +1,3 @@
-/* Fixed layout for iPhone 14 Pro Max */
 body {
   background-color: white;
   margin: 0 auto;
@@ -105,13 +104,6 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
-}
-/* The top safety area adapted to iPhone 14 Pro Max */
-@supports (padding-top: env(safe-area-inset-top)) {
-  body {
-    padding-top: env(safe-area-inset-topnpm);
-    padding-bottom: env(safe-area-inset-bottom);
-  }
 }
 
 /* Adapt to dynamic island areas*/

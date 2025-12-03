@@ -1,6 +1,7 @@
 body {
-  background-color: #f8f9fa;
+  background-color: #ffffff;
 }
+
 /* Chart styles */
 .chart-wrapper {
   background-color: #ffffff;
@@ -14,7 +15,7 @@ body {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  height: 200px; /* container height */
+  height: 200px; 
   gap: 0.5rem;
 }
 .chart-column {
@@ -89,7 +90,7 @@ body {
   color: black;
   padding: 5px 10px;
   position: absolute;
-  left: 0.5rem; /* distance from the left edge */
+  left: 0.5rem; 
 }
 
 .card.weekcard {
@@ -98,8 +99,9 @@ body {
   color: #716a95 !important;
 }
 
-.card.totalToday, .card.avg7day {
-  border: 0.px solid #6b6394;
+.card.totalToday,
+.card.avg7day {
+  border: 0px solid #6b6394;
   background-color: #f6f4ff !important;
   color: #6b6394 !important;
 }

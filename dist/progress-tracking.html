@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>FlipIt</title>
+    <meta name="comp1800 template" content="My 1800 App" />
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script type="module" crossorigin src="/assets/js/progress-tracking-BTYPEu0n.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/js/site-navbar--heEX1I6.js">
+    <link rel="modulepreload" crossorigin href="/assets/js/app-DbvmmK9C.js">
+    <link rel="modulepreload" crossorigin href="/assets/js/site-footer-Due56cgJ.js">
+    <link rel="modulepreload" crossorigin href="/assets/js/main-CZ2i7WNr.js">
+    <link rel="stylesheet" crossorigin href="/assets/styles/app-6xFhhDlQ.css">
+    <link rel="stylesheet" crossorigin href="/assets/styles/progress-tracking-5Ov760sW.css">
+  </head>
+
+  <body>
+    <site-navbar></site-navbar>
+
+    <!-- Main content goes here -->
+    <div class="container py-4 pb-7">
+      <div
+        class="card-body position-relative d-flex justify-content-center align-items-center"
+      >
+      <button class="back-btn" id="backBtnProgress">←</button>
+      <h1 class="mb-4 text-center">Progress Tracking</h1>
+      </div>
+
+      <!-- Week Card -->
+      <div class="card rounded-3 px-1 py-2 mb-5 text-center weekcard" style="margin: 0 6rem;">
+        <h5>Week</h5>
+      </div>
+
+      <!-- Chart Container -->
+      <div class="chart-wrapper">
+        <div class="chart-container">
+          <div class="chart-column"><span>10</span></div>
+          <div class="chart-column"><span>12</span></div>
+          <div class="chart-column today"><span>20</span></div>
+          <div class="chart-column"><span>15</span></div>
+          <div class="chart-column"><span>8</span></div>
+          <div class="chart-column"><span>12</span></div>
+          <div class="chart-column"><span>10</span></div>
+        </div>
+        <div class="chart-days">
+          <div>Mon</div>
+          <div>Tue</div>
+          <div>Wed</div>
+          <div>Thu</div>
+          <div>Fri</div>
+          <div>Sat</div>
+          <div>Sun</div>
+        </div>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="d-flex gap-3 mb-3 mx-4">
+        <div class="card rounded-3 p-3 text-center flex-fill totalToday">
+          <div>Today</div>
+          <div id="today-count" class="fs-3 fw-bold">20</div>
+          <div>cards review</div>
+        </div>
+        <div class="card rounded-3 p-3 text-center flex-fill avg7day">
+          <div>7-day</div>
+          <div id="average-count" class="fs-3 fw-bold">14</div>
+          <div>cards on average</div>
+        </div>
+      </div></br>
+
+      <!-- Motivational text -->
+      <p id="weekly-stats" class="text-center fw-bold mb-3">
+        🔥 You’re 50% above your daily average!
+      </p>
+
+      <div class="streak-card mx-4 mb-5">
+        <div class="flex-fill">
+          <h5 id="streak-count">🔥 5-Day Streak!</h5>
+          <p id="streak-msg">Keep going, consistency is key!</p>
+        </div>
+        
+          <img src="images/aladin.png" alt="graph shows consistent">
+        
+      </div>
+    </div>
+    </div>
+    <!-- our own footer goes here -->
+    <site-footer></site-footer>
+    <!---------------------------------------------->
+    <!-- Your own JavaScript scripts go here      -->
+    <!---------------------------------------------->
+  </body>
+</html>

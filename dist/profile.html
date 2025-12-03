@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FlipIt</title>
+    <link />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script type="module" crossorigin src="/assets/js/profile-D7IubwID.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/js/site-navbar--heEX1I6.js">
+    <link rel="modulepreload" crossorigin href="/assets/js/app-DbvmmK9C.js">
+    <link rel="modulepreload" crossorigin href="/assets/js/site-footer-Due56cgJ.js">
+    <link rel="modulepreload" crossorigin href="/assets/js/main-CZ2i7WNr.js">
+    <link rel="stylesheet" crossorigin href="/assets/styles/app-6xFhhDlQ.css">
+    <link rel="stylesheet" crossorigin href="/assets/styles/profile-D_Sgrns0.css">
+  </head>
+  <body>
+    <site-navbar></site-navbar>
+    <div class="container">
+      <div class="header">
+        <button class="back-btn" id="backButton">←</button>
+        <h1 class="page-title">Profile</h1>
+        <div style="width: 30px"></div>
+      </div>
+
+      <!-- Profile section with avatar -->
+      <div class="profile-section">
+        <div class="avatar-container">
+          <img
+            src="./images/profilePicture.png"
+            alt="Avatar"
+            class="avatar"
+            id="avatar"
+          />
+          <div class="upload-btn" id="uploadAvatarBtn">
+            <i>+</i>
+          </div>
+          <input
+            type="file"
+            id="avatarUpload"
+            accept="image/*"
+            class="hidden"
+          />
+        </div>
+        <button class="edit-profile-btn" id="editProfileBtn">
+          Edit Profile
+        </button>
+      </div>
+
+      <!-- Basic information section -->
+      <div class="info-section">
+        <h2 class="section-title">Basic Information</h2>
+        <form id="profileForm">
+          <fieldset id="personalInfoFields" disabled>
+            <div class="form-group">
+              <label class="form-label">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nameInput"
+                placeholder="Enter your name"
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label">School</label>
+              <input
+                type="text"
+                class="form-control"
+                id="schoolInput"
+                placeholder="Enter your school"
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Class/Group</label>
+              <select class="form-control" id="groupInput">
+                <option value="">Select a group</option>
+                <option value="Set A">Set A</option>
+                <option value="Set B">Set B</option>
+                <option value="Set C">Set C</option>
+                <option value="Set D">Set D</option>
+                <option value="Set E">Set E</option>
+                <option value="Set F">Set F</option>
+              </select>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+
+    <site-footer></site-footer>
+  </body>
+</html>
